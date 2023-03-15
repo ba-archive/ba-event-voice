@@ -27,7 +27,17 @@ const currentEventDialog = computed(() => {
       </option>
     </select>
   </form>
-  <BaEventVoice :dialogs="currentEventDialog" />
+  <BaEventVoice
+    :dialogs="currentEventDialog"
+    :data-urls="{
+      characterExcelTable:
+        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',
+      characterSpineDirectory:
+        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
+      voiceDirectory:
+        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
+    }"
+  />
 </template>
 
 <style scoped>
