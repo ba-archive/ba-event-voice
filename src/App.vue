@@ -1,17 +1,33 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { computed, ref } from "vue";
+import eventDialogsTable from "./CharacterDialogEventExcelTable.json";
+import BaEventVoice from "../lib/BaEventVoice.vue";
+import { RawEventDialogItem } from "../lib/types";
+const eventDialogs = eventDialogsTable["DataList"];
+
+const eventIDs = new Set<number>();
+const currentEventID = ref(0);
+for (const dialog of eventDialogs) {
+  eventIDs.add(dialog.EventID);
+}
+
+const currentEventDialog = computed(() => {
+  return eventDialogs.filter(
+    (dialog) => dialog.EventID === currentEventID.value
+  ) as RawEventDialogItem[];
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <form>
+    <label for="eventIDSelecter">选择event</label>
+    <select v-model="currentEventID" id="eventIDSelecter">
+      <option v-for="eventID in eventIDs" :value="eventID">
+        {{ eventID }}
+      </option>
+    </select>
+  </form>
+  <BaEventVoice :dialogs="currentEventDialog" />
 </template>
 
 <style scoped>
