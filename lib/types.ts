@@ -1,7 +1,7 @@
 export interface RawEventDialogItem {
     "CharacterId": number,
     "EventID": number,
-    "GroupId": 2,
+    "GroupId": number,
     "ProductionStep": 'Release',
     "DialogCategory": 'UIEventBoxGachaShop' | 'UIEventCardShop' | 'UIEventFortuneGachaShop' | 'UIEventLobby' | 'UIEventMiniGameMission' | 'UIEventMission' | 'UIEventShop' | 'UISpecialOperationLobby',
     "DialogCondition": 'BoxGachaPrize' | 'Buy' | 'CollectionOpen' | 'Enter' | 'Idle' | 'Interaction' | 'Luck0' | 'Luck1' | 'Luck2' | 'Luck3' | 'Luck4' | 'Luck5' | 'Prize0' | 'Prize1' | 'Prize2' | 'Prize3' | 'StoryOpen',
@@ -14,9 +14,17 @@ export interface RawEventDialogItem {
     /*显示时长*/
     "Duration": number
     "ActionName": "",
+    AnimationName: string,
     "LocalizeJP": string,
     "LocalizeCN"?: string,
     "LocalizeTW"?: string,
     /*语音列表*/
     "VoiceClipsKr": string[]
+    "VoiceClipsJp": string[]
+}
+
+export interface CharacterExcelTableItem {
+    Id: number
+    SpineResourceName: string
+    TextureDir: string
 }

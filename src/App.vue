@@ -19,25 +19,29 @@ const currentEventDialog = computed(() => {
 </script>
 
 <template>
-  <form>
-    <label for="eventIDSelecter">选择event</label>
-    <select v-model="currentEventID" id="eventIDSelecter">
-      <option v-for="eventID in eventIDs" :value="eventID">
-        {{ eventID }}
-      </option>
-    </select>
-  </form>
-  <BaEventVoice
-    :dialogs="currentEventDialog"
-    :data-urls="{
-      characterExcelTable:
-        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',
-      characterSpineDirectory:
-        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
-      voiceDirectory:
-        'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
-    }"
-  />
+  <div style="display: flex">
+    <form>
+      <label for="eventIDSelecter">选择event</label>
+      <select v-model="currentEventID" id="eventIDSelecter">
+        <option v-for="eventID in eventIDs" :value="eventID">
+          {{ eventID }}
+        </option>
+      </select>
+    </form>
+    <div>
+      <BaEventVoice
+        :dialogs="currentEventDialog"
+        :data-urls="{
+          characterExcelTable:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',
+          characterSpineDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
+          voiceDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
+        }"
+      />
+    </div>
+  </div>
 </template>
 
 <style scoped>
