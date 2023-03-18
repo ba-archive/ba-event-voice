@@ -83,6 +83,7 @@ const eventVoicePlayer = {
     await voicePromise
     console.log('play done!')
     this.currentCharacter.spine?.state.setAnimation(Face_Track, '01', false)
+    textRef.value = ''
   },
 
   getUrls(dialog: RawEventDialogItem) {
