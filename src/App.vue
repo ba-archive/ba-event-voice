@@ -31,6 +31,8 @@ const currentEventDialog = computed(() => {
     <div>
       <BaEventVoice
         :dialogs="currentEventDialog"
+        height="100vh"
+        width="40vw"
         :data-urls="{
           characterExcelTable:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',

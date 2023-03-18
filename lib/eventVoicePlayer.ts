@@ -8,12 +8,14 @@ import { Ref } from 'vue'
 
 const Idle_Track = 0
 const Face_Track = 1
+const appHeight = 1300
+const appWidth = 1000
 
 /**
  * 活动语音播放器主控制对象
  */
 const eventVoicePlayer = {
-  app: new Application({ height: 1500, width: 700, backgroundAlpha: 0 }),
+  app: new Application({ height: appHeight, width: appWidth, backgroundAlpha: 0 }),
   characterExcelTable: new Map<number, CharacterExcelTableItem>(),
   /**
    * 资源的url前缀
@@ -83,7 +85,7 @@ const eventVoicePlayer = {
     await voicePromise
     console.log('play done!')
     this.currentCharacter.spine?.state.setAnimation(Face_Track, '01', false)
-    textRef.value = ''
+    // textRef.value = ''
   },
 
   getUrls(dialog: RawEventDialogItem) {
@@ -173,3 +175,4 @@ function waitMs(ms: number) {
 }
 
 export default eventVoicePlayer
+export { appHeight, appWidth }

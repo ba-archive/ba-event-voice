@@ -8,10 +8,10 @@ const props = defineProps<{ text: string }>();
 
 <style scoped>
 .dialog__box {
-  border-radius: 10px;
+  border-radius: 1em;
   background-color: white;
   width: 70%;
-  padding: 4% 3%;
+  padding: 1em 0.5em;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   line-height: 1.4em;
 }

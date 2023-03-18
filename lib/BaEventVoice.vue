@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { RawEventDialogItem } from "./types";
-import eventVoicePlayer from "./eventVoicePlayer";
+import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
 import Dialog from "./Dialog.vue";
 import { computed, ref, watch } from "vue";
+import { useElementSize } from "@vueuse/core";
 export type Props = {
   dialogs: RawEventDialogItem[];
+  width: string;
+  height: string;
   dataUrls: {
     characterExcelTable: string;
     characterSpineDirectory: string;
@@ -13,6 +16,18 @@ export type Props = {
   eventIcon?: string;
 };
 const props = defineProps<Props>();
+const eventVoicePlayerStyle = computed(() => {
+  return { height: props.height, width: props.width };
+});
+
+const eventVoicePlayerDiv = ref<HTMLDivElement | null>(null);
+const { width: playerWidth, height: playerHeight } =
+  useElementSize(eventVoicePlayerDiv);
+const canvasScaleNumber = computed(() => (playerHeight.value + 1) / appHeight);
+const canvasScale = computed(() => `scale(${canvasScaleNumber.value})`);
+const canvasLeft = computed(
+  () => `calc(${playerWidth.value/2}px - ${appWidth * canvasScaleNumber.value/2}px)`
+);
 
 const voiceText = ref("");
 const currentDialogCategory = ref("");
@@ -35,7 +50,7 @@ const currentDialogConditionArray = computed(() => {
 });
 
 async function init() {
-  await eventVoicePlayer.init("spinePosition", props.dataUrls);
+  await eventVoicePlayer.init("eventVoicePlayer", props.dataUrls);
   function sample(arr: Array<any>) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
@@ -63,7 +78,11 @@ init();
 </script>
 
 <template>
-  <div id="eventVoicePlayer">
+  <div
+    id="eventVoicePlayer"
+    :style="eventVoicePlayerStyle"
+    ref="eventVoicePlayerDiv"
+  >
     <select v-model="currentDialogCategory">
       <option v-for="category in currentDialogCategorieArray">
         {{ category }}
@@ -75,34 +94,29 @@ init();
       </option>
     </select>
     <button @click="init">播放</button>
-    <div id="spinePosition"></div>
     <Dialog :text="voiceText" v-if="voiceText" class="dialog" />
   </div>
 </template>
 
-<style>
+<style lang="scss">
 #eventVoicePlayer {
   position: relative;
-  width: 300px;
-  height: 300px;
-}
+  border: 1px solid black;
 
-#spinePosition {
-  position: relative;
-}
+  canvas {
+    transform: v-bind(canvasScale);
+    transform-origin: left top;
+    position: absolute;
+    top: 0;
+    left: v-bind(canvasLeft);
+    z-index: -1;
+  }
 
-#spinePosition canvas {
-  transform: scale(0.5);
-  transform-origin: left top;
-  position: absolute;
-  top: -10vw;
-  left: 10vw;
-  z-index: -1;
-}
-
-.dialog {
-  position: absolute;
-  right: -25vw;
-  top: 20vh;
+  .dialog {
+    position: absolute;
+    left: 65%;
+    top: 25%;
+    width: 40%;
+  }
 }
 </style>
