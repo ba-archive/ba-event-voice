@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import eventDialogsTable from "./CharacterDialogEventExcelTable.json";
 import BaEventVoice from "../lib/BaEventVoice.vue";
+import eventVoicePlayer from "../lib/eventVoicePlayer";
 import { RawEventDialogItem } from "../lib/types";
 const eventDialogs = eventDialogsTable["DataList"];
 
@@ -10,6 +11,7 @@ const currentEventID = ref(801);
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID);
 }
+Reflect.set(window, "player", eventVoicePlayer);
 
 const currentEventDialog = computed(() => {
   return eventDialogs.filter(

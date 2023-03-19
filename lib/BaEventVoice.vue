@@ -2,7 +2,7 @@
 import { RawEventDialogItem } from "./types";
 import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
 import Dialog from "./Dialog.vue";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch, onUnmounted } from "vue";
 import { useElementSize } from "@vueuse/core";
 export type Props = {
   dialogs: RawEventDialogItem[];
@@ -34,9 +34,10 @@ const canvasLeft = computed(
 );
 
 const voiceText = ref("");
-const currentDialogCategory = ref("UIEventLobby");
+const currentDialogCategory =
+  ref<RawEventDialogItem["DialogCategory"]>("UIEventLobby");
 const currentDialogCategorieSet = computed(() => {
-  const categorySet = new Set<string>();
+  const categorySet = new Set<RawEventDialogItem["DialogCategory"]>();
   props.dialogs.forEach((value) => {
     categorySet.add(value.DialogCategory);
   });
@@ -103,13 +104,22 @@ async function playVoice(dialogCondition: string) {
       (value) => value.CharacterId === currentCharacterId
     );
     console.log(currentEventDialogs);
-    await eventVoicePlayer.play(currentEventDialogs, voiceText);
+    await eventVoicePlayer.play(
+      currentEventDialogs,
+      voiceText,
+      eventVoicePlayer.generateId()
+    );
   }
 
   voicePlaying = false;
 }
-function enterNewCategory(category: string) {
+async function enterNewCategory(
+  category: RawEventDialogItem["DialogCategory"]
+) {
   currentDialogCategory.value = category;
+  await eventVoicePlayer.stopPlay();
+  console.log("stop!");
+  voicePlaying = false;
   playVoice("Enter");
 }
 
@@ -118,9 +128,18 @@ async function init() {
   await eventVoicePlayer.init("eventVoicePlayer", props.dataUrls);
   initState.value = true;
   playVoice("Enter");
+  watch(
+    () => props.dialogs,
+    () => {
+      enterNewCategory("UIEventLobby");
+    }
+  );
 }
 onMounted(() => {
   init();
+});
+onUnmounted(() => {
+  eventVoicePlayer.stopPlay();
 });
 </script>
 
@@ -132,7 +151,10 @@ onMounted(() => {
   >
     <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
     <Dialog :text="voiceText" v-if="voiceText" class="dialog" />
-    <div id="eventVoicePlayer__timeSelecter">
+    <div
+      id="eventVoicePlayer__timeSelecter"
+      v-if="currentDialogCategory === 'UIEventLobby'"
+    >
       <label>时间点</label>
       <select v-model="currentDialogConditionDetail">
         <option v-for="detail in dialogConditionDetails" :value="detail.value">
@@ -157,7 +179,10 @@ onMounted(() => {
       </div>
       <div id="eventVoicePlayer__icons__layer"></div>
     </div>
-    <div id="eventVoicePlayer__conditionSelecter">
+    <div
+      id="eventVoicePlayer__conditionSelecter"
+      v-if="currentDialogConditionSet.size > 0"
+    >
       <div>
         <label>条件</label>
         <select v-model="currentDialogCondition">

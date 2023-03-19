@@ -28,6 +28,11 @@ const eventVoicePlayer = {
     spine: null as Spine | null,
     id: 0
   },
+  /**
+   * 正在播放的语音
+   */
+  playingVoice: null as Sound | null,
+  playingId: 0,
 
   /**
    * 初始化, 加载所需资源
@@ -53,13 +58,18 @@ const eventVoicePlayer = {
    * @param dialogs 活动语音句子序列
    * @param textRef 文字更新ref
    */
-  async play(dialogs: RawEventDialogItem[], textRef: Ref<string>) {
+  async play(dialogs: RawEventDialogItem[], textRef: Ref<string>, id: number) {
+    this.playingId = id
     let voicePromise: Promise<void> | null = null
     for (const dialog of dialogs) {
+      if (this.playingId !== id) {
+        console.log("play stop")
+        return
+      }
       const urls = this.getUrls(dialog)
       if (this.currentCharacter.id !== dialog.CharacterId) {
         //加载spine资源
-        await this.loadCharacterSpine(urls.spine, urls.spineFallback)
+        await this.loadCharacterSpine(urls.spine, urls.spineFallback, dialog.CharacterId.toString())
         this.currentCharacter.id = dialog.CharacterId
       }
 
@@ -67,11 +77,12 @@ const eventVoicePlayer = {
       textRef.value = dialog.LocalizeJP
       if (urls.voice) {
         console.log(urls.voice)
-        const voice = Sound.from(urls.voice)
+        this.playingVoice = Sound.from(urls.voice)
         voicePromise = new Promise<void>(resolve => {
-          voice.play({
+          this.playingVoice!.play({
             volume: 0.5,
-            complete: () => resolve(),
+            singleInstance: true,
+            complete: () => resolve()
           })
         })
       }
@@ -83,9 +94,21 @@ const eventVoicePlayer = {
       console.log(`wait ${dialog.Duration} done`)
     }
     await voicePromise
-    console.log('play done!')
-    this.currentCharacter.spine?.state.setAnimation(Face_Track, '01', false)
-    textRef.value = ''
+    if (this.playingId === id) {
+      this.currentCharacter.spine?.state.setAnimation(Face_Track, '01', false)
+      textRef.value = ''
+      this.playingVoice = null
+    }
+  },
+
+  /**
+   * 停止播放活动语音
+   */
+  stopPlay() {
+    if (this.playingVoice) {
+      this.playingVoice.stop()
+    }
+    this.playingId++
   },
 
   getUrls(dialog: RawEventDialogItem) {
@@ -132,7 +155,7 @@ const eventVoicePlayer = {
     }
   },
 
-  loadCharacterSpine(spineUrl: string, fallbackUrl: string) {
+  loadCharacterSpine(spineUrl: string, fallbackUrl: string, characterId: string) {
     if (this.currentCharacter.spine) {
       this.currentCharacter.spine.destroy()
     }
@@ -142,31 +165,41 @@ const eventVoicePlayer = {
         currentCharacterSpine.scale.set(0.75)
         currentCharacterSpine.state.setAnimation(Idle_Track, 'Idle_01', true)
         currentCharacterSpine.position.set(this.app.screen.width / 2,
-          this.app.screen.height )
+          this.app.screen.height)
         this.app.stage.addChild(currentCharacterSpine)
         this.currentCharacter.spine = currentCharacterSpine
         resolve()
       }
-
-      this.app.loader.add(spineUrl, spineUrl, res => {
-        if (res.spineData) {
-          initSpine(res.spineData)
-        }
-        else {
-          this.app.loader.reset()
-          this.app.loader.add(fallbackUrl, fallbackUrl, res => {
-            if (res.spineData) {
-              initSpine(res.spineData)
-            }
-            else {
-              reject(`spine资源未加载成功, url:${spineUrl}`)
-            }
-          })
-        }
+      if (this.app.loader.resources[characterId]) {
+        initSpine(this.app.loader.resources[characterId].spineData!)
+      }
+      else {
+        this.app.loader.add(characterId, spineUrl, res => {
+          if (res.spineData) {
+            initSpine(res.spineData)
+          }
+          else {
+            this.app.loader.reset()
+            this.app.loader.add(characterId, fallbackUrl, res => {
+              if (res.spineData) {
+                initSpine(res.spineData)
+              }
+              else {
+                reject(`spine资源未加载成功, url:${spineUrl}`)
+              }
+            })
+          }
+          this.app.loader.load()
+        })
         this.app.loader.load()
-      })
-      this.app.loader.load()
+      }
     })
+  },
+  /**
+   * 生成play id
+   */
+  generateId() {
+    return this.playingId++
   }
 }
 
