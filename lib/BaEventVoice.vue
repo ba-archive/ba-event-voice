@@ -42,13 +42,15 @@ const currentDialogCategorieSet = computed(() => {
   });
   return categorySet;
 });
-const currentDialogCondition = ref("Enter");
-const currentDialogConditionArray = computed(() => {
+const currentDialogCondition = ref("");
+const currentDialogConditionSet = computed(() => {
   const conditionSet = new Set<string>();
   props.dialogs
     .filter((value) => value.DialogCategory === currentDialogCategory.value)
     .forEach((value) => {
-      conditionSet.add(value.DialogCondition);
+      if (!["Enter", "Idle"].includes(value.DialogCondition)) {
+        conditionSet.add(value.DialogCondition);
+      }
     });
   return conditionSet;
 });
@@ -65,8 +67,8 @@ function getCategoryIcon(category: string) {
 const currentDialogConditionDetail = ref("None");
 const dialogConditionDetails = [
   { word: "正常", value: "None" },
-  { word: "关闭", value: "Close" },
   { word: "中期", value: "Day" },
+  { word: "关闭", value: "Close" },
 ];
 
 let voicePlaying = false;
@@ -127,30 +129,23 @@ onMounted(() => {
     id="eventVoicePlayer"
     :style="eventVoicePlayerStyle"
     ref="eventVoicePlayerDiv"
-    @click="() => playVoice('Idle')"
   >
+    <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
     <Dialog :text="voiceText" v-if="voiceText" class="dialog" />
-    <button id="eventVoicePlayer__refresh" @click="playVoice('Enter')">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+    <div id="eventVoicePlayer__timeSelecter">
+      <label>时间点</label>
+      <select v-model="currentDialogConditionDetail">
+        <option v-for="detail in dialogConditionDetails" :value="detail.value">
+          {{ detail.word }}
+        </option>
+      </select>
+      <button
+        id="eventVoicePlayer__timeselecterrefresh"
+        @click="playVoice('Enter')"
       >
-        <path
-          fill="currentColor"
-          d="M12 20q-3.35 0-5.675-2.325Q4 15.35 4 12q0-3.35 2.325-5.675Q8.65 4 12 4q1.725 0 3.3.713q1.575.712 2.7 2.037V4h2v7h-7V9h4.2q-.8-1.4-2.187-2.2Q13.625 6 12 6Q9.5 6 7.75 7.75T6 12q0 2.5 1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325Q14.75 20 12 20Z"
-        />
-      </svg>
-    </button>
-    <select
-      v-model="currentDialogConditionDetail"
-      id="eventVoicePlayer__detail"
-    >
-      <option v-for="detail in dialogConditionDetails" :value="detail.value">
-        {{ detail.word }}
-      </option>
-    </select>
+        重新进入
+      </button>
+    </div>
     <div id="eventVoicePlayer__icons">
       <div
         v-for="category in currentDialogCategorieSet"
@@ -161,6 +156,17 @@ onMounted(() => {
         {{ category }}
       </div>
       <div id="eventVoicePlayer__icons__layer"></div>
+    </div>
+    <div id="eventVoicePlayer__conditionSelecter">
+      <div>
+        <label>条件</label>
+        <select v-model="currentDialogCondition">
+          <option v-for="condition in currentDialogConditionSet">
+            {{ condition }}
+          </option>
+        </select>
+      </div>
+      <button @click="playVoice(currentDialogCondition)">触发</button>
     </div>
   </div>
 </template>
@@ -233,6 +239,37 @@ onMounted(() => {
       box-shadow: 0 0 1px rgba(black, 0.7);
       overflow: hidden;
       transform: skewX(-10deg);
+    }
+  }
+
+  &__clickArea {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__conditionSelecter {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    select {
+      display: block;
+      margin: 3% 0;
+    }
+    button {
+      display: block;
+    }
+  }
+
+  &__timeSelecter {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    select {
+      display: block;
+      margin: 5%;
     }
   }
 
