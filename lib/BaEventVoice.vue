@@ -4,6 +4,7 @@ import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
 import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";
 import { useElementSize } from "@vueuse/core";
+import iconMap from "./iconMap.json";
 export type Props = {
   dialogs: RawEventDialogItem[];
   width: string;
@@ -59,6 +60,8 @@ function getCategoryIcon(category: string) {
   if (category === "UIEventLobby") {
     //默认category使用默认icon
     return `${props.dataUrls.iconDirectory}/Event_Icon_Story.png`;
+  } else if (category in iconMap) {
+    return `${props.dataUrls.iconDirectory}/${Reflect.get(iconMap, category)}`;
   }
   return `${props.dataUrls.iconDirectory}/${category.replace(
     "UIEvent",
@@ -175,7 +178,7 @@ onUnmounted(() => {
         @click="enterNewCategory(category)"
       >
         <img :src="getCategoryIcon(category)" />
-        {{ category }}
+        {{ category.replace("UIEvent","") }}
       </div>
       <div id="eventVoicePlayer__icons__layer"></div>
     </div>
