@@ -6,7 +6,7 @@ import { RawEventDialogItem } from "../lib/types";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<number>();
-const currentEventID = ref(0);
+const currentEventID = ref(801);
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID);
 }
@@ -40,6 +40,8 @@ const currentEventDialog = computed(() => {
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
           voiceDirectory:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
+          iconDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/eventIcon',
         }"
       />
     </div>

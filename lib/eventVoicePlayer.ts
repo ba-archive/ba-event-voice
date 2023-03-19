@@ -35,7 +35,7 @@ const eventVoicePlayer = {
    * @param dataUrls 资源地址
    */
   async init(elementID: string, dataUrls: Props['dataUrls']) {
-    axios.get(dataUrls.characterExcelTable).then(response => {
+    await axios.get(dataUrls.characterExcelTable).then(response => {
       const datas: CharacterExcelTableItem[] = response.data['DataList']
       for (const data of datas) {
         this.characterExcelTable.set(data['Id'], data)
@@ -85,7 +85,7 @@ const eventVoicePlayer = {
     await voicePromise
     console.log('play done!')
     this.currentCharacter.spine?.state.setAnimation(Face_Track, '01', false)
-    // textRef.value = ''
+    textRef.value = ''
   },
 
   getUrls(dialog: RawEventDialogItem) {
@@ -139,10 +139,10 @@ const eventVoicePlayer = {
     return new Promise<void>((resolve, reject) => {
       const initSpine = (spineData: ISkeletonData) => {
         const currentCharacterSpine = new Spine(spineData!)
-        currentCharacterSpine.scale.set(0.6)
+        currentCharacterSpine.scale.set(0.75)
         currentCharacterSpine.state.setAnimation(Idle_Track, 'Idle_01', true)
         currentCharacterSpine.position.set(this.app.screen.width / 2,
-          this.app.screen.height - 0.25 * currentCharacterSpine.height)
+          this.app.screen.height )
         this.app.stage.addChild(currentCharacterSpine)
         this.currentCharacter.spine = currentCharacterSpine
         resolve()
