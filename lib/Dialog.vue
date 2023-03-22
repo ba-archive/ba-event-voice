@@ -17,18 +17,16 @@ const props = defineProps<{ text: string }>();
 }
 
 .dialog__box::before {
-	content: '';
-	border-bottom: 5px transparent solid;
-	border-top: 5px transparent solid;
-	border-right: 10px white solid;
-	/* height: 0px; */
-	display: block;
-	position: absolute;
-	left: -9px;
-	filter: drop-shadow(-2px 1px 1px rgba(0,0,0,.5));
-	z-index: 0;
-	top: 15%;
+  content: "";
+  border-bottom: 5px transparent solid;
+  border-top: 5px transparent solid;
+  border-right: 10px white solid;
+  /* height: 0px; */
+  display: block;
+  position: absolute;
+  left: -9px;
+  filter: drop-shadow(-2px 1px 1px rgba(0, 0, 0, 0.5));
+  z-index: 0;
+  top: 15%;
 }
-
-
 </style>

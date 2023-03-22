@@ -1,3 +1,3 @@
-import BaEventVoice from "./BaEventVoice.vue"
+import BaEventVoice from "./BaEventVoice.vue";
 
-export default BaEventVoice
+export default BaEventVoice;

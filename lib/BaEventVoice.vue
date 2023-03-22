@@ -178,7 +178,7 @@ onUnmounted(() => {
         @click="enterNewCategory(category)"
       >
         <img :src="getCategoryIcon(category)" />
-        {{ category.replace("UIEvent","") }}
+        {{ category.replace("UIEvent", "") }}
       </div>
       <div id="eventVoicePlayer__icons__layer"></div>
     </div>
