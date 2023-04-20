@@ -1,8 +1,8 @@
 import { RawEventDialogItem, CharacterExcelTableItem } from "./types";
-import { Application, Loader } from "pixi.js";
-import { Spine, SpineParser, ISkeletonData } from "pixi-spine";
+import { Application, Assets } from "pixi.js";
+import { Spine, ISkeletonData } from "pixi-spine";
+import { soundAsset, Sound } from "@pixi/sound";
 import { Props } from "./BaEventVoice.vue";
-import { Sound } from "@pixi/sound";
 import axios from "axios";
 import { Ref } from "vue";
 
@@ -11,6 +11,7 @@ const Face_Track = 1;
 const appHeight = 1300;
 const appWidth = 1000;
 
+Assets.loader.parsers.push(soundAsset);
 /**
  * 活动语音播放器主控制对象
  */
@@ -50,11 +51,12 @@ const eventVoicePlayer = {
         this.characterExcelTable.set(data["Id"], data);
       }
     });
-    Loader.registerPlugin(SpineParser);
 
     this.urlPrefixs.spine = dataUrls.characterSpineDirectory;
     this.urlPrefixs.voice = dataUrls.voiceDirectory;
-    document.querySelector(`#${elementID}`)?.appendChild(this.app.view);
+    document
+      .querySelector(`#${elementID}`)
+      ?.appendChild(this.app.view as unknown as Node);
   },
 
   /**
@@ -73,11 +75,7 @@ const eventVoicePlayer = {
       const urls = this.getUrls(dialog);
       if (this.currentCharacter.id !== dialog.CharacterId) {
         //加载spine资源
-        await this.loadCharacterSpine(
-          urls.spine,
-          urls.spineFallback,
-          dialog.CharacterId.toString()
-        );
+        await this.loadCharacterSpine(urls.spine, urls.spineFallback);
         this.currentCharacter.id = dialog.CharacterId;
       }
 
@@ -88,12 +86,14 @@ const eventVoicePlayer = {
       );
       textRef.value = dialog.LocalizeJP;
       if (urls.voice) {
-        console.log(urls.voice);
-        this.playingVoice = Sound.from(urls.voice);
+        try {
+          this.playingVoice = await Assets.load(urls.voice);
+        } catch (e) {
+          this.playingVoice = await Assets.load(urls.voiceFallback);
+        }
         voicePromise = new Promise<void>((resolve) => {
-          this.playingVoice!.play({
+          this.playingVoice?.play({
             volume: 0.5,
-            singleInstance: true,
             complete: () => resolve(),
           });
         });
@@ -132,10 +132,17 @@ const eventVoicePlayer = {
     const temp = spineArg.SpineResourceName.split("/");
     let characterName = temp.pop()!;
     characterName = characterName?.replace("CharacterSpine_", "");
+    if (characterName === "Saya_Casual") {
+      characterName = "saya_casual";
+    }
+
+    //移除有时带有的莫名其妙的nd
     characterName = characterName.replace("ND", "");
+    characterName = characterName.replace("nd", "");
     const spineFileName = `${characterName}_spr`; //hasumi_spr
     //首字母可能大写可能小写, 准备一个备用的当资源加载失败时使用
     let spineFallbackFileName = "";
+    console.log(spineFileName);
     if (spineFileName[0].toUpperCase() === spineFileName[0]) {
       spineFallbackFileName =
         spineFileName[0].toLocaleLowerCase() + spineFileName.slice(1);
@@ -160,56 +167,54 @@ const eventVoicePlayer = {
           characterName += tempStr;
         }
       }
+
+      //声音的前缀根据声音资源名字本身获得
+      let voiceName = dialog.VoiceClipsJp[0];
+      let voicePrefix = voiceName.split("_").shift();
+      if (voicePrefix === "hinata") {
+        voicePrefix = "Hinata";
+        voiceName = voiceName.replace("hinata", "Hinata");
+      }
+      let voiceFallbackName = "";
+
+      //有些资源大小写是错的, 为什么能跑, 不理解
+      if (voiceName.includes("Eventshop")) {
+        voiceFallbackName = voiceName.replace("Eventshop", "EventShop");
+      } else if (voiceName.includes("EventShop")) {
+        voiceFallbackName = voiceName.replace("EventShop", "Eventshop");
+      }
       return {
         spine: `${this.urlPrefixs.spine}/${spineFileName}/${spineFileName}.skel`,
         spineFallback: `${this.urlPrefixs.spine}/${spineFallbackFileName}/${spineFallbackFileName}.skel`,
-        voice: `${this.urlPrefixs.voice}/JP_${characterName}/${dialog.VoiceClipsJp[0]}.ogg`,
+        voice: `${this.urlPrefixs.voice}/JP_${voicePrefix}/${voiceName}.ogg`,
+        voiceFallback: `${this.urlPrefixs.voice}/JP_${voicePrefix}/${voiceFallbackName}.ogg`,
       };
     }
   },
 
-  loadCharacterSpine(
-    spineUrl: string,
-    fallbackUrl: string,
-    characterId: string
-  ) {
+  async loadCharacterSpine(spineUrl: string, fallback: string) {
     if (this.currentCharacter.spine) {
       this.currentCharacter.spine.destroy();
     }
-    return new Promise<void>((resolve, reject) => {
-      const initSpine = (spineData: ISkeletonData) => {
-        const currentCharacterSpine = new Spine(spineData!);
-        currentCharacterSpine.scale.set(0.75);
-        currentCharacterSpine.state.setAnimation(Idle_Track, "Idle_01", true);
-        currentCharacterSpine.position.set(
-          this.app.screen.width / 2,
-          this.app.screen.height
-        );
-        this.app.stage.addChild(currentCharacterSpine);
-        this.currentCharacter.spine = currentCharacterSpine;
-        resolve();
-      };
-      if (this.app.loader.resources[characterId]) {
-        initSpine(this.app.loader.resources[characterId].spineData!);
-      } else {
-        this.app.loader.add(characterId, spineUrl, (res) => {
-          if (res.spineData) {
-            initSpine(res.spineData);
-          } else {
-            this.app.loader.reset();
-            this.app.loader.add(characterId, fallbackUrl, (res) => {
-              if (res.spineData) {
-                initSpine(res.spineData);
-              } else {
-                reject(`spine资源未加载成功, url:${spineUrl}`);
-              }
-            });
-          }
-          this.app.loader.load();
-        });
-        this.app.loader.load();
-      }
-    });
+    const initSpine = (spineData: ISkeletonData) => {
+      const currentCharacterSpine = new Spine(spineData!);
+      currentCharacterSpine.scale.set(0.75);
+      currentCharacterSpine.state.setAnimation(Idle_Track, "Idle_01", true);
+      currentCharacterSpine.position.set(
+        this.app.screen.width / 2,
+        this.app.screen.height
+      );
+      this.app.stage.addChild(currentCharacterSpine);
+      this.currentCharacter.spine = currentCharacterSpine;
+    };
+    try {
+      const spineRes = await Assets.load(spineUrl);
+      initSpine(spineRes.spineData);
+    } catch (e) {
+      console.warn(e);
+      const spineRes = await Assets.load(fallback);
+      initSpine(spineRes.spineData);
+    }
   },
   /**
    * 生成play id

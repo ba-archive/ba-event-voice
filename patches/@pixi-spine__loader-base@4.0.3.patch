@@ -1,0 +1,14 @@
+diff --git a/lib/SpineLoaderAbstract.mjs b/lib/SpineLoaderAbstract.mjs
+index c41d5740fd401a06e0c29ca3464495beb220b97a..48d0b70881afec5a22491dd0a0de5a69ebe2b776 100644
+--- a/lib/SpineLoaderAbstract.mjs
++++ b/lib/SpineLoaderAbstract.mjs
+@@ -27,6 +27,9 @@ class SpineLoaderAbstract {
+         },
+         async load(url) {
+           const response = await settings.ADAPTER.fetch(url);
++          if(response.status<200||response.status>=400){
++            throw new Error(`Load fail, status code ${response.status}`)
++          }
+           const buffer = await response.arrayBuffer();
+           return buffer;
+         },
