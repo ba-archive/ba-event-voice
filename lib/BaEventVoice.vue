@@ -5,6 +5,7 @@ import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";
 import { useElementSize } from "@vueuse/core";
 import iconMap from "./iconMap.json";
+import eventDialogManager from "./eventDialogManager";
 export type Props = {
   dialogs: RawEventDialogItem[];
   width: string;
@@ -76,37 +77,22 @@ const dialogConditionDetails = [
 ];
 
 let voicePlaying = false;
-function sample(arr: Array<any>) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 async function playVoice(dialogCondition: string) {
   if (voicePlaying) {
     return;
   }
   voicePlaying = true;
-  let currentEventDialogs = props.dialogs.filter(
-    (value) =>
-      value.DialogCategory === currentDialogCategory.value &&
-      value.DialogCondition === dialogCondition
+  const conditionDetail =
+    dialogCondition === "Enter" ? currentDialogConditionDetail.value : null;
+  const currentEventDialogs = eventDialogManager.getDialog(
+    props.dialogs,
+    currentDialogCategory.value,
+    dialogCondition,
+    conditionDetail
   );
-  if (dialogCondition === "Enter") {
-    currentEventDialogs = currentEventDialogs.filter(
-      (value) =>
-        value.DialogConditionDetail === currentDialogConditionDetail.value
-    );
-  }
-  const groupIds = new Set<number>();
-  currentEventDialogs.forEach((value) => groupIds.add(value.GroupId));
-  const groupID = sample(Array.from(groupIds));
-  currentEventDialogs = currentEventDialogs.filter(
-    (value) => value.GroupId === groupID
-  );
+
   if (currentEventDialogs.length !== 0) {
-    const currentCharacterId = currentEventDialogs[0].CharacterId;
-    currentEventDialogs = currentEventDialogs.filter(
-      (value) => value.CharacterId === currentCharacterId
-    );
-    console.log(currentEventDialogs);
+    console.log("playing: ", currentEventDialogs);
     await eventVoicePlayer.play(
       currentEventDialogs,
       voiceText,
@@ -116,12 +102,13 @@ async function playVoice(dialogCondition: string) {
 
   voicePlaying = false;
 }
+
 async function enterNewCategory(
   category: RawEventDialogItem["DialogCategory"]
 ) {
   currentDialogCategory.value = category;
   await eventVoicePlayer.stopPlay();
-  console.log("stop!");
+  console.log("switch to new category!");
   voicePlaying = false;
   playVoice("Enter");
 }
