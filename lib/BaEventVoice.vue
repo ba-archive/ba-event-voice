@@ -76,13 +76,8 @@ const dialogConditionDetails = [
   { word: "关闭", value: "Close" },
 ];
 
-let voicePlaying = false;
 const dialogType = ref<DialogType>("Talk");
 async function playVoice(dialogCondition: string) {
-  if (voicePlaying) {
-    return;
-  }
-  voicePlaying = true;
   const conditionDetail =
     dialogCondition === "Enter" ? currentDialogConditionDetail.value : null;
   const currentEventDialogs = eventDialogManager.getDialog(
@@ -101,17 +96,13 @@ async function playVoice(dialogCondition: string) {
       dialogType
     );
   }
-
-  voicePlaying = false;
 }
 
 async function enterNewCategory(
   category: RawEventDialogItem["DialogCategory"]
 ) {
   currentDialogCategory.value = category;
-  await eventVoicePlayer.stopPlay();
   console.log("switch to new category!");
-  voicePlaying = false;
   playVoice("Enter");
 }
 

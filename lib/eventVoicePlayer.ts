@@ -71,6 +71,7 @@ const eventVoicePlayer = {
     id: number,
     dialogTypeRef: Ref<string>
   ) {
+    this.stopPlay();
     this.playingId = id;
     let voicePromise: Promise<void> | null = null;
     for (const dialog of dialogs) {
