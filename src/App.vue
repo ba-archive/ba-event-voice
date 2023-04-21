@@ -8,6 +8,10 @@ const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<number>();
 const currentEventID = ref(801);
+const currentBg = computed(
+  () =>
+    `https://yuuka.cdn.diyigemt.com/image/ba-all-data/UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_${currentEventID.value}.png`
+);
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID);
 }
@@ -21,8 +25,8 @@ const currentEventDialog = computed(() => {
 </script>
 
 <template>
-  <div style="display: flex">
-    <form>
+  <div :style="{ backgroundImage: `url(${currentBg})` }" class="mainPage">
+    <form class="eventSelector">
       <label for="eventIDSelecter">选择event</label>
       <select v-model="currentEventID" id="eventIDSelecter">
         <option v-for="eventID in eventIDs" :value="eventID">
@@ -33,8 +37,9 @@ const currentEventDialog = computed(() => {
     <div>
       <BaEventVoice
         :dialogs="currentEventDialog"
-        height="100vh"
-        width="40vw"
+        height="99vh"
+        width="45vw"
+        class="voicePlayer"
         :data-urls="{
           characterExcelTable:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',
@@ -50,17 +55,19 @@ const currentEventDialog = computed(() => {
   </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss" scoped>
+.mainPage {
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  .eventSelector {
+    position: absolute;
+    right: 5vw;
+    top: 1vh;
+  }
+  .voicePlayer {
+    position: absolute;
+    bottom: 0;
+  }
 }
 </style>

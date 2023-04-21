@@ -70,11 +70,22 @@ function getCategoryIcon(category: string) {
   )}.png`;
 }
 const currentDialogConditionDetail = ref("None");
-const dialogConditionDetails = [
-  { word: "正常", value: "None" },
-  { word: "中期", value: "Day" },
-  { word: "关闭", value: "Close" },
-];
+const dialogConditionDetails = computed(() => {
+  const commonDetails = [
+    { word: "正常", value: "None" },
+    { word: "中期", value: "Day" },
+    { word: "关闭", value: "Close" },
+  ];
+  const currentDialogDetails: string[] = [];
+  props.dialogs
+    .filter((dialog) => dialog.DialogCategory === currentDialogCategory.value)
+    .forEach((dialog) =>
+      currentDialogDetails.push(dialog.DialogConditionDetail)
+    );
+  return commonDetails.filter((detail) =>
+    currentDialogDetails.includes(detail.value)
+  );
+});
 
 const dialogType = ref<DialogType>("Talk");
 async function playVoice(dialogCondition: string) {
@@ -102,6 +113,7 @@ async function enterNewCategory(
   category: RawEventDialogItem["DialogCategory"]
 ) {
   currentDialogCategory.value = category;
+  currentDialogConditionDetail.value = "None";
   console.log("switch to new category!");
   playVoice("Enter");
 }
@@ -141,7 +153,7 @@ onUnmounted(() => {
     />
     <div
       id="eventVoicePlayer__timeSelecter"
-      v-if="currentDialogCategory === 'UIEventLobby'"
+      v-if="dialogConditionDetails.length > 1"
     >
       <label>时间点</label>
       <select v-model="currentDialogConditionDetail">
@@ -187,7 +199,7 @@ onUnmounted(() => {
 <style lang="scss">
 #eventVoicePlayer {
   position: relative;
-  border: 1px solid black;
+  z-index: 1;
 
   &__refresh {
     position: absolute;

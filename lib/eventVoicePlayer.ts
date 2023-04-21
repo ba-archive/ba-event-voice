@@ -9,7 +9,7 @@ import { Ref } from "vue";
 const Idle_Track = 0;
 const Face_Track = 1;
 const appHeight = 1300;
-const appWidth = 1000;
+const appWidth = 1500;
 
 Assets.loader.parsers.push(soundAsset);
 /**
