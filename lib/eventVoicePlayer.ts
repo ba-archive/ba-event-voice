@@ -63,8 +63,14 @@ const eventVoicePlayer = {
    * 播放一次活动语音
    * @param dialogs 活动语音句子序列
    * @param textRef 文字更新ref
+   * @param dialogTypeRef 对话框类型更新ref
    */
-  async play(dialogs: RawEventDialogItem[], textRef: Ref<string>, id: number) {
+  async play(
+    dialogs: RawEventDialogItem[],
+    textRef: Ref<string>,
+    id: number,
+    dialogTypeRef: Ref<string>
+  ) {
     this.playingId = id;
     let voicePromise: Promise<void> | null = null;
     for (const dialog of dialogs) {
@@ -73,6 +79,7 @@ const eventVoicePlayer = {
         return;
       }
       const urls = this.getUrls(dialog);
+      dialogTypeRef.value = dialog.DialogType;
       if (this.currentCharacter.id !== dialog.CharacterId) {
         //加载spine资源
         await this.loadCharacterSpine(urls.spine, urls.spineFallback);

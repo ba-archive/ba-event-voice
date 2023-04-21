@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RawEventDialogItem } from "./types";
+import { RawEventDialogItem, DialogType } from "./types";
 import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
 import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";
@@ -77,6 +77,7 @@ const dialogConditionDetails = [
 ];
 
 let voicePlaying = false;
+const dialogType = ref<DialogType>("Talk");
 async function playVoice(dialogCondition: string) {
   if (voicePlaying) {
     return;
@@ -96,7 +97,8 @@ async function playVoice(dialogCondition: string) {
     await eventVoicePlayer.play(
       currentEventDialogs,
       voiceText,
-      eventVoicePlayer.generateId()
+      eventVoicePlayer.generateId(),
+      dialogType
     );
   }
 
@@ -140,7 +142,12 @@ onUnmounted(() => {
     ref="eventVoicePlayerDiv"
   >
     <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
-    <Dialog :text="voiceText" v-if="voiceText" class="dialog" />
+    <Dialog
+      :text="voiceText"
+      v-if="voiceText"
+      class="dialog"
+      :mode="dialogType"
+    />
     <div
       id="eventVoicePlayer__timeSelecter"
       v-if="currentDialogCategory === 'UIEventLobby'"

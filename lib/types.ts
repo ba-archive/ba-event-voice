@@ -53,3 +53,5 @@ export interface CharacterExcelTableItem {
   SpineResourceName: string;
   TextureDir: string;
 }
+
+export type DialogType = RawEventDialogItem["DialogType"];
