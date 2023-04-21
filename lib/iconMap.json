@@ -1,4 +1,5 @@
 {
   "UIEventFortuneGachaShop": "Event_Icon_FortuneGachaShop_809.png",
-  "UIEventBoxGachaShop": "Event_Icon_Gacha.png"
+  "UIEventBoxGachaShop": "Event_Icon_Gacha.png",
+  "UIEventMiniGameMission": "Event_Icon_Mission.png"
 }

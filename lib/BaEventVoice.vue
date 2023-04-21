@@ -58,7 +58,7 @@ const currentDialogConditionSet = computed(() => {
   return conditionSet;
 });
 function getCategoryIcon(category: string) {
-  if (category === "UIEventLobby") {
+  if (category.endsWith("Lobby")) {
     //默认category使用默认icon
     return `${props.dataUrls.iconDirectory}/Event_Icon_Story.png`;
   } else if (category in iconMap) {
