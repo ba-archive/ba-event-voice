@@ -8,6 +8,7 @@ import { Ref } from "vue";
 
 const Idle_Track = 0;
 const Face_Track = 1;
+const Wink_Track = 2;
 const appHeight = 1300;
 const appWidth = 1500;
 
@@ -38,6 +39,7 @@ const eventVoicePlayer = {
    */
   playingVoice: null as Sound | null,
   playingId: 0,
+  winkId: 0,
 
   /**
    * 初始化, 加载所需资源
@@ -72,6 +74,7 @@ const eventVoicePlayer = {
     dialogTypeRef: Ref<string>
   ) {
     this.stopPlay();
+    this.clearWink();
     this.playingId = id;
     let voicePromise: Promise<void> | null = null;
     for (const dialog of dialogs) {
@@ -114,10 +117,17 @@ const eventVoicePlayer = {
       console.log(`wait ${dialog.Duration} done`);
     }
     await voicePromise;
+    console.log("play done!");
     if (this.playingId === id) {
-      this.currentCharacter.spine?.state.setAnimation(Face_Track, "01", false);
+      const character = this.currentCharacter.spine;
       textRef.value = "";
       this.playingVoice = null;
+
+      if (character) {
+        character.state.setAnimation(Face_Track, "01", false);
+        console.log("start wink");
+        this.wink(++this.winkId);
+      }
     }
   },
 
@@ -224,6 +234,34 @@ const eventVoicePlayer = {
       initSpine(spineRes.spineData);
     }
   },
+
+  async wink(winkId: number) {
+    if (this.winkId !== winkId) {
+      return;
+    }
+    const character = this.currentCharacter.spine;
+    if (!character) {
+      return;
+    }
+
+    const winkTimeout = Math.floor(Math.random() * 1000) + 3500;
+    await waitMs(winkTimeout);
+
+    const loopTime = Math.floor(Math.random() * 2) + 1;
+    for (let i = 0; i < loopTime; ++i) {
+      if (this.winkId !== winkId) {
+        break;
+      }
+      await winkPromise(character);
+    }
+    this.wink(winkId);
+  },
+
+  clearWink() {
+    this.winkId++;
+    this.currentCharacter.spine?.state.clearTrack(Wink_Track);
+  },
+
   /**
    * 生成play id
    */
@@ -234,6 +272,22 @@ const eventVoicePlayer = {
 
 function waitMs(ms: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * wink in promise
+ * @param character
+ */
+function winkPromise(character: Spine) {
+  return new Promise<void>((resolve) => {
+    character.state.addListener({
+      complete() {
+        resolve();
+        character.state.clearListeners();
+      },
+    });
+    character.state.setAnimation(Wink_Track, "Eye_Close_01", false);
+  });
 }
 
 export default eventVoicePlayer;
