@@ -198,7 +198,6 @@ onUnmounted(() => {
 
 <style lang="scss">
 #eventVoicePlayer {
-  position: relative;
   z-index: 1;
 
   &__refresh {

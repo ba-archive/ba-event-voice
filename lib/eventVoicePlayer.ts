@@ -143,6 +143,7 @@ const eventVoicePlayer = {
 
   getUrls(dialog: RawEventDialogItem) {
     const spineArg = this.characterExcelTable.get(dialog.CharacterId);
+    console.log(spineArg);
     if (!spineArg) {
       throw new Error("没有找到该角色id的对应资料");
     }
