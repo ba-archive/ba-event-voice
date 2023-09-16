@@ -50,7 +50,7 @@ const eventVoicePlayer = {
     await axios.get(dataUrls.characterExcelTable).then((response) => {
       const datas: CharacterExcelTableItem[] = response.data["DataList"];
       for (const data of datas) {
-        this.characterExcelTable.set(data["Id"], data);
+        this.characterExcelTable.set(data["CostumeGroupId"], data);
       }
     });
 
@@ -73,6 +73,7 @@ const eventVoicePlayer = {
     id: number,
     dialogTypeRef: Ref<string>
   ) {
+    console.log("playing dialog:", dialogs);
     this.stopPlay();
     this.clearWink();
     this.playingId = id;
@@ -84,10 +85,10 @@ const eventVoicePlayer = {
       }
       const urls = this.getUrls(dialog);
       dialogTypeRef.value = dialog.DialogType;
-      if (this.currentCharacter.id !== dialog.CharacterId) {
+      if (this.currentCharacter.id !== dialog.OriginalCharacterId) {
         //加载spine资源
         await this.loadCharacterSpine(urls.spine, urls.spineFallback);
-        this.currentCharacter.id = dialog.CharacterId;
+        this.currentCharacter.id = dialog.OriginalCharacterId;
       }
 
       this.currentCharacter.spine!.state.setAnimation(
@@ -142,7 +143,7 @@ const eventVoicePlayer = {
   },
 
   getUrls(dialog: RawEventDialogItem) {
-    const spineArg = this.characterExcelTable.get(dialog.CharacterId);
+    const spineArg = this.characterExcelTable.get(dialog.OriginalCharacterId);
     console.log(spineArg);
     if (!spineArg) {
       throw new Error("没有找到该角色id的对应资料");

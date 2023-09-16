@@ -17,7 +17,8 @@
     "lodash-es": "^4.17.21",
     "pixi-spine": "^4.0.0",
     "pixi.js": "^7.2.4",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vuestic-ui": "^1.8.0"
   },
   "devDependencies": {
     "@types/howler": "^2.2.7",

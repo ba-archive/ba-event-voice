@@ -136,6 +136,8 @@ onMounted(() => {
 onUnmounted(() => {
   eventVoicePlayer.stopPlay();
 });
+
+defineExpose({ currentDialogCategory });
 </script>
 
 <template>

@@ -35,7 +35,7 @@ const props = defineProps<{ text: string; mode: DialogType }>();
   left: -9px;
   filter: drop-shadow(-2px 1px 1px rgba(0, 0, 0, 0.5));
   z-index: 0;
-  top: 15%;
+  top: 20%;
 }
 
 .circles {

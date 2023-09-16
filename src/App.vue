@@ -1,17 +1,25 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import eventDialogsTable from "./CharacterDialogEventExcelTable.json";
-import BaEventVoice from "../lib/BaEventVoice.vue";
-import eventVoicePlayer from "../lib/eventVoicePlayer";
-import { RawEventDialogItem } from "../lib/types";
+import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
+import BaEventVoice from "./modules/player/BaEventVoice.vue";
+import eventVoicePlayer from "./modules/player/eventVoicePlayer";
+import { RawEventDialogItem } from "./modules/player/types";
+import { VaModal } from "vuestic-ui";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<number>();
 const currentEventID = ref(801);
-const currentBg = computed(
-  () =>
-    `https://yuuka.cdn.diyigemt.com/image/ba-all-data/UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_${currentEventID.value}.png`
-);
+const currentBg = computed(() => {
+  let bgType = "Stage";
+  if (baEventVoiceRef.value) {
+    const directory: string = baEventVoiceRef.value.currentDialogCategory;
+    if (directory.startsWith("UIEvent") && directory !== "UIEventLobby") {
+      bgType = directory.replace("UIEvent", "");
+    }
+  }
+
+  return `https://yuuka.cdn.diyigemt.com/image/ba-all-data/UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_${bgType}_Bg_${currentEventID.value}.png`;
+});
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID);
 }
@@ -22,6 +30,8 @@ const currentEventDialog = computed(() => {
     (dialog) => dialog.EventID === currentEventID.value
   ) as RawEventDialogItem[];
 });
+const baEventVoiceRef = ref<null | typeof BaEventVoice>();
+const showTips = ref(true);
 </script>
 
 <template>
@@ -36,13 +46,14 @@ const currentEventDialog = computed(() => {
     </form>
     <div>
       <BaEventVoice
+        ref="baEventVoiceRef"
         :dialogs="currentEventDialog"
         height="99vh"
         width="45vw"
         class="voicePlayer"
         :data-urls="{
           characterExcelTable:
-            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CharacterExcelTable.json',
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
           characterSpineDirectory:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
           voiceDirectory:
@@ -53,6 +64,13 @@ const currentEventDialog = computed(() => {
       />
     </div>
   </div>
+  <va-modal v-model="showTips" ok-text="Apply">
+    <h3 class="va-h3">Title</h3>
+    <p>
+      Classic modal overlay which represents a dialog box or other interactive
+      component, such as a dismissible alert, sub-window, etc.
+    </p>
+  </va-modal>
 </template>
 
 <style lang="scss" scoped>

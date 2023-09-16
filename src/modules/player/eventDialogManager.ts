@@ -50,7 +50,9 @@ const manager = {
 
       let characterId = 0;
       const characterIds = new Set<number>();
-      this.cache.forEach((dialog) => characterIds.add(dialog.CharacterId));
+      this.cache.forEach((dialog) =>
+        characterIds.add(dialog.OriginalCharacterId)
+      );
       characterId = sample(Array.from(characterIds)) || 0;
       if (condition === "Idle") {
         if (characterIds.has(this.idleCharacterId)) {
@@ -64,7 +66,7 @@ const manager = {
         );
       }
       this.cache = this.cache.filter(
-        (dialog) => dialog.CharacterId === characterId
+        (dialog) => dialog.OriginalCharacterId === characterId
       );
     }
 
