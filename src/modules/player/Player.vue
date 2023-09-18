@@ -142,11 +142,7 @@ defineExpose({ playVoice });
 </script>
 
 <template>
-  <div
-    id="eventVoicePlayer"
-    :style="eventVoicePlayerStyle"
-    ref="eventVoicePlayerDiv"
-  >
+  <div id="eventVoicePlayer" ref="eventVoicePlayerDiv">
     <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
     <Dialog
       :text="voiceText"
@@ -202,7 +198,9 @@ defineExpose({ playVoice });
 <style lang="scss">
 #eventVoicePlayer {
   z-index: 0;
-  // overflow: hidden;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 
   &__refresh {
     position: absolute;
@@ -303,9 +301,9 @@ defineExpose({ playVoice });
 
   .dialog {
     position: absolute;
-    left: 65%;
+    right: 1%;
     bottom: 50%;
-    width: 40%;
+    width: 30%;
   }
 }
 </style>

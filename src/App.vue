@@ -87,6 +87,7 @@ const showTips = ref(true);
 
   &__left {
     height: 100vh;
+    position: relative;
     flex: 5;
     .eventSelector {
       position: absolute;
