@@ -7,12 +7,13 @@ import { RawEventDialogItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
 import { useEventId } from "./modules/common/useEventId";
 import Tabs from "./modules/tabs/index.vue";
+import { getBgUrl } from "./modules/common/resourceApi";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
 const currentEventID = useEventId();
 const currentBg = computed(() => {
-  let bgType = "Stage";
+  let bgType = "Lobby";
   if (baEventVoiceRef.value) {
     const directory: string = baEventVoiceRef.value.currentDialogCategory;
     if (directory.startsWith("UIEvent") && directory !== "UIEventLobby") {
@@ -20,7 +21,7 @@ const currentBg = computed(() => {
     }
   }
 
-  return `https://yuuka.cdn.diyigemt.com/image/ba-all-data/UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_${bgType}_Bg_${currentEventID.value}.png`;
+  return getBgUrl(currentEventID.value, bgType);
 });
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID.toString());
