@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RawEventDialogItem, DialogType } from "./types";
+import { RawEventDialogItem, DialogType } from "../common/types";
 import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
 import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";

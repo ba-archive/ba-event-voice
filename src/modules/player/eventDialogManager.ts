@@ -1,4 +1,4 @@
-import { RawEventDialogItem } from "./types";
+import { RawEventDialogItem } from "../common/types";
 import { eq, sample } from "lodash-es";
 const manager = {
   flag: {

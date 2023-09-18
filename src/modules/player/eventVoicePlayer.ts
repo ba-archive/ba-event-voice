@@ -1,4 +1,4 @@
-import { RawEventDialogItem, CharacterExcelTableItem } from "./types";
+import { RawEventDialogItem, CharacterExcelTableItem } from "../common/types";
 import { Application, Assets } from "pixi.js";
 import { Spine, ISkeletonData } from "pixi-spine";
 import { soundAsset, Sound } from "@pixi/sound";
