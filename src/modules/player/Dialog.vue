@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { DialogType } from "./types";
+import { DialogType } from "../common/types";
 const props = defineProps<{ text: string; mode: DialogType }>();
 </script>
 

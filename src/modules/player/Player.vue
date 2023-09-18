@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RawEventDialogItem, DialogType } from "../common/types";
 import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
+import {} from "../common/useStore";
 import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";
 import { useElementSize } from "@vueuse/core";
@@ -23,7 +24,7 @@ const eventVoicePlayerStyle = computed(() => {
   return { height: props.height, width: props.width };
 });
 
-const eventVoicePlayerDiv = ref<HTMLDivElement | null>(null);
+const eventVoicePlayerDiv = ref<HTMLDivElement | undefined>();
 const { width: playerWidth, height: playerHeight } =
   useElementSize(eventVoicePlayerDiv);
 const canvasScaleNumber = computed(() => (playerHeight.value + 1) / appHeight);
@@ -137,7 +138,7 @@ onUnmounted(() => {
   eventVoicePlayer.stopPlay();
 });
 
-defineExpose({ currentDialogCategory });
+defineExpose({ playVoice });
 </script>
 
 <template>
@@ -170,7 +171,7 @@ defineExpose({ currentDialogCategory });
         重新进入
       </button>
     </div>
-    <div id="eventVoicePlayer__icons">
+    <!-- <div id="eventVoicePlayer__icons">
       <div
         v-for="category in currentDialogCategorieSet"
         id="eventVoicePlayer__icons__icon"
@@ -180,7 +181,7 @@ defineExpose({ currentDialogCategory });
         {{ category.replace("UIEvent", "") }}
       </div>
       <div id="eventVoicePlayer__icons__layer"></div>
-    </div>
+    </div> -->
     <div
       id="eventVoicePlayer__conditionSelecter"
       v-if="currentDialogConditionSet.size > 0"
@@ -200,7 +201,8 @@ defineExpose({ currentDialogCategory });
 
 <style lang="scss">
 #eventVoicePlayer {
-  z-index: 1;
+  z-index: 0;
+  // overflow: hidden;
 
   &__refresh {
     position: absolute;

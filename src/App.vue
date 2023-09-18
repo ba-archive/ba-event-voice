@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
-import BaEventVoice from "./modules/player/BaEventVoice.vue";
+import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
 import { RawEventDialogItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
-import { useEventId } from "./modules/common/useEventId";
+import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
 import { getBgUrl } from "./modules/common/resourceApi";
+import { storeToRefs } from "pinia";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
-const currentEventID = useEventId();
+const { currentEventId } = storeToRefs(useStore());
+const currentCategory = ref("UIEventLobby");
 const currentBg = computed(() => {
   let bgType = "Lobby";
   if (baEventVoiceRef.value) {
-    const directory: string = baEventVoiceRef.value.currentDialogCategory;
-    if (directory.startsWith("UIEvent") && directory !== "UIEventLobby") {
-      bgType = directory.replace("UIEvent", "");
+    const category: string = currentCategory.value;
+    if (category.startsWith("UIEvent") && category !== "UIEventLobby") {
+      bgType = category.replace("UIEvent", "");
     }
   }
 
-  return getBgUrl(currentEventID.value, bgType);
+  return getBgUrl(currentEventId.value, bgType);
 });
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID.toString());
@@ -33,11 +35,12 @@ finalEventIDs = finalEventIDs.filter(
 Reflect.set(window, "player", eventVoicePlayer);
 
 const currentEventDialog = computed(() => {
+  console.log(currentEventId.value);
   return eventDialogs.filter(
-    (dialog) => dialog.EventID.toString() === currentEventID.value
+    (dialog) => dialog.EventID.toString() === currentEventId.value
   ) as RawEventDialogItem[];
 });
-const baEventVoiceRef = ref<null | typeof BaEventVoice>();
+const baEventVoiceRef = ref<null | typeof Player>();
 const showTips = ref(true);
 </script>
 
@@ -45,7 +48,7 @@ const showTips = ref(true);
   <main class="mainPage" :style="{ backgroundImage: `url(${currentBg})` }">
     <div class="mainPage__left">
       <div>
-        <BaEventVoice
+        <Player
           ref="baEventVoiceRef"
           :dialogs="currentEventDialog"
           height="99vh"
@@ -64,13 +67,13 @@ const showTips = ref(true);
         />
       </div>
     </div>
-    <va-modal v-model="showTips" ok-text="Apply">
+    <!-- <va-modal v-model="showTips" ok-text="Apply">
       <h3 class="va-h3">Title</h3>
       <p>
         Classic modal overlay which represents a dialog box or other interactive
         component, such as a dismissible alert, sub-window, etc.
       </p>
-    </va-modal>
+    </va-modal> -->
     <div class="mainPage__right">
       <Tabs :event-ids="finalEventIDs"></Tabs>
     </div>

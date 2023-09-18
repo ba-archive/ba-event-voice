@@ -10,10 +10,11 @@
 
 <script lang="ts" setup>
 import { getEventIcons } from "../common/resourceApi";
-import { useEventId } from "../common/useEventId";
+import useStore from "../common/useStore";
+import { storeToRefs } from "pinia";
 const props = defineProps<{ eventIds: string[] }>();
 const iconInfos = getEventIcons(props.eventIds);
-const currentEventId = useEventId();
+const { currentEventId } = storeToRefs(useStore());
 </script>
 
 <style lang="scss" scoped>
