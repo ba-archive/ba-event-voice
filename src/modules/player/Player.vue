@@ -89,11 +89,26 @@ const dialogConditionDetails = computed(() => {
 });
 
 const dialogType = ref<DialogType>("Talk");
-async function playVoice(dialogCondition: string) {
+async function playVoice(
+  dialogCondition: string,
+  inputConditionDetail?: string,
+  characterId?: number
+) {
   const conditionDetail =
-    dialogCondition === "Enter" ? currentDialogConditionDetail.value : null;
+    dialogCondition === "Enter"
+      ? inputConditionDetail
+        ? inputConditionDetail
+        : currentDialogConditionDetail.value
+      : null;
+  let finalDialogs = props.dialogs;
+  if (characterId) {
+    const dialogFilterByCharacter = props.dialogs.filter(
+      (dialog) => dialog.OriginalCharacterId === characterId
+    );
+    finalDialogs = dialogFilterByCharacter;
+  }
   const currentEventDialogs = eventDialogManager.getDialog(
-    props.dialogs,
+    finalDialogs,
     currentDialogCategory.value,
     dialogCondition,
     conditionDetail
@@ -150,23 +165,7 @@ defineExpose({ playVoice });
       class="dialog"
       :mode="dialogType"
     />
-    <div
-      id="eventVoicePlayer__timeSelecter"
-      v-if="dialogConditionDetails.length > 1"
-    >
-      <label>时间点</label>
-      <select v-model="currentDialogConditionDetail">
-        <option v-for="detail in dialogConditionDetails" :value="detail.value">
-          {{ detail.word }}
-        </option>
-      </select>
-      <button
-        id="eventVoicePlayer__timeselecterrefresh"
-        @click="playVoice('Enter')"
-      >
-        重新进入
-      </button>
-    </div>
+
     <!-- <div id="eventVoicePlayer__icons">
       <div
         v-for="category in currentDialogCategorieSet"

@@ -9,6 +9,7 @@ import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
 import { getBgUrl } from "./modules/common/resourceApi";
 import { storeToRefs } from "pinia";
+import DetailConditionSelector from "./modules/conditionSelector/DetailConditionSelector.vue";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
@@ -16,7 +17,7 @@ const { currentEventId } = storeToRefs(useStore());
 const currentCategory = ref("UIEventLobby");
 const currentBg = computed(() => {
   let bgType = "Lobby";
-  if (baEventVoiceRef.value) {
+  if (player.value) {
     const category: string = currentCategory.value;
     if (category.startsWith("UIEvent") && category !== "UIEventLobby") {
       bgType = category.replace("UIEvent", "");
@@ -40,32 +41,38 @@ const currentEventDialog = computed(() => {
     (dialog) => dialog.EventID.toString() === currentEventId.value
   ) as RawEventDialogItem[];
 });
-const baEventVoiceRef = ref<null | typeof Player>();
+const dialogsFilterByCategory = computed(() => {
+  return currentEventDialog.value.filter(
+    (dialog) => dialog.DialogCategory === currentCategory.value
+  );
+});
+const player = ref<null | typeof Player>();
+function reEnter(time: string, characterId: number) {
+  player.value.playVoice("Enter", time, characterId);
+}
 const showTips = ref(true);
 </script>
 
 <template>
   <main class="mainPage" :style="{ backgroundImage: `url(${currentBg})` }">
     <div class="mainPage__left">
-      <div>
-        <Player
-          ref="baEventVoiceRef"
-          :dialogs="currentEventDialog"
-          height="99vh"
-          width="45vw"
-          class="voicePlayer"
-          :data-urls="{
-            characterExcelTable:
-              'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
-            characterSpineDirectory:
-              'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
-            voiceDirectory:
-              'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
-            iconDirectory:
-              'https://yuuka.cdn.diyigemt.com/image/ba-all-data/eventIcon',
-          }"
-        />
-      </div>
+      <Player
+        ref="player"
+        :dialogs="currentEventDialog"
+        height="99vh"
+        width="45vw"
+        class="voicePlayer"
+        :data-urls="{
+          characterExcelTable:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
+          characterSpineDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
+          voiceDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
+          iconDirectory:
+            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/eventIcon',
+        }"
+      />
     </div>
     <!-- <va-modal v-model="showTips" ok-text="Apply">
       <h3 class="va-h3">Title</h3>
@@ -76,6 +83,10 @@ const showTips = ref(true);
     </va-modal> -->
     <div class="mainPage__right">
       <Tabs :event-ids="finalEventIDs"></Tabs>
+      <DetailConditionSelector
+        :dialogs="dialogsFilterByCategory"
+        @re-enter="reEnter"
+      />
     </div>
   </main>
 </template>
