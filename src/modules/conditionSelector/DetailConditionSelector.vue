@@ -5,7 +5,7 @@
         <va-tab
           v-for="tab in [
             { key: '时期人物', value: 'time' },
-            { key: '具体条件', value: 'detail' },
+            { key: '具体条件', value: 'condition' },
           ]"
           :key="tab.key"
           :name="tab.value"
@@ -31,6 +31,18 @@
       />
       <div class="emitButton">
         <va-button round icon="thumb_up" @click="reEnter" />
+      </div>
+    </div>
+    <div v-else-if="currentSelector === 'condition'" class="selector">
+      <va-select
+        label="条件"
+        :options="conditions"
+        v-model="currentCondition"
+        value-by="value"
+        class="condition_select"
+      />
+      <div class="emitButton">
+        <va-button round icon="thumb_up" @click="onCondition" />
       </div>
     </div>
   </div>
@@ -63,9 +75,20 @@ watch(characters, () => {
 });
 const emits = defineEmits<{
   (e: "reEnter", detailTime: string, characterId: number): void;
+  (e: "condition", condition: string): void;
 }>();
 function reEnter() {
   emits("reEnter", currentTime.value, currentCharacter.value);
+}
+
+const currentCondition = ref("");
+const conditions = computed(() => {
+  return uniq(props.dialogs.map((dialog) => dialog.DialogCondition)).filter(
+    (condition) => !["Enter", "Idle"].includes(condition)
+  );
+});
+function onCondition() {
+  emits("condition", currentCondition.value);
 }
 </script>
 
@@ -97,5 +120,10 @@ function reEnter() {
 .selector__select {
   width: 30%;
   margin: 0 5%;
+}
+
+.condition_select {
+  margin: 0 5%;
+  width: 60%;
 }
 </style>

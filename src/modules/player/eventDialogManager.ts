@@ -2,7 +2,6 @@ import { RawEventDialogItem } from "../common/types";
 import { eq, sample } from "lodash-es";
 const manager = {
   flag: {
-    category: "",
     condition: "",
     conditionDetail: null as null | string,
   },
@@ -25,7 +24,6 @@ const manager = {
     return (
       this.cache.length > 0 &&
       eq(dialogs, this.dialogs) &&
-      category === this.flag.category &&
       condition === this.flag.condition &&
       conditionDetail === this.flag.conditionDetail
     );
@@ -37,15 +35,12 @@ const manager = {
     conditionDetail: string | null
   ) {
     if (!this.checkCondition(dialogs, category, condition, conditionDetail)) {
-      this.flag.category = category;
       this.flag.condition = condition;
       this.flag.conditionDetail = conditionDetail;
       this.dialogs = dialogs;
 
       this.cache = this.dialogs.filter(
-        (dialog) =>
-          dialog.DialogCondition === this.flag.condition &&
-          dialog.DialogCategory === this.flag.category
+        (dialog) => dialog.DialogCondition === this.flag.condition
       );
 
       let characterId = 0;

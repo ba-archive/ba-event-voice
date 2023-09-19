@@ -142,10 +142,12 @@ async function init() {
   watch(
     () => props.dialogs,
     () => {
-      enterNewCategory("UIEventLobby");
+      console.log("dialog in player change!");
+      playVoice("Enter");
     }
   );
 }
+
 onMounted(() => {
   init();
 });
