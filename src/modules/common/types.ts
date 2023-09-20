@@ -56,3 +56,7 @@ export interface CharacterExcelTableItem {
 }
 
 export type DialogType = RawEventDialogItem["DialogType"];
+
+export interface EventSettingItem {
+  removeCategories: string[];
+}

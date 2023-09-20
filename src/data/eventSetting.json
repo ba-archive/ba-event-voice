@@ -1,0 +1,8 @@
+{
+  "804": {
+    "removeCategories": ["UIEventMission"]
+  },
+  "825": {
+    "removeCategories": ["UIEventMiniGameMission"]
+  }
+}

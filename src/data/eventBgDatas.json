@@ -23,8 +23,9 @@
   "804": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_804",
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_BoxGacha_Bg_804",
+    "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_804",
     "BoxGacha": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_BoxGacha_Bg_804",
-    "MiniGameRhythm": ""
+    "MiniGameMission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_804"
   },
   "805": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_805",
@@ -72,7 +73,7 @@
   "813": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_813",
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Shop_Bg_813",
-    "CardShop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_CardShop_Bg_813",
+    "CardShop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Cardshop_Bg_813",
     "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_813"
   },
   "814": {
@@ -91,7 +92,7 @@
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_816",
     "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Mission_Bg_816",
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Shop_Bg_816",
-    "BoxGacha": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_BoxGacha_Bg_816"
+    "BoxGacha": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Boxgacha_Bg_816"
   },
   "817": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_817",
@@ -121,6 +122,7 @@
   },
   "821": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_821",
+    "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_821",
     "WorldRaidEntrance": "",
     "WorldRaid": ""
   },
@@ -132,6 +134,7 @@
   },
   "823": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_823",
+    "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_823",
     "WorldRaidEntrance": "",
     "WorldRaid": ""
   },

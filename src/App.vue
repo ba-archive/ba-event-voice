@@ -3,7 +3,7 @@ import { computed, ref, watch } from "vue";
 import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
 import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
-import { RawEventDialogItem } from "./modules/common/types";
+import { RawEventDialogItem, EventSettingItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
 import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
@@ -12,6 +12,7 @@ import { storeToRefs } from "pinia";
 import { uniq } from "lodash-es";
 import DetailConditionSelector from "./modules/conditionSelector/DetailConditionSelector.vue";
 import CategorySelector from "./modules/conditionSelector/CategorySelector.vue";
+import eventSettings from "./data/eventSetting.json";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
@@ -24,6 +25,9 @@ const currentBg = computed(() => {
     const category: string = currentCategory.value;
     if (category.startsWith("UIEvent") && category !== "UIEventLobby") {
       bgType = category.replace("UIEvent", "");
+      if (bgType === "BoxGachaShop") {
+        bgType = bgType.replace("Shop", "");
+      }
     }
   }
 
@@ -44,6 +48,7 @@ const currentEventDialogs = computed(() => {
   ) as RawEventDialogItem[];
 });
 watch(currentEventId, () => {
+  console.log("eventId:", currentEventId.value);
   currentCategory.value = "UIEventLobby";
   if (currentEventId.value === "701") {
     currentCategory.value = "UISpecialOperationLobby";
@@ -55,7 +60,20 @@ const dialogsFilteByCategory = computed(() => {
   );
 });
 const currentCategories = computed(() => {
-  return uniq(currentEventDialogs.value.map((dialog) => dialog.DialogCategory));
+  let result = uniq(
+    currentEventDialogs.value.map((dialog) => dialog.DialogCategory)
+  );
+  if (currentEventId.value in eventSettings) {
+    const currentRemoveCategories = (
+      eventSettings as Record<string, EventSettingItem>
+    )[currentEventId.value].removeCategories;
+    if (currentRemoveCategories.length > 0) {
+      result = result.filter(
+        (category) => !currentRemoveCategories.includes(category)
+      );
+    }
+  }
+  return result;
 });
 const player = ref<null | typeof Player>();
 function reEnter(time: string, characterId: number) {
