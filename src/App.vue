@@ -7,16 +7,18 @@ import { RawEventDialogItem, EventSettingItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
 import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
-import { getBgUrl } from "./modules/common/resourceApi";
+import { getBgUrl, getBgmUrl } from "./modules/common/resourceApi";
 import { storeToRefs } from "pinia";
 import { uniq } from "lodash-es";
 import DetailConditionSelector from "./modules/conditionSelector/DetailConditionSelector.vue";
 import CategorySelector from "./modules/conditionSelector/CategorySelector.vue";
-import eventSettings from "./data/eventSetting.json";
+import rawEventSettings from "./data/eventSetting.json";
+import { Sound } from "@pixi/sound";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
-const { currentEventId } = storeToRefs(useStore());
+const { currentEventId, bgmVolume, currentBgm } = storeToRefs(useStore());
+const eventSettings = rawEventSettings as Record<string, EventSettingItem>;
 
 const currentCategory = ref("UIEventLobby");
 const currentBg = computed(() => {
@@ -53,6 +55,7 @@ watch(currentEventId, () => {
   if (currentEventId.value === "701") {
     currentCategory.value = "UISpecialOperationLobby";
   }
+  changeBgm();
 });
 const dialogsFilteByCategory = computed(() => {
   return currentEventDialogs.value.filter(
@@ -64,9 +67,8 @@ const currentCategories = computed(() => {
     currentEventDialogs.value.map((dialog) => dialog.DialogCategory)
   );
   if (currentEventId.value in eventSettings) {
-    const currentRemoveCategories = (
-      eventSettings as Record<string, EventSettingItem>
-    )[currentEventId.value].removeCategories;
+    const currentRemoveCategories =
+      eventSettings[currentEventId.value].removeCategories;
     if (currentRemoveCategories.length > 0) {
       result = result.filter(
         (category) => !currentRemoveCategories.includes(category)
@@ -82,6 +84,25 @@ function reEnter(time: string, characterId: number) {
 function triggerCondition(condition: string) {
   player.value?.playVoice(condition);
 }
+function changeBgm() {
+  if (currentBgm.value) {
+    currentBgm.value.destroy();
+  }
+  const currentBgmSetting = eventSettings[currentEventId.value].bgm;
+  currentBgm.value = Sound.from(getBgmUrl(currentBgmSetting.Path));
+  currentBgm.value.play({
+    volume: bgmVolume.value,
+    end: currentBgmSetting.LoopEndTime,
+    complete() {
+      currentBgm.value?.play({
+        start: currentBgmSetting.LoopStartTime,
+        end: currentBgmSetting.LoopEndTime,
+        loop: true,
+      });
+    },
+  });
+}
+changeBgm();
 const showTips = ref(true);
 </script>
 

@@ -1,8 +1,242 @@
 {
+  "701": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_96",
+      "LoopStartTime": 0.3,
+      "LoopEndTime": 110.7
+    }
+  },
+  "801": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_57",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "802": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_83",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "803": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_80",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
   "804": {
-    "removeCategories": ["UIEventMission"]
+    "removeCategories": ["UIEventMission"],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_79",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "805": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_88",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "806": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_95",
+      "LoopStartTime": 1.739,
+      "LoopEndTime": 113.043
+    }
+  },
+  "808": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_99",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "809": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_97",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "810": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_102",
+      "LoopStartTime": 16.406,
+      "LoopEndTime": 91.406
+    }
+  },
+  "811": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_77",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "812": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_109",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "813": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_117",
+      "LoopStartTime": 14.068,
+      "LoopEndTime": 120
+    }
+  },
+  "814": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_120",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
+  "815": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_124",
+      "LoopStartTime": 0.461,
+      "LoopEndTime": 107.538
+    }
+  },
+  "816": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_128",
+      "LoopStartTime": 24.843,
+      "LoopEndTime": 120.843
+    }
+  },
+  "817": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_131",
+      "LoopStartTime": 48,
+      "LoopEndTime": 117.818
+    }
+  },
+  "818": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_133",
+      "LoopStartTime": 33.662,
+      "LoopEndTime": 114.593
+    }
+  },
+  "819": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_139",
+      "LoopStartTime": 0.521,
+      "LoopEndTime": 129.391
+    }
+  },
+  "820": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_141",
+      "LoopStartTime": 18,
+      "LoopEndTime": 70.363
+    }
+  },
+  "821": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_148",
+      "LoopStartTime": 29.101,
+      "LoopEndTime": 98.083
+    }
+  },
+  "822": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_150",
+      "LoopStartTime": 31.428,
+      "LoopEndTime": 115.238
+    }
+  },
+  "823": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_157",
+      "LoopStartTime": 16.319,
+      "LoopEndTime": 62.399
+    }
+  },
+  "824": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_31",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
   },
   "825": {
-    "removeCategories": ["UIEventMiniGameMission"]
+    "removeCategories": ["UIEventMiniGameMission"],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_159",
+      "LoopStartTime": 0.857,
+      "LoopEndTime": 115.714
+    }
+  },
+  "826": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_161",
+      "LoopStartTime": 15,
+      "LoopEndTime": 125.625
+    }
+  },
+  "827": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_165",
+      "LoopStartTime": 2.294,
+      "LoopEndTime": 119.47
+    }
+  },
+  "828": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_173",
+      "LoopStartTime": 0,
+      "LoopEndTime": 146.879
+    }
+  },
+  "829": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_169",
+      "LoopStartTime": 12.857,
+      "LoopEndTime": 118.571
+    }
+  },
+  "60000": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_16",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
   }
 }

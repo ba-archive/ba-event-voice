@@ -59,4 +59,9 @@ export type DialogType = RawEventDialogItem["DialogType"];
 
 export interface EventSettingItem {
   removeCategories: string[];
+  bgm: {
+    Path: string;
+    LoopStartTime: number;
+    LoopEndTime: number;
+  };
 }

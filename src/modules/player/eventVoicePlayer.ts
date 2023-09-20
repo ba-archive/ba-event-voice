@@ -109,7 +109,7 @@ const eventVoicePlayer = {
         }
         voicePromise = new Promise<void>((resolve) => {
           this.playingVoice?.play({
-            volume: 0.5,
+            volume: 1,
             complete: () => resolve(),
           });
         });
@@ -170,6 +170,9 @@ const eventVoicePlayer = {
     let spineFileName = `${characterName}_spr`; //hasumi_spr
     if (characterName === "NP0032_npc") {
       spineFileName = spineFileName.replace("_spr", "");
+    }
+    if (spineFileName.includes("Hoshino_Swimsuit")) {
+      spineFileName = spineFileName.replace("Swim", "swim");
     }
     //首字母可能大写可能小写, 准备一个备用的当资源加载失败时使用
     let spineFallbackFileName = "";

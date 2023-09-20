@@ -49,3 +49,7 @@ export function getCategoryIcons(categories: string[]) {
 
   return finalIconArr;
 }
+
+export function getBgmUrl(bgmName: string) {
+  return `${BaseURL}/${bgmName}.ogg`;
+}
