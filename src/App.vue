@@ -54,10 +54,10 @@ const currentCategories = computed(() => {
 });
 const player = ref<null | typeof Player>();
 function reEnter(time: string, characterId: number) {
-  player.value.playVoice("Enter", time, characterId);
+  player.value?.playVoice("Enter", time, characterId);
 }
 function triggerCondition(condition: string) {
-  player.value.playVoice(condition);
+  player.value?.playVoice(condition);
 }
 const showTips = ref(true);
 </script>
