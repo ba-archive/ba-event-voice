@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
 import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
@@ -39,10 +39,15 @@ finalEventIDs = finalEventIDs.filter(
 Reflect.set(window, "player", eventVoicePlayer);
 
 const currentEventDialogs = computed(() => {
-  console.log(currentEventId.value);
   return eventDialogs.filter(
     (dialog) => dialog.EventID.toString() === currentEventId.value
   ) as RawEventDialogItem[];
+});
+watch(currentEventId, () => {
+  currentCategory.value = "UIEventLobby";
+  if (currentEventId.value === "701") {
+    currentCategory.value = "UISpecialOperationLobby";
+  }
 });
 const dialogsFilteByCategory = computed(() => {
   return currentEventDialogs.value.filter(
