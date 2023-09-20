@@ -1,4 +1,5 @@
 export interface RawEventDialogItem {
+  CostumeUniqueId: number;
   OriginalCharacterId: number;
   EventID: number;
   GroupId: number;
@@ -49,7 +50,7 @@ export interface RawEventDialogItem {
 }
 
 export interface CharacterExcelTableItem {
-  CostumeGroupId: number;
+  CostumeUniqueId: number;
   SpineResourceName: string;
   TextureDir: string;
 }

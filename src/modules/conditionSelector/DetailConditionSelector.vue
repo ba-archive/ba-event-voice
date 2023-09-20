@@ -67,7 +67,7 @@ const characters = computed(() => {
   const dialogFilterByTime = props.dialogs.filter(
     (dialog) => dialog.DialogConditionDetail === currentTime.value
   );
-  return uniq(dialogFilterByTime.map((dialog) => dialog.OriginalCharacterId));
+  return uniq(dialogFilterByTime.map((dialog) => dialog.CostumeUniqueId));
 });
 const currentCharacter = ref(characters.value[0]) || 0;
 watch(characters, () => {

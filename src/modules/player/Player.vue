@@ -103,7 +103,7 @@ async function playVoice(
   let finalDialogs = props.dialogs;
   if (characterId) {
     const dialogFilterByCharacter = props.dialogs.filter(
-      (dialog) => dialog.OriginalCharacterId === characterId
+      (dialog) => dialog.CostumeUniqueId === characterId
     );
     finalDialogs = dialogFilterByCharacter;
   }

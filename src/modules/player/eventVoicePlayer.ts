@@ -2,7 +2,7 @@ import { RawEventDialogItem, CharacterExcelTableItem } from "../common/types";
 import { Application, Assets } from "pixi.js";
 import { Spine, ISkeletonData } from "pixi-spine";
 import { soundAsset, Sound } from "@pixi/sound";
-import { Props } from "./BaEventVoice.vue";
+import { Props } from "./Player.vue";
 import axios from "axios";
 import { Ref } from "vue";
 
@@ -50,7 +50,7 @@ const eventVoicePlayer = {
     await axios.get(dataUrls.characterExcelTable).then((response) => {
       const datas: CharacterExcelTableItem[] = response.data["DataList"];
       for (const data of datas) {
-        this.characterExcelTable.set(data["CostumeGroupId"], data);
+        this.characterExcelTable.set(data["CostumeUniqueId"], data);
       }
     });
 
@@ -85,17 +85,21 @@ const eventVoicePlayer = {
       }
       const urls = this.getUrls(dialog);
       dialogTypeRef.value = dialog.DialogType;
-      if (this.currentCharacter.id !== dialog.OriginalCharacterId) {
+      if (this.currentCharacter.id !== dialog.CostumeUniqueId) {
+        console.log("current character: ", dialog.CostumeUniqueId);
         //加载spine资源
         await this.loadCharacterSpine(urls.spine, urls.spineFallback);
-        this.currentCharacter.id = dialog.OriginalCharacterId;
+        this.currentCharacter.id = dialog.CostumeUniqueId;
       }
 
-      this.currentCharacter.spine!.state.setAnimation(
-        Face_Track,
-        dialog.AnimationName,
-        false
-      );
+      if (dialog.AnimationName !== "") {
+        this.currentCharacter.spine!.state.setAnimation(
+          Face_Track,
+          dialog.AnimationName,
+          false
+        );
+      }
+
       textRef.value = dialog.LocalizeJP;
       if (urls.voice) {
         try {
@@ -125,9 +129,11 @@ const eventVoicePlayer = {
       this.playingVoice = null;
 
       if (character) {
-        character.state.setAnimation(Face_Track, "01", false);
-        console.log("start wink");
-        this.wink(++this.winkId);
+        if (this.currentCharacter.id !== 1900914001) {
+          character.state.setAnimation(Face_Track, "01", false);
+          console.log("start wink");
+          this.wink(++this.winkId);
+        }
       }
     }
   },
@@ -143,7 +149,7 @@ const eventVoicePlayer = {
   },
 
   getUrls(dialog: RawEventDialogItem) {
-    const spineArg = this.characterExcelTable.get(dialog.OriginalCharacterId);
+    const spineArg = this.characterExcelTable.get(dialog.CostumeUniqueId);
     console.log(spineArg);
     if (!spineArg) {
       throw new Error("没有找到该角色id的对应资料");
@@ -159,7 +165,12 @@ const eventVoicePlayer = {
     //移除有时带有的莫名其妙的nd
     characterName = characterName.replace("ND", "");
     characterName = characterName.replace("nd", "");
-    const spineFileName = `${characterName}_spr`; //hasumi_spr
+    //别问, 问就特殊情况
+    characterName = characterName.replace("rin_S_01", "rin");
+    let spineFileName = `${characterName}_spr`; //hasumi_spr
+    if (characterName === "NP0032_npc") {
+      spineFileName = spineFileName.replace("_spr", "");
+    }
     //首字母可能大写可能小写, 准备一个备用的当资源加载失败时使用
     let spineFallbackFileName = "";
     console.log(spineFileName);
