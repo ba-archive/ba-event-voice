@@ -41,6 +41,13 @@ async function playVoice(
   inputConditionDetail?: string,
   characterId?: number
 ) {
+  if (dialogCondition === "Enter") {
+    //触发再次进入动画
+    if (playerDone.value && reEnterAnimation.value) {
+      playerDone.value = false;
+      setTimeout(() => (playerDone.value = true), 50);
+    }
+  }
   let conditionDetail = null;
   if (dialogCondition === "Enter") {
     if (inputConditionDetail) {
@@ -75,7 +82,7 @@ async function playVoice(
 }
 
 const initState = ref(false);
-const { playerDone } = storeToRefs(useStore());
+const { playerDone, reEnterAnimation } = storeToRefs(useStore());
 async function init() {
   eventVoicePlayer.init("eventVoicePlayer");
   playerDone.value = false;

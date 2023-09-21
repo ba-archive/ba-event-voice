@@ -26,9 +26,9 @@
       <VaScrollContainer vertical>
         <EventSelector
           :event-ids="props.eventIds"
-          v-if="currentTab === 'events'"
+          v-show="currentTab === 'events'"
         />
-        <Settings v-else />
+        <Settings v-show="currentTab === 'settings'" />
       </VaScrollContainer>
     </div>
   </div>
