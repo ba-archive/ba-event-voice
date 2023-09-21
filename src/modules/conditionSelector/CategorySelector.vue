@@ -3,7 +3,7 @@
     <div
       v-for="categoryInfo in currentIconArr"
       class="icon"
-      @click="() => emit('update:modelValue', categoryInfo.category)"
+      @click="() => emits('update:modelValue', categoryInfo.category)"
     >
       <img :src="categoryInfo.icon" />
       <div>
@@ -15,15 +15,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref, watch } from "vue";
 import { getCategoryIcons } from "../common/resourceApi";
+import useStore from "../common/useStore";
+import { storeToRefs } from "pinia";
 
 const props = defineProps<{ categories: string[]; modelValue: string }>();
-const emit = defineEmits<{ (e: "update:modelValue", value: string): void }>();
+const emits = defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
 
-const currentIconArr = computed(() => {
-  return getCategoryIcons(props.categories);
-});
+const currentIconArr = ref<{ icon: string; category: string }[]>([]);
+const { categoryDone } = storeToRefs(useStore());
+async function initCategories() {
+  categoryDone.value = false;
+  currentIconArr.value = await getCategoryIcons(props.categories);
+  categoryDone.value = true;
+}
+watch(() => props.categories, initCategories);
+initCategories();
 </script>
 
 <style lang="scss" scoped>

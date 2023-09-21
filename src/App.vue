@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, watchEffect } from "vue";
 import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
 import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
@@ -7,22 +7,31 @@ import { RawEventDialogItem, EventSettingItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
 import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
-import { getBgUrl, getBgmUrl } from "./modules/common/resourceApi";
+import { getBgUrl, getBgmSound } from "./modules/common/resourceApi";
 import { storeToRefs } from "pinia";
 import { uniq } from "lodash-es";
 import DetailConditionSelector from "./modules/conditionSelector/DetailConditionSelector.vue";
 import CategorySelector from "./modules/conditionSelector/CategorySelector.vue";
 import rawEventSettings from "./data/eventSetting.json";
-import { Sound } from "@pixi/sound";
 import ResourceLoading from "./modules/resourceLoader/index.vue";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
-const { currentEventId, bgmVolume, currentBgm } = storeToRefs(useStore());
+const {
+  currentEventId,
+  bgmVolume,
+  currentBgm,
+  playerDone,
+  categoryDone,
+  eventIconsDone,
+} = storeToRefs(useStore());
 const eventSettings = rawEventSettings as Record<string, EventSettingItem>;
 
 const currentCategory = ref("UIEventLobby");
-const currentBg = computed(() => {
+const currentBg = ref("");
+const bgDone = ref(false);
+async function changeBg() {
+  bgDone.value = false;
   let bgType = "Lobby";
   if (player.value) {
     const category: string = currentCategory.value;
@@ -34,8 +43,10 @@ const currentBg = computed(() => {
     }
   }
 
-  return getBgUrl(currentEventId.value, bgType);
-});
+  console.log("bg load");
+  currentBg.value = await getBgUrl(currentEventId.value, bgType);
+  bgDone.value = true;
+}
 for (const dialog of eventDialogs) {
   eventIDs.add(dialog.EventID.toString());
 }
@@ -63,6 +74,7 @@ const dialogsFilteByCategory = computed(() => {
     (dialog) => dialog.DialogCategory === currentCategory.value
   );
 });
+watch(dialogsFilteByCategory, changeBg);
 const currentCategories = computed(() => {
   let result = uniq(
     currentEventDialogs.value.map((dialog) => dialog.DialogCategory)
@@ -85,12 +97,12 @@ function reEnter(time: string, characterId: number) {
 function triggerCondition(condition: string) {
   player.value?.playVoice(condition);
 }
-function changeBgm() {
+async function changeBgm() {
   if (currentBgm.value) {
-    currentBgm.value.destroy();
+    currentBgm.value.pause();
   }
   const currentBgmSetting = eventSettings[currentEventId.value].bgm;
-  currentBgm.value = Sound.from(getBgmUrl(currentBgmSetting.Path));
+  currentBgm.value = await getBgmSound(currentBgmSetting.Path);
   currentBgm.value.play({
     volume: bgmVolume.value,
     end: currentBgmSetting.LoopEndTime,
@@ -99,13 +111,22 @@ function changeBgm() {
         start: currentBgmSetting.LoopStartTime,
         end: currentBgmSetting.LoopEndTime,
         loop: true,
+        volume: bgmVolume.value,
       });
     },
   });
 }
 changeBgm();
+changeBg();
 const showTips = ref(true);
-const loading = ref(false);
+const loaded = computed(() => {
+  return (
+    playerDone.value &&
+    eventIconsDone.value &&
+    categoryDone.value &&
+    bgDone.value
+  );
+});
 </script>
 
 <template>
@@ -116,7 +137,10 @@ const loading = ref(false);
         :dialogs="dialogsFilteByCategory"
         height="99vh"
         width="45vw"
-        class="voicePlayer playerAnimation"
+        :class="{
+          voicePlayer: true,
+          playerAnimation: loaded,
+        }"
         :data-urls="{
           characterExcelTable:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
@@ -140,7 +164,12 @@ const loading = ref(false);
         component, such as a dismissible alert, sub-window, etc.
       </p>
     </va-modal> -->
-    <div class="mainPage__right rightPageAnimation">
+    <div
+      :class="{
+        mainPage__right: true,
+        rightPageAnimation: loaded,
+      }"
+    >
       <Tabs :event-ids="finalEventIDs"></Tabs>
       <DetailConditionSelector
         :dialogs="dialogsFilteByCategory"
@@ -149,7 +178,7 @@ const loading = ref(false);
       />
     </div>
   </main>
-  <ResourceLoading v-if="loading" />
+  <ResourceLoading v-if="!loaded" />
 </template>
 
 <style lang="scss" scoped>

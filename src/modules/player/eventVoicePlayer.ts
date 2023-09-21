@@ -23,6 +23,8 @@ const eventVoicePlayer = {
     backgroundAlpha: 0,
   }),
   characterExcelTable: new Map<number, CharacterExcelTableItem>(),
+  spineCache: new Map<number, Spine>(),
+  voiceCache: new Map<string, Sound>(),
   /**
    * 资源的url前缀
    */
@@ -42,20 +44,9 @@ const eventVoicePlayer = {
   winkId: 0,
 
   /**
-   * 初始化, 加载所需资源
-   * @param elementID canvas挂载的element id
-   * @param dataUrls 资源地址
+   * 初始化 挂载pixi canvas
    */
-  async init(elementID: string, dataUrls: Props["dataUrls"]) {
-    await axios.get(dataUrls.characterExcelTable).then((response) => {
-      const datas: CharacterExcelTableItem[] = response.data["DataList"];
-      for (const data of datas) {
-        this.characterExcelTable.set(data["CostumeUniqueId"], data);
-      }
-    });
-
-    this.urlPrefixs.spine = dataUrls.characterSpineDirectory;
-    this.urlPrefixs.voice = dataUrls.voiceDirectory;
+  async init(elementID: string) {
     document
       .querySelector(`#${elementID}`)
       ?.appendChild(this.app.view as unknown as Node);
@@ -83,13 +74,11 @@ const eventVoicePlayer = {
         console.log("play stop");
         return;
       }
-      const urls = this.getUrls(dialog);
       dialogTypeRef.value = dialog.DialogType;
       if (this.currentCharacter.id !== dialog.CostumeUniqueId) {
         console.log("current character: ", dialog.CostumeUniqueId);
         //加载spine资源
-        await this.loadCharacterSpine(urls.spine, urls.spineFallback);
-        this.currentCharacter.id = dialog.CostumeUniqueId;
+        this.initCharacter(dialog.CostumeUniqueId);
       }
 
       if (dialog.AnimationName !== "") {
@@ -101,12 +90,14 @@ const eventVoicePlayer = {
       }
 
       textRef.value = dialog.LocalizeJP;
-      if (urls.voice) {
-        try {
-          this.playingVoice = await Assets.load(urls.voice);
-        } catch (e) {
-          this.playingVoice = await Assets.load(urls.voiceFallback);
+      if (dialog.VoiceClipsJp.length !== 0) {
+        const voiceId = dialog.VoiceClipsJp[0];
+        if (this.voiceCache.get(voiceId)) {
+          this.playingVoice = this.voiceCache.get(voiceId)!;
+        } else {
+          throw new Error(`cache中没有${voiceId}的声音资源`);
         }
+
         voicePromise = new Promise<void>((resolve) => {
           this.playingVoice?.play({
             volume: 1,
@@ -248,6 +239,29 @@ const eventVoicePlayer = {
       console.warn(e);
       const spineRes = await Assets.load(fallback);
       initSpine(spineRes.spineData);
+    }
+  },
+  /**
+   * 根据id初始化spine
+   * @param characterId
+   */
+  initCharacter(characterId: number) {
+    if (this.currentCharacter.spine) {
+      this.app.stage.removeChild(this.currentCharacter.spine);
+    }
+    const currentCharacterSpine = this.spineCache.get(characterId);
+    if (currentCharacterSpine) {
+      currentCharacterSpine.scale.set(0.75);
+      currentCharacterSpine.state.setAnimation(Idle_Track, "Idle_01", true);
+      currentCharacterSpine.position.set(
+        this.app.screen.width / 2,
+        this.app.screen.height
+      );
+      this.app.stage.addChild(currentCharacterSpine);
+      this.currentCharacter.spine = currentCharacterSpine;
+      this.currentCharacter.id = characterId;
+    } else {
+      throw new Error(`cache中没有${characterId}对应的spine`);
     }
   },
 

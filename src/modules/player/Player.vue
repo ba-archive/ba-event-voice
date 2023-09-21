@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { RawEventDialogItem, DialogType } from "../common/types";
 import eventVoicePlayer, { appHeight, appWidth } from "./eventVoicePlayer";
-import {} from "../common/useStore";
 import Dialog from "./Dialog.vue";
 import { computed, onMounted, ref, watch, onUnmounted } from "vue";
 import { useElementSize } from "@vueuse/core";
-import iconMap from "./iconMap.json";
 import eventDialogManager from "./eventDialogManager";
+import { initPlayer } from "../common/resourceApi";
+import useStore from "../common/useStore";
+import { storeToRefs } from "pinia";
 export type Props = {
   dialogs: RawEventDialogItem[];
   width: string;
@@ -74,21 +75,19 @@ async function playVoice(
 }
 
 const initState = ref(false);
+const { playerDone } = storeToRefs(useStore());
 async function init() {
-  await eventVoicePlayer.init("eventVoicePlayer", props.dataUrls);
+  eventVoicePlayer.init("eventVoicePlayer");
+  playerDone.value = false;
+  await initPlayer(props.dialogs);
+  playerDone.value = true;
   initState.value = true;
   playVoice("Enter");
-  watch(
-    () => props.dialogs,
-    () => {
-      console.log("dialog in player change!");
-      playVoice("Enter");
-    }
-  );
 }
 
 onMounted(() => {
   init();
+  watch(() => props.dialogs, init);
 });
 onUnmounted(() => {
   eventVoicePlayer.stopPlay();

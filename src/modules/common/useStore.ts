@@ -8,7 +8,9 @@ export default defineStore("main", {
       currentCategory: "Lobby",
       currentBgm: null as null | Sound,
       bgmVolume: 0.25,
+      playerDone: false,
+      categoryDone: false,
+      eventIconsDone: false,
     };
   },
-  persist: true,
 });
