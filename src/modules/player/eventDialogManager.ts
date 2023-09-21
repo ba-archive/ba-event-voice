@@ -17,7 +17,6 @@ const manager = {
    */
   checkCondition(
     dialogs: RawEventDialogItem[],
-    category: string,
     condition: string,
     conditionDetail: string | null
   ) {
@@ -30,13 +29,12 @@ const manager = {
   },
   getDialog(
     dialogs: RawEventDialogItem[],
-    category: string,
     condition: string,
     conditionDetail: string | null
   ) {
-    if (!this.checkCondition(dialogs, category, condition, conditionDetail)) {
+    if (!this.checkCondition(dialogs, condition, conditionDetail)) {
       this.flag.condition = condition;
-      this.flag.conditionDetail = conditionDetail;
+      this.flag.conditionDetail = conditionDetail ? conditionDetail : null;
       this.dialogs = dialogs;
 
       this.cache = this.dialogs.filter(

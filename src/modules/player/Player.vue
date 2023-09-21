@@ -20,9 +20,6 @@ export type Props = {
   eventIcon?: string;
 };
 const props = defineProps<Props>();
-const eventVoicePlayerStyle = computed(() => {
-  return { height: props.height, width: props.width };
-});
 
 const eventVoicePlayerDiv = ref<HTMLDivElement | undefined>();
 const { width: playerWidth, height: playerHeight } =
@@ -37,69 +34,21 @@ const canvasLeft = computed(
 );
 
 const voiceText = ref("");
-const currentDialogCategory =
-  ref<RawEventDialogItem["DialogCategory"]>("UIEventLobby");
-const currentDialogCategorieSet = computed(() => {
-  const categorySet = new Set<RawEventDialogItem["DialogCategory"]>();
-  props.dialogs.forEach((value) => {
-    categorySet.add(value.DialogCategory);
-  });
-  return categorySet;
-});
-const currentDialogCondition = ref("");
-const currentDialogConditionSet = computed(() => {
-  const conditionSet = new Set<string>();
-  props.dialogs
-    .filter((value) => value.DialogCategory === currentDialogCategory.value)
-    .forEach((value) => {
-      if (!["Enter", "Idle"].includes(value.DialogCondition)) {
-        conditionSet.add(value.DialogCondition);
-      }
-    });
-  return conditionSet;
-});
-function getCategoryIcon(category: string) {
-  if (category.endsWith("Lobby")) {
-    //默认category使用默认icon
-    return `${props.dataUrls.iconDirectory}/Event_Icon_Story.png`;
-  } else if (category in iconMap) {
-    return `${props.dataUrls.iconDirectory}/${Reflect.get(iconMap, category)}`;
-  }
-  return `${props.dataUrls.iconDirectory}/${category.replace(
-    "UIEvent",
-    "Event_Icon_"
-  )}.png`;
-}
-const currentDialogConditionDetail = ref("None");
-const dialogConditionDetails = computed(() => {
-  const commonDetails = [
-    { word: "正常", value: "None" },
-    { word: "中期", value: "Day" },
-    { word: "关闭", value: "Close" },
-  ];
-  const currentDialogDetails: string[] = [];
-  props.dialogs
-    .filter((dialog) => dialog.DialogCategory === currentDialogCategory.value)
-    .forEach((dialog) =>
-      currentDialogDetails.push(dialog.DialogConditionDetail)
-    );
-  return commonDetails.filter((detail) =>
-    currentDialogDetails.includes(detail.value)
-  );
-});
-
 const dialogType = ref<DialogType>("Talk");
 async function playVoice(
   dialogCondition: string,
   inputConditionDetail?: string,
   characterId?: number
 ) {
-  const conditionDetail =
-    dialogCondition === "Enter"
-      ? inputConditionDetail
-        ? inputConditionDetail
-        : currentDialogConditionDetail.value
-      : null;
+  let conditionDetail = null;
+  if (dialogCondition === "Enter") {
+    if (inputConditionDetail) {
+      conditionDetail = inputConditionDetail;
+    } else {
+      conditionDetail = "None";
+    }
+  }
+
   let finalDialogs = props.dialogs;
   if (characterId) {
     const dialogFilterByCharacter = props.dialogs.filter(
@@ -109,7 +58,6 @@ async function playVoice(
   }
   const currentEventDialogs = eventDialogManager.getDialog(
     finalDialogs,
-    currentDialogCategory.value,
     dialogCondition,
     conditionDetail
   );
@@ -123,15 +71,6 @@ async function playVoice(
       dialogType
     );
   }
-}
-
-async function enterNewCategory(
-  category: RawEventDialogItem["DialogCategory"]
-) {
-  currentDialogCategory.value = category;
-  currentDialogConditionDetail.value = "None";
-  console.log("switch to new category!");
-  playVoice("Enter");
 }
 
 const initState = ref(false);
@@ -167,32 +106,6 @@ defineExpose({ playVoice });
       class="dialog"
       :mode="dialogType"
     />
-
-    <!-- <div id="eventVoicePlayer__icons">
-      <div
-        v-for="category in currentDialogCategorieSet"
-        id="eventVoicePlayer__icons__icon"
-        @click="enterNewCategory(category)"
-      >
-        <img :src="getCategoryIcon(category)" />
-        {{ category.replace("UIEvent", "") }}
-      </div>
-      <div id="eventVoicePlayer__icons__layer"></div>
-    </div> -->
-    <div
-      id="eventVoicePlayer__conditionSelecter"
-      v-if="currentDialogConditionSet.size > 0"
-    >
-      <div>
-        <label>条件</label>
-        <select v-model="currentDialogCondition">
-          <option v-for="condition in currentDialogConditionSet">
-            {{ condition }}
-          </option>
-        </select>
-      </div>
-      <button @click="playVoice(currentDialogCondition)">触发</button>
-    </div>
   </div>
 </template>
 
