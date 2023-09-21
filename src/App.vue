@@ -135,6 +135,7 @@ const loaded = computed(() => {
       <Player
         ref="player"
         :dialogs="dialogsFilteByCategory"
+        v-show="loaded"
         height="99vh"
         width="45vw"
         :class="{
