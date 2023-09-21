@@ -11,7 +11,7 @@ import "vuestic-ui/css";
 import App from "./App.vue";
 import { createPinia } from "pinia";
 
-createApp(App)
-  .use(createVuestic())
-  .use(createPinia().use(piniaPluginPersistedstate))
-  .mount("#app");
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+
+createApp(App).use(createVuestic()).use(pinia).mount("#app");

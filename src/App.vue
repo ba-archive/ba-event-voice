@@ -14,6 +14,7 @@ import DetailConditionSelector from "./modules/conditionSelector/DetailCondition
 import CategorySelector from "./modules/conditionSelector/CategorySelector.vue";
 import rawEventSettings from "./data/eventSetting.json";
 import { Sound } from "@pixi/sound";
+import ResourceLoading from "./modules/resourceLoader/index.vue";
 const eventDialogs = eventDialogsTable["DataList"];
 
 const eventIDs = new Set<string>();
@@ -104,6 +105,7 @@ function changeBgm() {
 }
 changeBgm();
 const showTips = ref(true);
+const loading = ref(false);
 </script>
 
 <template>
@@ -147,6 +149,7 @@ const showTips = ref(true);
       />
     </div>
   </main>
+  <ResourceLoading v-if="loading" />
 </template>
 
 <style lang="scss" scoped>
