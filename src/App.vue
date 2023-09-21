@@ -116,7 +116,7 @@ const loading = ref(false);
         :dialogs="dialogsFilteByCategory"
         height="99vh"
         width="45vw"
-        class="voicePlayer"
+        class="voicePlayer playerAnimation"
         :data-urls="{
           characterExcelTable:
             'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
@@ -140,7 +140,7 @@ const loading = ref(false);
         component, such as a dismissible alert, sub-window, etc.
       </p>
     </va-modal> -->
-    <div class="mainPage__right">
+    <div class="mainPage__right rightPageAnimation">
       <Tabs :event-ids="finalEventIDs"></Tabs>
       <DetailConditionSelector
         :dialogs="dialogsFilteByCategory"
@@ -176,6 +176,24 @@ const loading = ref(false);
     box-sizing: border-box;
     height: 100vh;
     padding: 3% 1%;
+  }
+}
+
+.playerAnimation {
+  animation: moveRight 1s;
+  @keyframes moveRight {
+    0% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.rightPageAnimation {
+  animation: fadeIn 1s;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
   }
 }
 </style>
