@@ -5,6 +5,7 @@ import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
 import { RawEventDialogItem, EventSettingItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
+import { useWindowSize } from "@vueuse/core";
 import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
 import { getBgUrl, getBgmSound } from "./modules/common/resourceApi";
@@ -67,6 +68,7 @@ watch(currentEventId, () => {
   if (currentEventId.value === "701") {
     currentCategory.value = "UISpecialOperationLobby";
   }
+  headerExpand.value = false;
   changeBgm();
 });
 const dialogsFilteByCategory = computed(() => {
@@ -127,11 +129,47 @@ const loaded = computed(() => {
     bgDone.value
   );
 });
+
+const { height: windowHeight, width: windowWidth } = useWindowSize();
+const isMobile = computed(() => {
+  return windowHeight.value > windowWidth.value;
+});
+const headerExpand = ref(false);
 </script>
 
 <template>
   <main class="mainPage" :style="{ backgroundImage: `url(${currentBg})` }">
     <div class="mainPage__left">
+      <header v-if="isMobile" :class="{ headerExpand }">
+        <DetailConditionSelector
+          :dialogs="dialogsFilteByCategory"
+          @re-enter="reEnter"
+          @condition="triggerCondition"
+          mobile
+          v-if="!headerExpand"
+        />
+        <button
+          class="menu"
+          :class="{
+            opened: headerExpand,
+          }"
+          @click="headerExpand = !headerExpand"
+          aria-label="Main Menu"
+        >
+          <svg width="6vh" height="6vh" viewBox="0 0 100 100">
+            <path
+              class="line line1"
+              d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
+            />
+            <path class="line line2" d="M 20,50 H 80" />
+            <path
+              class="line line3"
+              d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+            />
+          </svg>
+        </button>
+        <Tabs :event-ids="finalEventIDs" v-show="headerExpand" mobile></Tabs>
+      </header>
       <Player
         ref="player"
         :dialogs="dialogsFilteByCategory"
@@ -166,20 +204,22 @@ const loaded = computed(() => {
       </p>
     </va-modal> -->
     <div
+      v-if="!isMobile"
       :class="{
         mainPage__right: true,
         rightPageAnimation: loaded,
       }"
     >
-      <Tabs :event-ids="finalEventIDs"></Tabs>
+      <Tabs :event-ids="finalEventIDs" :mobile="false"></Tabs>
       <DetailConditionSelector
         :dialogs="dialogsFilteByCategory"
         @re-enter="reEnter"
         @condition="triggerCondition"
+        :mobile="false"
       />
     </div>
   </main>
-  <ResourceLoading v-if="!loaded" />
+  <ResourceLoading v-if="!loaded" :mobile="isMobile" />
 </template>
 
 <style lang="scss" scoped>
@@ -191,11 +231,22 @@ const loaded = computed(() => {
     height: 100vh;
     position: relative;
     flex: 5;
-    .eventSelector {
+    header {
+      height: 8vh;
       position: absolute;
-      right: 5vw;
-      top: 1vh;
+      top: 0;
+      width: 100vw;
+      padding: 1% 0;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      transition: height;
     }
+
+    .headerExpand {
+      height: 100vh;
+    }
+
     .voicePlayer {
       position: absolute;
       bottom: 0;
@@ -225,5 +276,53 @@ const loaded = computed(() => {
       opacity: 0;
     }
   }
+}
+</style>
+
+<style>
+.menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  position: absolute;
+  right: 1%;
+  top: 1vh;
+  z-index: 3;
+}
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <div class="tabs">
+  <div class="main" :class="{ mobile }">
+    <div class="tabs" v-if="!mobile">
       <div
         :class="{
           tab: true,
@@ -31,6 +31,20 @@
         <Settings v-show="currentTab === 'settings'" />
       </VaScrollContainer>
     </div>
+    <va-tabs v-model="currentTab" class="tabs" grow v-if="mobile">
+      <template #tabs>
+        <va-tab
+          v-for="tab in [
+            { key: '活动选择', value: 'events' },
+            { key: '设置', value: 'settings' },
+          ]"
+          :key="tab.key"
+          :name="tab.value"
+        >
+          {{ tab.key }}
+        </va-tab>
+      </template>
+    </va-tabs>
   </div>
 </template>
 
@@ -39,7 +53,7 @@ import { ref } from "vue";
 import EventSelector from "./EventSelector.vue";
 import Settings from "./Settings.vue";
 import { VaScrollContainer } from "vuestic-ui";
-const props = defineProps<{ eventIds: string[] }>();
+const props = defineProps<{ eventIds: string[]; mobile: boolean }>();
 
 const currentTab = ref("events");
 </script>
@@ -84,6 +98,22 @@ const currentTab = ref("events");
       background-color: #263b4e;
       color: #ffe500;
     }
+  }
+}
+
+.mobile {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  .content {
+    position: absolute;
+    bottom: 7%;
+  }
+  .tabs {
+    position: absolute;
+    bottom: 0;
+  }
+  :deep(.va-tabs__container) {
+    height: 100%;
   }
 }
 </style>

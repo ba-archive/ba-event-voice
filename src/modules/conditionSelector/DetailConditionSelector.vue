@@ -1,6 +1,15 @@
 <template>
-  <div class="main">
-    <va-tabs v-model="currentSelector" vertical class="tabs">
+  <div class="main" :class="{ mobile: props.mobile }">
+    <va-button-group
+      v-if="props.mobile"
+      gradient
+      color="info"
+      class="buttonGrope"
+    >
+      <va-button icon="create" @click="currentSelector = 'time'" />
+      <va-button icon="create" @click="currentSelector = 'condition'" />
+    </va-button-group>
+    <va-tabs v-model="currentSelector" vertical class="tabs" v-else>
       <template #tabs>
         <va-tab
           v-for="tab in [
@@ -22,12 +31,16 @@
         v-model="currentTime"
         value-by="value"
         class="selector__select"
+        :inner-label="props.mobile"
+        :preset="props.mobile ? 'solid' : ''"
       />
       <va-select
         label="人物"
         :options="characters"
         v-model="currentCharacter"
         class="selector__select"
+        :inner-label="props.mobile"
+        :preset="props.mobile ? 'solid' : ''"
       />
       <div class="emitButton">
         <va-button round icon="thumb_up" @click="reEnter" />
@@ -40,6 +53,8 @@
         v-model="currentCondition"
         value-by="value"
         class="condition_select"
+        :inner-label="props.mobile"
+        :preset="props.mobile ? 'solid' : ''"
       />
       <div class="emitButton">
         <va-button round icon="thumb_up" @click="onCondition" />
@@ -55,7 +70,7 @@ import { RawEventDialogItem } from "../common/types";
 import { uniq } from "lodash-es";
 const currentSelector = ref("time");
 
-const props = defineProps<{ dialogs: RawEventDialogItem[] }>();
+const props = defineProps<{ dialogs: RawEventDialogItem[]; mobile: boolean }>();
 const currentTime = ref("None");
 const commonDetails = [
   { text: "正常", value: "None" },
@@ -114,6 +129,14 @@ function onCondition() {
     right: 10%;
   }
 }
+
+.mobile {
+  height: 100%;
+  margin-top: 0;
+  width: 80%;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: none;
+}
 </style>
 
 <style>
@@ -125,5 +148,9 @@ function onCondition() {
 .condition_select {
   margin: 0 5%;
   width: 60%;
+}
+
+.buttonGrope {
+  margin-left: 3%;
 }
 </style>
