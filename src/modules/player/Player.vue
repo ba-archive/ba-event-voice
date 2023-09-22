@@ -10,15 +10,6 @@ import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
 export type Props = {
   dialogs: RawEventDialogItem[];
-  width: string;
-  height: string;
-  dataUrls: {
-    characterExcelTable: string;
-    characterSpineDirectory: string;
-    voiceDirectory: string;
-    iconDirectory: string;
-  };
-  eventIcon?: string;
 };
 const props = defineProps<Props>();
 

@@ -174,21 +174,9 @@ const headerExpand = ref(false);
         ref="player"
         :dialogs="dialogsFilteByCategory"
         v-show="loaded"
-        height="99vh"
-        width="45vw"
         :class="{
           voicePlayer: true,
           playerAnimation: loaded,
-        }"
-        :data-urls="{
-          characterExcelTable:
-            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/data/CostumeExcelTable.json',
-          characterSpineDirectory:
-            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/spine',
-          voiceDirectory:
-            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/Audio/VoiceJp/Character_voice',
-          iconDirectory:
-            'https://yuuka.cdn.diyigemt.com/image/ba-all-data/eventIcon',
         }"
       />
       <CategorySelector
