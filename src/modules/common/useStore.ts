@@ -8,6 +8,7 @@ export default defineStore("main", {
       currentCategory: "Lobby",
       currentBgm: null as null | Sound,
       bgmVolume: 0.25,
+      characterSizeInMobile: 0.8,
       reEnterAnimation: true,
       playerDone: false,
       categoryDone: false,

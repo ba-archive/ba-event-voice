@@ -7,7 +7,7 @@
     >
       <img :src="categoryInfo.icon" />
       <div>
-        {{ categoryInfo.category.replace("UI", "").replace("Event", "") }}
+        {{ categoryTexts[categoryInfo.category] }}
       </div>
     </div>
     <div class="rectBg"></div>
@@ -19,7 +19,9 @@ import { ref, watch } from "vue";
 import { getCategoryIcons } from "../common/resourceApi";
 import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
+import rawCategoryTexts from "../../data/categoryTexts.json";
 
+const categoryTexts = rawCategoryTexts as Record<string, string>;
 const props = defineProps<{ categories: string[]; modelValue: string }>();
 const emits = defineEmits<{
   (e: "update:modelValue", value: string): void;
@@ -55,6 +57,7 @@ initCategories();
     img {
       object-fit: contain;
       height: 30%;
+      margin-bottom: 2%;
     }
   }
   .rectBg {

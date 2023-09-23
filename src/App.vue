@@ -53,7 +53,7 @@ for (const dialog of eventDialogs) {
 }
 let finalEventIDs = Array.from(eventIDs);
 finalEventIDs = finalEventIDs.filter(
-  (id) => id.startsWith("6") || id.startsWith("7") || id.startsWith("8")
+  (id) => id.startsWith("7") || id.startsWith("8")
 );
 Reflect.set(window, "player", eventVoicePlayer);
 
@@ -173,6 +173,7 @@ const headerExpand = ref(false);
       <Player
         ref="player"
         :dialogs="dialogsFilteByCategory"
+        :mobile="isMobile"
         v-show="loaded"
         :class="{
           voicePlayer: true,

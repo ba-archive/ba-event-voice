@@ -1,14 +1,13 @@
 <template>
   <div class="main" :class="{ mobile: props.mobile }">
-    <va-button-group
-      v-if="props.mobile"
-      gradient
-      color="info"
-      class="buttonGrope"
+    <va-button
+      round
+      :icon="mobileButtonIcon"
+      preset="secondary"
+      v-if="mobile"
+      @click="changeTab"
     >
-      <va-button icon="create" @click="currentSelector = 'time'" />
-      <va-button icon="create" @click="currentSelector = 'condition'" />
-    </va-button-group>
+    </va-button>
     <va-tabs v-model="currentSelector" vertical class="tabs" v-else>
       <template #tabs>
         <va-tab
@@ -105,6 +104,21 @@ const conditions = computed(() => {
 function onCondition() {
   emits("condition", currentCondition.value);
 }
+
+const mobileButtonIcon = computed(() => {
+  if (currentSelector.value === "time") {
+    return "arrow_downward";
+  } else {
+    return "arrow_upward";
+  }
+});
+function changeTab() {
+  if (currentSelector.value === "time") {
+    currentSelector.value = "condition";
+  } else {
+    currentSelector.value = "time";
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -137,6 +151,47 @@ function onCondition() {
   background: rgba(255, 255, 255, 0);
   box-shadow: none;
 }
+
+.arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  position: relative;
+  margin: 0 1rem;
+  cursor: pointer;
+  user-select: none;
+
+  span {
+    top: 0.5rem;
+    position: absolute;
+    width: 0.75rem;
+    height: 0.1rem;
+    background-color: #efefef;
+    display: inline-block;
+    transition: all 0.2s ease;
+
+    &:first-of-type {
+      left: 0;
+      transform: rotate(45deg);
+    }
+
+    &:last-of-type {
+      right: 0;
+      transform: rotate(-45deg);
+    }
+  }
+  &.active {
+    span {
+      &:first-of-type {
+        transform: rotate(-45deg);
+      }
+
+      &:last-of-type {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
 </style>
 
 <style>
@@ -152,5 +207,9 @@ function onCondition() {
 
 .buttonGrope {
   margin-left: 3%;
+}
+
+.va-select-dropdown__content {
+  z-index: 4;
 }
 </style>

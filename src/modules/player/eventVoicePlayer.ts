@@ -9,7 +9,7 @@ import { Ref } from "vue";
 const Idle_Track = 0;
 const Face_Track = 1;
 const Wink_Track = 2;
-const appHeight = 1300;
+const appHeight = 2000;
 const appWidth = 1500;
 
 Assets.loader.parsers.push(soundAsset);
@@ -255,7 +255,7 @@ const eventVoicePlayer = {
       currentCharacterSpine.state.setAnimation(Idle_Track, "Idle_01", true);
       currentCharacterSpine.position.set(
         this.app.screen.width / 2,
-        this.app.screen.height
+        this.app.screen.height * (2 / 3)
       );
       this.app.stage.addChild(currentCharacterSpine);
       this.currentCharacter.spine = currentCharacterSpine;

@@ -10,13 +10,24 @@ import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
 export type Props = {
   dialogs: RawEventDialogItem[];
+  mobile: boolean;
 };
 const props = defineProps<Props>();
+const { playerDone, reEnterAnimation, characterSizeInMobile } = storeToRefs(
+  useStore()
+);
 
 const eventVoicePlayerDiv = ref<HTMLDivElement | undefined>();
 const { width: playerWidth, height: playerHeight } =
   useElementSize(eventVoicePlayerDiv);
-const canvasScaleNumber = computed(() => (playerHeight.value + 1) / appHeight);
+const canvasScaleNumber = computed(() => {
+  const showPlayerHeight = (playerHeight.value + 1) * 1.5;
+  if (props.mobile) {
+    return (showPlayerHeight * characterSizeInMobile.value) / appHeight;
+  } else {
+    return showPlayerHeight / appHeight;
+  }
+});
 const canvasScale = computed(() => `scale(${canvasScaleNumber.value})`);
 const canvasLeft = computed(
   () =>
@@ -73,7 +84,6 @@ async function playVoice(
 }
 
 const initState = ref(false);
-const { playerDone, reEnterAnimation } = storeToRefs(useStore());
 async function init() {
   eventVoicePlayer.init("eventVoicePlayer");
   playerDone.value = false;
@@ -95,7 +105,7 @@ defineExpose({ playVoice });
 </script>
 
 <template>
-  <div id="eventVoicePlayer" ref="eventVoicePlayerDiv">
+  <div id="eventVoicePlayer" ref="eventVoicePlayerDiv" :class="{ mobile }">
     <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
     <Dialog
       :text="voiceText"
