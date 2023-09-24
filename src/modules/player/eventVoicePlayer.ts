@@ -2,9 +2,8 @@ import { RawEventDialogItem, CharacterExcelTableItem } from "../common/types";
 import { Application, Assets } from "pixi.js";
 import { Spine, ISkeletonData } from "pixi-spine";
 import { soundAsset, Sound } from "@pixi/sound";
-import { Props } from "./Player.vue";
-import axios from "axios";
 import { Ref } from "vue";
+import useStore from "../common/useStore";
 
 const Idle_Track = 0;
 const Face_Track = 1;
@@ -100,7 +99,7 @@ const eventVoicePlayer = {
 
         voicePromise = new Promise<void>((resolve) => {
           this.playingVoice?.play({
-            volume: 1,
+            volume: useStore().characterVolume,
             complete: () => resolve(),
           });
         });

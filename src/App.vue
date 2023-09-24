@@ -20,6 +20,7 @@ const eventDialogs = eventDialogsTable["DataList"];
 const eventIDs = new Set<string>();
 const {
   currentEventId,
+  bgmState,
   bgmVolume,
   currentBgm,
   playerDone,
@@ -103,6 +104,9 @@ async function changeBgm() {
   if (currentBgm.value) {
     currentBgm.value.pause();
   }
+  if (!bgmState.value) {
+    return;
+  }
   const currentBgmSetting = eventSettings[currentEventId.value].bgm;
   currentBgm.value = await getBgmSound(currentBgmSetting.Path);
   currentBgm.value.play({
@@ -120,6 +124,7 @@ async function changeBgm() {
 }
 changeBgm();
 changeBg();
+watch(bgmState, changeBgm);
 const showTips = ref(true);
 const loaded = computed(() => {
   return (
