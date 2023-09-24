@@ -26,6 +26,7 @@ const {
   playerDone,
   categoryDone,
   eventIconsDone,
+  currentTime,
 } = storeToRefs(useStore());
 const eventSettings = rawEventSettings as Record<string, EventSettingItem>;
 
@@ -71,6 +72,7 @@ watch(currentEventId, () => {
   }
   headerExpand.value = false;
   changeBgm();
+  currentTime.value = "None";
 });
 const dialogsFilteByCategory = computed(() => {
   return currentEventDialogs.value.filter(

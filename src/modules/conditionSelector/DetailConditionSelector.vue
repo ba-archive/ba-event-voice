@@ -26,7 +26,7 @@
     <div v-if="currentSelector === 'time'" class="selector">
       <va-select
         label="时期"
-        :options="commonDetails"
+        :options="finalTimes"
         v-model="currentTime"
         value-by="value"
         class="selector__select"
@@ -74,15 +74,22 @@ import { storeToRefs } from "pinia";
 const currentSelector = ref("time");
 
 const props = defineProps<{ dialogs: RawEventDialogItem[]; mobile: boolean }>();
-const { language, currentCharacterId: currentCharacter } = storeToRefs(
-  useStore()
-);
-const currentTime = ref("None");
+const {
+  language,
+  currentCharacterId: currentCharacter,
+  currentTime,
+} = storeToRefs(useStore());
 const commonDetails = [
   { text: "正常", value: "None" },
   { text: "中期", value: "Day" },
   { text: "关闭", value: "Close" },
 ];
+const finalTimes = computed(() => {
+  const times = uniq(
+    props.dialogs.map((dialog) => dialog.DialogConditionDetail)
+  ) as string[];
+  return commonDetails.filter((detail) => times.includes(detail.value));
+});
 
 const characters = computed(() => {
   const dialogFilterByTime = props.dialogs.filter(
