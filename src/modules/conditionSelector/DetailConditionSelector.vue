@@ -35,7 +35,8 @@
       />
       <va-select
         label="人物"
-        :options="characters"
+        :options="characterOptions"
+        value-by="value"
         v-model="currentCharacter"
         class="selector__select"
         :inner-label="props.mobile"
@@ -67,9 +68,15 @@ import { VaSelect } from "vuestic-ui";
 import { computed, ref, watch } from "vue";
 import { RawEventDialogItem } from "../common/types";
 import { uniq } from "lodash-es";
+import { CharacterExcelTable } from "../common/resourceApi";
+import useStore from "../common/useStore";
+import { storeToRefs } from "pinia";
 const currentSelector = ref("time");
 
 const props = defineProps<{ dialogs: RawEventDialogItem[]; mobile: boolean }>();
+const { language, currentCharacterId: currentCharacter } = storeToRefs(
+  useStore()
+);
 const currentTime = ref("None");
 const commonDetails = [
   { text: "正常", value: "None" },
@@ -83,10 +90,18 @@ const characters = computed(() => {
   );
   return uniq(dialogFilterByTime.map((dialog) => dialog.CostumeUniqueId));
 });
-const currentCharacter = ref(characters.value[0]) || 0;
-watch(characters, () => {
-  currentCharacter.value = characters.value[0];
+const characterOptions = computed(() => {
+  return characters.value.map((characterId) => {
+    return {
+      value: characterId,
+      text: Reflect.get(
+        CharacterExcelTable.get(characterId)!,
+        `Name${language.value}`
+      ),
+    };
+  });
 });
+
 const emits = defineEmits<{
   (e: "reEnter", detailTime: string, characterId: number): void;
   (e: "condition", condition: string): void;

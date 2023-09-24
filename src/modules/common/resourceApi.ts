@@ -3,15 +3,19 @@ import bgDatas from "../../data/eventBgDatas.json";
 import eventVoicePlayer from "../player/eventVoicePlayer";
 import { CharacterExcelTableItem, RawEventDialogItem } from "./types";
 const BaseURL = "https://yuuka.cdn.diyigemt.com/image/ba-all-data";
-import iconMap from "./iconMap.json";
+import iconMap from "../../data/iconMap.json";
 import { Spine } from "pixi-spine";
 import { Sound } from "@pixi/sound";
 import { Assets } from "pixi.js";
+import CharacterExcel from "../../data/CharacterExcel.json";
 export const ResourcesApi = axios.create({
   baseURL: "https://yuuka.cdn.diyigemt.com/image/ba-all-data",
 });
 
-const CharacterExcelTable = new Map<number, CharacterExcelTableItem>();
+export const CharacterExcelTable = new Map<number, CharacterExcelTableItem>();
+for (const item of CharacterExcel["DataList"]) {
+  CharacterExcelTable.set(item.CostumeUniqueId, item);
+}
 
 export async function getEventIcons(eventIds: string[]) {
   const results = eventIds.map((id) => {
@@ -74,16 +78,6 @@ export async function getCategoryIcons(categories: string[]) {
  * @param dialogs
  */
 export async function initPlayer(dialogs: RawEventDialogItem[]) {
-  if (CharacterExcelTable.size === 0) {
-    await axios
-      .get(`${BaseURL}/data/CostumeExcelTable.json`)
-      .then((response) => {
-        const datas: CharacterExcelTableItem[] = response.data["DataList"];
-        for (const data of datas) {
-          CharacterExcelTable.set(data["CostumeUniqueId"], data);
-        }
-      });
-  }
   for (const dialog of dialogs) {
     const urls = getDialogUrls(dialog);
     const characterId = dialog.CostumeUniqueId;

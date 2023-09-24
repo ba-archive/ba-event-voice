@@ -78,6 +78,7 @@ const eventVoicePlayer = {
         console.log("current character: ", dialog.CostumeUniqueId);
         //加载spine资源
         this.initCharacter(dialog.CostumeUniqueId);
+        useStore().currentCharacterId = dialog.CostumeUniqueId;
       }
 
       if (dialog.AnimationName !== "") {

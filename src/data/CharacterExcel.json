@@ -1,0 +1,520 @@
+{
+  "DataList": [
+    {
+      "CostumeUniqueId": 1900900101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_nodoka",
+      "NameCN": "和香",
+      "NameJP": "ノドカ"
+    },
+    {
+      "CostumeUniqueId": 1900900201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_tomoe",
+      "NameCN": "巴",
+      "NameJP": "トモエ"
+    },
+    {
+      "CostumeUniqueId": 1900900301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_cherino",
+      "NameCN": "切里诺",
+      "NameJP": "チェリノ"
+    },
+    {
+      "CostumeUniqueId": 1900900401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_azusa_swimsuitND",
+      "NameCN": "梓",
+      "NameJP": "アズサ"
+    },
+    {
+      "CostumeUniqueId": 1900900501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_mashiro_swimsuitND",
+      "NameCN": "真白",
+      "NameJP": "マシロ"
+    },
+    {
+      "CostumeUniqueId": 1900900601,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0058ND",
+      "NameCN": "日富美",
+      "NameJP": "ヒフミ"
+    },
+    {
+      "CostumeUniqueId": 1900900701,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0060ND",
+      "NameCN": "鹤城",
+      "NameJP": "ツルギ"
+    },
+    {
+      "CostumeUniqueId": 1900900801,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_izumi_swimsuitnd",
+      "NameCN": "泉",
+      "NameJP": "イズミ"
+    },
+    {
+      "CostumeUniqueId": 1900900901,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Izuna",
+      "NameCN": "泉奈",
+      "NameJP": "イズナ"
+    },
+    {
+      "CostumeUniqueId": 1900901001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_shizuko",
+      "NameCN": "静子",
+      "NameJP": "シズコ"
+    },
+    {
+      "CostumeUniqueId": 1900901101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0063ND",
+      "NameCN": "日奈",
+      "NameJP": "ヒナ"
+    },
+    {
+      "CostumeUniqueId": 1900901201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0064ND",
+      "NameCN": "伊织",
+      "NameJP": "イオリ"
+    },
+    {
+      "CostumeUniqueId": 1900901301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0066ND",
+      "NameCN": "瞬",
+      "NameJP": "シュン"
+    },
+    {
+      "CostumeUniqueId": 1900901401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Saya_Casual",
+      "NameCN": "沙耶",
+      "NameJP": "サヤ"
+    },
+    {
+      "CostumeUniqueId": 1900901501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0101",
+      "NameCN": "尼禄",
+      "NameJP": "ネル"
+    },
+    {
+      "CostumeUniqueId": 1900901601,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0100",
+      "NameCN": "花凛",
+      "NameJP": "カリン"
+    },
+    {
+      "CostumeUniqueId": 1900901701,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0098",
+      "NameCN": "明日奈",
+      "NameJP": "アスナ"
+    },
+    {
+      "CostumeUniqueId": 1900901801,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0159",
+      "NameCN": "日鞠",
+      "NameJP": "ヒマリ"
+    },
+    {
+      "CostumeUniqueId": 1900902001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0164ND",
+      "NameCN": "切里诺",
+      "NameJP": "チェリノ"
+    },
+    {
+      "CostumeUniqueId": 1900902101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0163ND",
+      "NameCN": "千夏",
+      "NameJP": "チナツ"
+    },
+    {
+      "CostumeUniqueId": 1900902201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0165ND",
+      "NameCN": "和香",
+      "NameJP": "ノドカ"
+    },
+    {
+      "CostumeUniqueId": 1900902301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Aru_newyear",
+      "NameCN": "阿露",
+      "NameJP": "アル"
+    },
+    {
+      "CostumeUniqueId": 1900902401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Mutsuki_newyear",
+      "NameCN": "睦月",
+      "NameJP": "ムツキ"
+    },
+    {
+      "CostumeUniqueId": 1900902501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Serika_newyear",
+      "NameCN": "芹香",
+      "NameJP": "セリカ"
+    },
+    {
+      "CostumeUniqueId": 1900902601,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0141",
+      "NameCN": "吹雪",
+      "NameJP": "フブキ"
+    },
+    {
+      "CostumeUniqueId": 1900902701,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_wakamo",
+      "NameCN": "若藻",
+      "NameJP": "ワカモ"
+    },
+    {
+      "CostumeUniqueId": 1900902801,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_sena",
+      "NameCN": "濑名",
+      "NameJP": "セナ"
+    },
+    {
+      "CostumeUniqueId": 1900903001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0169",
+      "NameCN": "忧",
+      "NameJP": "ウイ"
+    },
+    {
+      "CostumeUniqueId": 1900903101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Hinata",
+      "NameCN": "日向",
+      "NameJP": "ヒナタ"
+    },
+    {
+      "CostumeUniqueId": 1900904001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Kaede",
+      "NameCN": "枫",
+      "NameJP": "カエデ"
+    },
+    {
+      "CostumeUniqueId": 1900904101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0156",
+      "NameCN": "伊吕波",
+      "NameJP": "イロハ"
+    },
+    {
+      "CostumeUniqueId": 1900904201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0114",
+      "NameCN": "月咏",
+      "NameJP": "ツクヨ"
+    },
+    {
+      "CostumeUniqueId": 1900904301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0113",
+      "NameCN": "满",
+      "NameJP": "ミチル"
+    },
+    {
+      "CostumeUniqueId": 1900904401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Eimi",
+      "NameCN": "艾米",
+      "NameJP": "エイミ"
+    },
+    {
+      "CostumeUniqueId": 1900905001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Hoshino_SwimsuitND",
+      "NameCN": "星野",
+      "NameJP": "ホシノ"
+    },
+    {
+      "CostumeUniqueId": 1900905101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0092ND",
+      "NameCN": "野宫",
+      "NameJP": "ノノミ"
+    },
+    {
+      "CostumeUniqueId": 1900905201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0176ND",
+      "NameCN": "绫音",
+      "NameJP": "アヤネ"
+    },
+    {
+      "CostumeUniqueId": 1900905301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0180ND",
+      "NameCN": "静子",
+      "NameJP": "シズコ"
+    },
+    {
+      "CostumeUniqueId": 1900905401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0179ND",
+      "NameCN": "泉奈",
+      "NameJP": "イズナ"
+    },
+    {
+      "CostumeUniqueId": 1900905501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0178ND",
+      "NameCN": "千世",
+      "NameJP": "チセ"
+    },
+    {
+      "CostumeUniqueId": 1900906001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Kazusa",
+      "NameCN": "和纱",
+      "NameJP": "カズサ"
+    },
+    {
+      "CostumeUniqueId": 1900906101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0155",
+      "NameCN": "夏",
+      "NameJP": "ナツ"
+    },
+    {
+      "CostumeUniqueId": 1900906201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_airi",
+      "NameCN": "爱莉",
+      "NameJP": "アイリ"
+    },
+    {
+      "CostumeUniqueId": 1900906301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_ako",
+      "NameCN": "亚子",
+      "NameJP": "アコ"
+    },
+    {
+      "CostumeUniqueId": 1900906401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0182ND",
+      "NameCN": "咏叶",
+      "NameJP": "ウタハ"
+    },
+    {
+      "CostumeUniqueId": 1900906501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0095",
+      "NameCN": "诺雅",
+      "NameJP": "ノア"
+    },
+    {
+      "CostumeUniqueId": 1900906601,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0181ND",
+      "NameCN": "响",
+      "NameJP": "ヒビキ"
+    },
+    {
+      "CostumeUniqueId": 1900906701,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0184",
+      "NameCN": "优香",
+      "NameJP": "ユウカ"
+    },
+    {
+      "CostumeUniqueId": 1900906801,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0186",
+      "NameCN": "玛丽",
+      "NameJP": "マリー"
+    },
+    {
+      "CostumeUniqueId": 1900906901,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0190",
+      "NameCN": "莲见",
+      "NameJP": "ハスミ"
+    },
+    {
+      "CostumeUniqueId": 1900908001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_shigure",
+      "NameCN": "时雨",
+      "NameJP": "シグレ"
+    },
+    {
+      "CostumeUniqueId": 1900908101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0195ND",
+      "NameCN": "花绘",
+      "NameJP": "ハナエ"
+    },
+    {
+      "CostumeUniqueId": 1900908201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0194ND",
+      "NameCN": "芹娜",
+      "NameJP": "セリナ"
+    },
+    {
+      "CostumeUniqueId": 1900909001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0191ND",
+      "NameCN": "晴奈",
+      "NameJP": "ハルナ"
+    },
+    {
+      "CostumeUniqueId": 1900909101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0192",
+      "NameCN": "纯子",
+      "NameJP": "ジュンコ"
+    },
+    {
+      "CostumeUniqueId": 1900909201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0177ND",
+      "NameCN": "枫香",
+      "NameJP": "フウカ"
+    },
+    {
+      "CostumeUniqueId": 1900910001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_rin_S_01",
+      "NameCN": "凛",
+      "NameJP": "リン"
+    },
+    {
+      "CostumeUniqueId": 1900910101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_momoka",
+      "NameCN": "桃香",
+      "NameJP": "モモカ"
+    },
+    {
+      "CostumeUniqueId": 1900910201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0013",
+      "NameCN": "步梦",
+      "NameJP": "アユム"
+    },
+    {
+      "CostumeUniqueId": 1900911001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0097",
+      "NameCN": "凛",
+      "NameJP": "リン"
+    },
+    {
+      "CostumeUniqueId": 1900911101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0098",
+      "NameCN": "桃香",
+      "NameJP": "モモカ"
+    },
+    {
+      "CostumeUniqueId": 1900911201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0099",
+      "NameCN": "アユム",
+      "NameJP": "アユム"
+    },
+    {
+      "CostumeUniqueId": 1900911301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_arona",
+      "NameCN": "阿罗娜",
+      "NameJP": "アロナ"
+    },
+    {
+      "CostumeUniqueId": 1900911401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_rin",
+      "NameCN": "凛",
+      "NameJP": "リン"
+    },
+    {
+      "CostumeUniqueId": 1900911501,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_momoka",
+      "NameCN": "桃香",
+      "NameJP": "モモカ"
+    },
+    {
+      "CostumeUniqueId": 1900911601,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0013",
+      "NameCN": "步梦",
+      "NameJP": "アユム"
+    },
+    {
+      "CostumeUniqueId": 1900912001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0086",
+      "NameCN": "佳代子",
+      "NameJP": "カヨコ"
+    },
+    {
+      "CostumeUniqueId": 1900912101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0087",
+      "NameCN": "遥香",
+      "NameJP": "ハルカ"
+    },
+    {
+      "CostumeUniqueId": 1900913001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0200",
+      "NameCN": "爱丽丝",
+      "NameJP": "アリス"
+    },
+    {
+      "CostumeUniqueId": 1900913101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0211",
+      "NameCN": "时",
+      "NameJP": "トキ"
+    },
+    {
+      "CostumeUniqueId": 1900913201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0203",
+      "NameCN": "柚子",
+      "NameJP": "ユズ"
+    },
+    {
+      "CostumeUniqueId": 1900913301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0167",
+      "NameCN": "玲纱",
+      "NameJP": "レイサ"
+    },
+    {
+      "CostumeUniqueId": 1900914001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_NP0032_npc",
+      "NameJP": "アオイ",
+      "NameCN": "葵"
+    },
+    {
+      "CostumeUniqueId": 1900914101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0135",
+      "NameCN": "瑠美",
+      "NameJP": "ルミ"
+    },
+    {
+      "CostumeUniqueId": 1900914201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0138",
+      "NameCN": "弥奈",
+      "NameJP": "ミナ"
+    },
+    {
+      "CostumeUniqueId": 1900915001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0215",
+      "NameCN": "宫子",
+      "NameJP": "ミヤコ"
+    },
+    {
+      "CostumeUniqueId": 1900915101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0217",
+      "NameCN": "咲",
+      "NameJP": "サキ"
+    },
+    {
+      "CostumeUniqueId": 1900915201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0218",
+      "NameCN": "美游",
+      "NameJP": "ミユ"
+    },
+    {
+      "CostumeUniqueId": 1900916001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0204ND",
+      "NameCN": "忧",
+      "NameJP": "ウイ"
+    },
+    {
+      "CostumeUniqueId": 1900916101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0205",
+      "NameCN": "小春",
+      "NameJP": "コハル"
+    },
+    {
+      "CostumeUniqueId": 1900916201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0209",
+      "NameJP": "ハナコ",
+      "NameCN": "花子"
+    },
+    {
+      "CostumeUniqueId": 1900916301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0210",
+      "NameCN": "日向",
+      "NameJP": "ヒナタ"
+    },
+    {
+      "CostumeUniqueId": 1900916401,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0183ND",
+      "NameCN": "三森",
+      "NameJP": "ミモリ"
+    },
+    {
+      "CostumeUniqueId": 1900917001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0124",
+      "NameCN": "梅露",
+      "NameJP": "メル"
+    },
+    {
+      "CostumeUniqueId": 1900917101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_Momiji",
+      "NameCN": "红叶",
+      "NameJP": "モミジ"
+    },
+    {
+      "CostumeUniqueId": 1900917201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0185ND",
+      "NameCN": "小鸟",
+      "NameJP": "コトリ"
+    }
+  ]
+}

@@ -6,6 +6,8 @@ export default defineStore("main", {
     return {
       currentEventId: "801",
       currentCategory: "Lobby",
+      currentCharacterId: 0,
+      language: "CN" as "CN" | "JP",
       currentBgm: null as null | Sound,
       bgmState: true,
       bgmVolume: 0.25,

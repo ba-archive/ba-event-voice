@@ -52,7 +52,8 @@ export interface RawEventDialogItem {
 export interface CharacterExcelTableItem {
   CostumeUniqueId: number;
   SpineResourceName: string;
-  TextureDir: string;
+  NameCN: string;
+  NameJP: string;
 }
 
 export type DialogType = RawEventDialogItem["DialogType"];
