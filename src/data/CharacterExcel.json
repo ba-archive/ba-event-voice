@@ -515,6 +515,12 @@
       "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0185ND",
       "NameCN": "小鸟",
       "NameJP": "コトリ"
+    },
+    {
+      "CostumeUniqueId": 1900917301,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0193ND",
+      "NameCN": "晴奈",
+      "NameJP": "ハルナ"
     }
   ]
 }

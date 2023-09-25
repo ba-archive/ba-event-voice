@@ -115,7 +115,7 @@ function getDialogUrls(dialog: RawEventDialogItem) {
   const spineArg = CharacterExcelTable.get(dialog.CostumeUniqueId);
   console.log("character info: ", spineArg);
   if (!spineArg) {
-    throw new Error("没有找到该角色id的对应资料");
+    throw new Error(`没有找到角色id ${dialog.CostumeUniqueId}的对应资料`);
   }
   //arg UIs/03_Scenario/02_Character/CharacterSpine_aru
   const temp = spineArg.SpineResourceName.split("/");

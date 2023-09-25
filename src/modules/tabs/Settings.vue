@@ -1,12 +1,13 @@
 <template>
   <div class="settings">
-    <va-switch v-model="bgmState" label="bgm" left-label> </va-switch>
+    <va-switch v-model="bgmState" label="Bgm" left-label> </va-switch>
     <va-slider
       v-model="localBgmVolume"
       track-label-visible
       :min="0"
       :max="100"
       label="bgm volume"
+      label-color="#000000"
       v-if="bgmState"
     />
     <va-slider
@@ -14,6 +15,7 @@
       track-label-visible
       :min="0"
       :max="100"
+      label-color="#000000"
       label="mobile character size"
     />
     <va-slider
@@ -21,7 +23,15 @@
       track-label-visible
       :min="0"
       :max="100"
+      label-color="#000000"
       label="character volume"
+    />
+    <va-select
+      :options="['CN', 'JP']"
+      v-model="language"
+      label="Language"
+      color="#000000"
+      preset="solid"
     />
   </div>
 </template>
@@ -38,6 +48,7 @@ const {
   characterSizeInMobile,
   characterVolume,
   currentBgm,
+  language,
 } = storeToRefs(useStore());
 const localBgmVolume = ref(25);
 const localCharacterSiezInMobile = ref(25);
@@ -66,7 +77,6 @@ watch(localCharacterVolume, (newCharacterVolume) => {
   flex-direction: column;
   padding: 1% 2%;
   align-items: flex-start;
-  color: rgb(21, 78, 193);
   & > :deep(div) {
     width: 100%;
     margin: 5% 0;

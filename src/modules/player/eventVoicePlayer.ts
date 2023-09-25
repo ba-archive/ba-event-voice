@@ -59,7 +59,7 @@ const eventVoicePlayer = {
    */
   async play(
     dialogs: RawEventDialogItem[],
-    textRef: Ref<string>,
+    textRef: Ref<{ LocalizeJP: string; LocalizeCN: string } | null>,
     id: number,
     dialogTypeRef: Ref<string>
   ) {
@@ -89,7 +89,10 @@ const eventVoicePlayer = {
         );
       }
 
-      textRef.value = dialog.LocalizeJP;
+      textRef.value = {
+        LocalizeCN: dialog.LocalizeCN,
+        LocalizeJP: dialog.LocalizeJP,
+      };
       if (dialog.VoiceClipsJp.length !== 0) {
         const voiceId = dialog.VoiceClipsJp[0];
         if (this.voiceCache.get(voiceId)) {
@@ -116,7 +119,7 @@ const eventVoicePlayer = {
     console.log("play done!");
     if (this.playingId === id) {
       const character = this.currentCharacter.spine;
-      textRef.value = "";
+      textRef.value = null;
       this.playingVoice = null;
 
       if (character) {

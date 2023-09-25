@@ -42,7 +42,7 @@ export interface RawEventDialogItem {
   ActionName: "";
   AnimationName: string;
   LocalizeJP: string;
-  LocalizeCN?: string;
+  LocalizeCN: string;
   LocalizeTW?: string;
   /*语音列表*/
   VoiceClipsKr: string[];

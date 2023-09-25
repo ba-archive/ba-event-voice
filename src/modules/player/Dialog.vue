@@ -1,11 +1,17 @@
 <script lang="ts" setup>
 import { DialogType } from "../common/types";
-const props = defineProps<{ text: string; mode: DialogType }>();
+import useStore from "../common/useStore";
+import { storeToRefs } from "pinia";
+const { language } = storeToRefs(useStore());
+const props = defineProps<{
+  text: { LocalizeJP: string; LocalizeCN: string };
+  mode: DialogType;
+}>();
 </script>
 
 <template>
   <div class="dialog__box">
-    {{ props.text }}
+    {{ props.text[`Localize${language}`] }}
     <div class="circles" v-if="mode === 'Think'">
       <div></div>
       <div></div>

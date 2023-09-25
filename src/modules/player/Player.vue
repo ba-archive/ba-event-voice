@@ -13,9 +13,8 @@ export type Props = {
   mobile: boolean;
 };
 const props = defineProps<Props>();
-const { playerDone, reEnterAnimation, characterSizeInMobile } = storeToRefs(
-  useStore()
-);
+const { playerDone, reEnterAnimation, characterSizeInMobile, language } =
+  storeToRefs(useStore());
 
 const eventVoicePlayerDiv = ref<HTMLDivElement | undefined>();
 const { width: playerWidth, height: playerHeight } =
@@ -36,7 +35,9 @@ const canvasLeft = computed(
     }px)`
 );
 
-const voiceText = ref("");
+const voiceText = ref(
+  null as { LocalizeJP: string; LocalizeCN: string } | null
+);
 const dialogType = ref<DialogType>("Talk");
 async function playVoice(
   dialogCondition: string,
