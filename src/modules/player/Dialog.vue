@@ -24,11 +24,13 @@ const props = defineProps<{
 .dialog__box {
   border-radius: 1em;
   background-color: white;
-  width: 70%;
+  display: inline-block;
+  max-width: 30%;
   padding: 1em 0.5em;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   line-height: 1.4em;
   position: relative;
+  white-space: pre-line;
 }
 
 .dialog__box::before {

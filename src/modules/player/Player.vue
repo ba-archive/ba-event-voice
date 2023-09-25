@@ -122,6 +122,7 @@ defineExpose({ playVoice });
   z-index: 0;
   height: 100%;
   width: 100%;
+  position: relative;
   overflow: hidden;
 
   &__refresh {
@@ -223,9 +224,8 @@ defineExpose({ playVoice });
 
   .dialog {
     position: absolute;
-    right: 1%;
+    left: 60%;
     bottom: 50%;
-    width: 30%;
   }
 }
 </style>
