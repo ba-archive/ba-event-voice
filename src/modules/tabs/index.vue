@@ -1,6 +1,6 @@
 <template>
-  <div class="main" :class="{ mobile }">
-    <div class="tabs" v-if="!mobile">
+  <div class="main" :class="{ portrait }">
+    <div class="tabs" v-if="!portrait">
       <div
         :class="{
           tab: true,
@@ -28,10 +28,10 @@
           :event-ids="props.eventIds"
           v-show="currentTab === 'events'"
         />
-        <Settings v-show="currentTab === 'settings'" />
+        <Settings v-show="currentTab === 'settings'" :portrait="portrait" />
       </VaScrollContainer>
     </div>
-    <va-tabs v-model="currentTab" class="tabs" grow v-if="mobile">
+    <va-tabs v-model="currentTab" class="tabs" grow v-if="portrait">
       <template #tabs>
         <va-tab
           v-for="tab in [
@@ -53,7 +53,7 @@ import { ref } from "vue";
 import EventSelector from "./EventSelector.vue";
 import Settings from "./Settings.vue";
 import { VaScrollContainer } from "vuestic-ui";
-const props = defineProps<{ eventIds: string[]; mobile: boolean }>();
+const props = defineProps<{ eventIds: string[]; portrait: boolean }>();
 
 const currentTab = ref("events");
 </script>
@@ -101,7 +101,7 @@ const currentTab = ref("events");
   }
 }
 
-.mobile {
+.portrait {
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
   .content {

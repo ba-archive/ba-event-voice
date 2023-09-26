@@ -1,5 +1,6 @@
 import { Sound } from "@pixi/sound";
 import { defineStore } from "pinia";
+import { useWindowSize } from "@vueuse/core";
 
 export default defineStore("main", {
   state: () => {
@@ -13,7 +14,10 @@ export default defineStore("main", {
       bgmState: true,
       bgmVolume: 0.25,
       characterVolume: 0.25,
-      characterSizeInMobile: 0.8,
+      characterSizeInPortrait: 0.8,
+      characterPositionInPortrait: 50,
+      characterSizeInLandscape: 1,
+      characterPositionInLandscape: 50,
       reEnterAnimation: true,
       playerDone: false,
       categoryDone: false,

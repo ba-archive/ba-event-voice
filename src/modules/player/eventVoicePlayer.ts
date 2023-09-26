@@ -258,7 +258,7 @@ const eventVoicePlayer = {
       currentCharacterSpine.state.setAnimation(Idle_Track, "Idle_01", true);
       currentCharacterSpine.position.set(
         this.app.screen.width / 2,
-        this.app.screen.height * (2 / 3)
+        this.app.screen.height * (5 / 9)
       );
       this.app.stage.addChild(currentCharacterSpine);
       this.currentCharacter.spine = currentCharacterSpine;

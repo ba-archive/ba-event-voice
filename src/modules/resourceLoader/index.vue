@@ -1,19 +1,19 @@
 <template>
-  <VaSkeletonGroup class="skeletonGrope" v-if="!mobile">
+  <VaSkeletonGroup class="skeletonGrope" v-if="!portrait">
     <VaSkeleton variant="squared" height="90%" width="49%" />
     <div class="subGrope">
       <VaSkeleton variant="squared" height="50%" width="100%" />
       <VaSkeleton variant="squared" height="30%" width="100%" />
     </div>
   </VaSkeletonGroup>
-  <VaSkeletonGroup class="skeletonGrope mobileSkeleton" v-else>
+  <VaSkeletonGroup class="skeletonGrope portraitSkeleton" v-else>
     <VaSkeleton variant="squared" height="15%" width="95%" />
     <VaSkeleton variant="squared" height="80%" width="95%" />
   </VaSkeletonGroup>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ mobile: boolean }>();
+const props = defineProps<{ portrait: boolean }>();
 </script>
 
 <style lang="scss">
@@ -38,7 +38,7 @@ const props = defineProps<{ mobile: boolean }>();
   }
 }
 
-.mobileSkeleton {
+.portraitSkeleton {
   flex-direction: column;
 }
 </style>

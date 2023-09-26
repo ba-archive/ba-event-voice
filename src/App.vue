@@ -138,7 +138,7 @@ const loaded = computed(() => {
 });
 
 const { height: windowHeight, width: windowWidth } = useWindowSize();
-const isMobile = computed(() => {
+const isportrait = computed(() => {
   return windowHeight.value > windowWidth.value;
 });
 const headerExpand = ref(false);
@@ -147,12 +147,12 @@ const headerExpand = ref(false);
 <template>
   <main class="mainPage" :style="{ backgroundImage: `url(${currentBg})` }">
     <div class="mainPage__left">
-      <header v-if="isMobile" :class="{ headerExpand }">
+      <header v-if="isportrait" :class="{ headerExpand }">
         <DetailConditionSelector
           :dialogs="dialogsFilteByCategory"
           @re-enter="reEnter"
           @condition="triggerCondition"
-          mobile
+          portrait
           v-if="!headerExpand"
         />
         <button
@@ -175,12 +175,12 @@ const headerExpand = ref(false);
             />
           </svg>
         </button>
-        <Tabs :event-ids="finalEventIDs" v-show="headerExpand" mobile></Tabs>
+        <Tabs :event-ids="finalEventIDs" v-show="headerExpand" portrait></Tabs>
       </header>
       <Player
         ref="player"
         :dialogs="dialogsFilteByCategory"
-        :mobile="isMobile"
+        :portrait="isportrait"
         v-show="loaded"
         :class="{
           voicePlayer: true,
@@ -200,22 +200,22 @@ const headerExpand = ref(false);
       </p>
     </va-modal> -->
     <div
-      v-if="!isMobile"
+      v-if="!isportrait"
       :class="{
         mainPage__right: true,
         rightPageAnimation: loaded,
       }"
     >
-      <Tabs :event-ids="finalEventIDs" :mobile="false"></Tabs>
+      <Tabs :event-ids="finalEventIDs" :portrait="false"></Tabs>
       <DetailConditionSelector
         :dialogs="dialogsFilteByCategory"
         @re-enter="reEnter"
         @condition="triggerCondition"
-        :mobile="false"
+        :portrait="false"
       />
     </div>
   </main>
-  <ResourceLoading v-if="!loaded" :mobile="isMobile" />
+  <ResourceLoading v-if="!loaded" :portrait="isportrait" />
 </template>
 
 <style lang="scss" scoped>

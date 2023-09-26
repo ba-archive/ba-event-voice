@@ -11,12 +11,44 @@
       v-if="bgmState"
     />
     <va-slider
-      v-model="localCharacterSiezInMobile"
+      v-model="characterSizeInPortrait"
+      track-label-visible
+      :min="0.1"
+      :max="1"
+      :step="0.1"
+      label-color="#000000"
+      label="portrait character size"
+      v-if="portrait"
+    />
+    <va-slider
+      v-model="characterPositionInPortrait"
       track-label-visible
       :min="0"
       :max="100"
+      :step="1"
       label-color="#000000"
-      label="mobile character size"
+      label="portrait character position"
+      v-if="portrait"
+    />
+    <va-slider
+      v-model="characterSizeInLandscape"
+      track-label-visible
+      :min="0.1"
+      :max="1"
+      :step="0.1"
+      label-color="#000000"
+      label="landscape character size"
+      v-if="!portrait"
+    />
+    <va-slider
+      v-model="characterPositionInLandscape"
+      track-label-visible
+      :min="0"
+      :max="100"
+      :step="1"
+      label-color="#000000"
+      label="landscape character position"
+      v-if="!portrait"
     />
     <va-slider
       v-model="localCharacterVolume"
@@ -45,23 +77,23 @@ import eventVoicePlayer from "../player/eventVoicePlayer";
 const {
   bgmState,
   bgmVolume,
-  characterSizeInMobile,
+  characterSizeInPortrait,
+  characterPositionInPortrait,
+  characterPositionInLandscape,
+  characterSizeInLandscape,
   characterVolume,
   currentBgm,
   language,
 } = storeToRefs(useStore());
-const localBgmVolume = ref(25);
-const localCharacterSiezInMobile = ref(25);
-const localCharacterVolume = ref(100);
+const localBgmVolume = ref(bgmVolume.value * 100);
+const localCharacterVolume = ref(characterVolume.value * 100);
+const props = defineProps<{ portrait: boolean }>();
 
 watch(localBgmVolume, (newBgmVolume) => {
   bgmVolume.value = newBgmVolume / 100;
   if (currentBgm.value) {
     currentBgm.value.volume = bgmVolume.value;
   }
-});
-watch(localCharacterSiezInMobile, (newSize) => {
-  characterSizeInMobile.value = newSize / 100;
 });
 watch(localCharacterVolume, (newCharacterVolume) => {
   characterVolume.value = newCharacterVolume / 100;

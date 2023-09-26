@@ -1,5 +1,5 @@
 <template>
-  <div class="main" :class="{ mobile: props.mobile }">
+  <div class="main" :class="{ portrait: props.portrait }">
     <va-tabs v-model="currentSelector" vertical class="tabs">
       <template #tabs>
         <va-tab
@@ -10,7 +10,7 @@
           :key="tab.key"
           :name="tab.value"
         >
-          <div v-if="!mobile">
+          <div v-if="!portrait">
             {{ tab.key }}
           </div>
           <div v-else>
@@ -27,8 +27,8 @@
         v-model="currentTime"
         value-by="value"
         class="selector__select"
-        :inner-label="props.mobile"
-        :preset="props.mobile ? 'solid' : ''"
+        :inner-label="props.portrait"
+        :preset="props.portrait ? 'solid' : ''"
       />
       <va-select
         label="人物"
@@ -36,8 +36,8 @@
         value-by="value"
         v-model="currentCharacter"
         class="selector__select"
-        :inner-label="props.mobile"
-        :preset="props.mobile ? 'solid' : ''"
+        :inner-label="props.portrait"
+        :preset="props.portrait ? 'solid' : ''"
       />
       <div class="emitButton">
         <va-button round icon="thumb_up" @click="reEnter" />
@@ -50,8 +50,8 @@
         v-model="currentCondition"
         value-by="value"
         class="condition_select"
-        :inner-label="props.mobile"
-        :preset="props.mobile ? 'solid' : ''"
+        :inner-label="props.portrait"
+        :preset="props.portrait ? 'solid' : ''"
       />
       <div class="emitButton">
         <va-button round icon="thumb_up" @click="onCondition" />
@@ -70,7 +70,10 @@ import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
 const currentSelector = ref("time");
 
-const props = defineProps<{ dialogs: RawEventDialogItem[]; mobile: boolean }>();
+const props = defineProps<{
+  dialogs: RawEventDialogItem[];
+  portrait: boolean;
+}>();
 const {
   language,
   currentCharacterId: currentCharacter,
@@ -124,7 +127,7 @@ function onCondition() {
   emits("condition", currentCondition.value);
 }
 
-const mobileButtonIcon = computed(() => {
+const portraitButtonIcon = computed(() => {
   if (currentSelector.value === "time") {
     return "arrow_downward";
   } else {
@@ -181,7 +184,7 @@ function changeTab() {
   }
 }
 
-.mobile {
+.portrait {
   height: 100%;
   margin-top: 0;
   width: 80%;

@@ -10,21 +10,27 @@ import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
 export type Props = {
   dialogs: RawEventDialogItem[];
-  mobile: boolean;
+  portrait: boolean;
 };
 const props = defineProps<Props>();
-const { playerDone, reEnterAnimation, characterSizeInMobile, language } =
-  storeToRefs(useStore());
+const {
+  playerDone,
+  reEnterAnimation,
+  characterSizeInPortrait,
+  characterPositionInPortrait,
+  characterSizeInLandscape,
+  characterPositionInLandscape,
+} = storeToRefs(useStore());
 
 const eventVoicePlayerDiv = ref<HTMLDivElement | undefined>();
 const { width: playerWidth, height: playerHeight } =
   useElementSize(eventVoicePlayerDiv);
 const canvasScaleNumber = computed(() => {
   const showPlayerHeight = (playerHeight.value + 1) * 1.5;
-  if (props.mobile) {
-    return (showPlayerHeight * characterSizeInMobile.value) / appHeight;
+  if (props.portrait) {
+    return (showPlayerHeight * characterSizeInPortrait.value) / appHeight;
   } else {
-    return showPlayerHeight / appHeight;
+    return (showPlayerHeight * characterSizeInLandscape.value) / appHeight;
   }
 });
 const canvasScale = computed(() => `scale(${canvasScaleNumber.value})`);
@@ -34,6 +40,13 @@ const canvasLeft = computed(
       (appWidth * canvasScaleNumber.value) / 2
     }px)`
 );
+const canvasBottom = computed(() => {
+  if (props.portrait) {
+    return `${-90 + characterPositionInPortrait.value}%`;
+  } else {
+    return `${-115 + characterPositionInLandscape.value}%`;
+  }
+});
 
 const voiceText = ref(
   null as { LocalizeJP: string; LocalizeCN: string } | null
@@ -106,7 +119,7 @@ defineExpose({ playVoice });
 </script>
 
 <template>
-  <div id="eventVoicePlayer" ref="eventVoicePlayerDiv" :class="{ mobile }">
+  <div id="eventVoicePlayer" ref="eventVoicePlayerDiv" :class="{ portrait }">
     <div @click="playVoice('Idle')" id="eventVoicePlayer__clickArea"></div>
     <Dialog
       :text="voiceText"
@@ -153,9 +166,9 @@ defineExpose({ playVoice });
   }
   canvas {
     transform: v-bind(canvasScale);
-    transform-origin: left top;
+    transform-origin: left bottom;
+    bottom: v-bind(canvasBottom);
     position: absolute;
-    top: 0;
     left: v-bind(canvasLeft);
     z-index: -2;
   }
