@@ -13,7 +13,7 @@ export default defineStore("main", {
       currentBgm: null as null | Sound,
       bgmState: true,
       bgmVolume: 0.25,
-      characterVolume: 0.25,
+      characterVolume: 1,
       characterSizeInPortrait: 0.8,
       characterPositionInPortrait: 50,
       characterSizeInLandscape: 1,
