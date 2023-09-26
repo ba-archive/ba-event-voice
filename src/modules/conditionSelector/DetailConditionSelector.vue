@@ -1,24 +1,21 @@
 <template>
   <div class="main" :class="{ mobile: props.mobile }">
-    <va-button
-      round
-      :icon="mobileButtonIcon"
-      preset="secondary"
-      v-if="mobile"
-      @click="changeTab"
-    >
-    </va-button>
-    <va-tabs v-model="currentSelector" vertical class="tabs" v-else>
+    <va-tabs v-model="currentSelector" vertical class="tabs">
       <template #tabs>
         <va-tab
           v-for="tab in [
-            { key: '时期人物', value: 'time' },
-            { key: '具体条件', value: 'condition' },
+            { key: '时期人物', value: 'time', icon: 'schedule' },
+            { key: '具体条件', value: 'condition', icon: 'flag' },
           ]"
           :key="tab.key"
           :name="tab.value"
         >
-          {{ tab.key }}
+          <div v-if="!mobile">
+            {{ tab.key }}
+          </div>
+          <div v-else>
+            <va-icon :name="tab.icon" size="small" />
+          </div>
         </va-tab>
       </template>
     </va-tabs>
@@ -149,12 +146,29 @@ function changeTab() {
     display: inline-block;
   }
   height: 15vh;
+  width: 100%;
   margin-top: 3%;
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+
+  @media screen and (max-height: 500px) {
+    & :deep(div) {
+      font-size: 10px;
+    }
+  }
+  @media screen and (max-height: 1000px) {
+    & :deep(div) {
+      font-size: 12px;
+    }
+  }
+
+  & :deep(div) {
+    --va-input-wrapper-min-height: 16px;
+  }
+
   .selector {
     display: inline-block;
     position: relative;
@@ -163,6 +177,7 @@ function changeTab() {
     position: absolute;
     bottom: 0;
     right: 10%;
+    height: 100%;
   }
 }
 

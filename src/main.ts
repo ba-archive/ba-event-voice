@@ -5,6 +5,7 @@ import {
   createVuestic,
 } from "vuestic-ui";
 import "./style.css";
+import "material-design-icons-iconfont/dist/material-design-icons.min.css";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 
 import "vuestic-ui/css";
