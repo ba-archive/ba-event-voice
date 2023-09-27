@@ -521,6 +521,18 @@
       "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0193ND",
       "NameCN": "晴奈",
       "NameJP": "ハルナ"
+    },
+    {
+      "CostumeUniqueId": 1900918001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0071",
+      "NameJP": "イチカ",
+      "NameCN": "一花"
+    },
+    {
+      "CostumeUniqueId": 1900918101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0089",
+      "NameJP": "カスミ",
+      "NameCN": "カスミ"
     }
   ]
 }

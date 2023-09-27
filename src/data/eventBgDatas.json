@@ -176,6 +176,11 @@
     "CardShop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_CardShop_Bg_829",
     "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Mission_Bg_829"
   },
+  "830": {
+    "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_830",
+    "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Shop_Bg_830",
+    "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Mission_Bg_830"
+  },
   "10801": {
     "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_801",
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_801",

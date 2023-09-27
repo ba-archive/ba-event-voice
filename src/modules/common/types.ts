@@ -1,9 +1,7 @@
 export interface RawEventDialogItem {
   CostumeUniqueId: number;
-  OriginalCharacterId: number;
   EventID: number;
   GroupId: number;
-  ProductionStep: "Release";
   DialogCategory:
     | "UIEventBoxGachaShop"
     | "UIEventCardShop"
@@ -43,9 +41,7 @@ export interface RawEventDialogItem {
   AnimationName: string;
   LocalizeJP: string;
   LocalizeCN: string;
-  LocalizeTW?: string;
   /*语音列表*/
-  VoiceClipsKr: string[];
   VoiceClipsJp: string[];
 }
 

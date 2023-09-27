@@ -231,6 +231,14 @@
       "LoopEndTime": 118.571
     }
   },
+  "830": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_167",
+      "LoopStartTime": 0,
+      "LoopEndTime": 0
+    }
+  },
   "60000": {
     "removeCategories": [],
     "bgm": {
