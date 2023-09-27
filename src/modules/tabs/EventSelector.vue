@@ -3,7 +3,7 @@
     <img
       v-for="{ url, id } in iconInfos"
       :src="url"
-      @click="() => (currentEventId = id)"
+      @click="onEventChange(id)"
     />
   </div>
 </template>
@@ -16,7 +16,7 @@ import { storeToRefs } from "pinia";
 const props = defineProps<{ eventIds: string[] }>();
 const iconInfos = ref<{ id: string; url: string }[]>([]);
 
-const { currentEventId, eventIconsDone } = storeToRefs(useStore());
+const { currentEventId, eventIconsDone, eventChange } = storeToRefs(useStore());
 async function initEventIcons() {
   eventIconsDone.value = false;
   iconInfos.value = await getEventIcons(props.eventIds);
@@ -24,6 +24,11 @@ async function initEventIcons() {
 }
 watch(() => props.eventIds, initEventIcons);
 initEventIcons();
+function onEventChange(id: string) {
+  currentEventId.value = id;
+  eventChange.value = true;
+  setTimeout(() => (eventChange.value = false), 100);
+}
 </script>
 
 <style lang="scss" scoped>

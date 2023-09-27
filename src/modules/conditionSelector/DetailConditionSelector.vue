@@ -75,6 +75,8 @@ const {
   language,
   currentCharacterId: currentCharacter,
   currentTime,
+  eventChange,
+  categoryChange,
 } = storeToRefs(useStore());
 const commonDetails = [
   { text: "正常", value: "None" },
@@ -130,21 +132,18 @@ function currentAction() {
     onCondition();
   }
 }
-
-const portraitButtonIcon = computed(() => {
-  if (currentSelector.value === "time") {
-    return "arrow_downward";
-  } else {
-    return "arrow_upward";
+watch(eventChange, (newVal) => {
+  if (newVal) {
+    currentSelector.value = "time";
+    currentCondition.value = "";
   }
 });
-function changeTab() {
-  if (currentSelector.value === "time") {
-    currentSelector.value = "condition";
-  } else {
+watch(categoryChange, (newVal) => {
+  if (newVal) {
     currentSelector.value = "time";
+    currentCondition.value = "";
   }
-}
+});
 </script>
 
 <style lang="scss" scoped>

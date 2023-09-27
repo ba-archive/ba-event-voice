@@ -23,6 +23,8 @@ export default defineStore("main", {
       playerDone: false,
       categoryDone: false,
       eventIconsDone: false,
+      categoryChange: false,
+      eventChange: false,
     };
   },
   getters: {

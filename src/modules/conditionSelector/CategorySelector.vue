@@ -3,7 +3,7 @@
     <div
       v-for="categoryInfo in currentIconArr"
       class="icon"
-      @click="() => emits('update:modelValue', categoryInfo.category)"
+      @click="onCategoryChange(categoryInfo.category)"
     >
       <img :src="categoryInfo.icon" />
       <div>
@@ -28,7 +28,7 @@ const emits = defineEmits<{
 }>();
 
 const currentIconArr = ref<{ icon: string; category: string }[]>([]);
-const { categoryDone } = storeToRefs(useStore());
+const { categoryDone, categoryChange } = storeToRefs(useStore());
 async function initCategories() {
   categoryDone.value = false;
   currentIconArr.value = await getCategoryIcons(props.categories);
@@ -36,6 +36,11 @@ async function initCategories() {
 }
 watch(() => props.categories, initCategories);
 initCategories();
+function onCategoryChange(category: string) {
+  categoryChange.value = false;
+  emits("update:modelValue", category);
+  setTimeout(() => (categoryChange.value = true), 100);
+}
 </script>
 
 <style lang="scss" scoped>

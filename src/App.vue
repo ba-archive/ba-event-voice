@@ -325,8 +325,4 @@ const headerExpand = ref(false);
 div {
   font-size: v-bind(fontsize);
 }
-div {
-  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "????", STXihei,
-    "????", sans-serif;
-}
 </style>
