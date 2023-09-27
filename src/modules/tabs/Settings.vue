@@ -17,7 +17,7 @@
       :max="1"
       :step="0.1"
       label-color="#000000"
-      label="portrait character size"
+      label="角色大小（竖屏）"
       v-if="portrait"
     />
     <va-slider
@@ -27,7 +27,7 @@
       :max="100"
       :step="1"
       label-color="#000000"
-      label="portrait character position"
+      label="角色位置（竖屏）"
       v-if="portrait"
     />
     <va-slider
@@ -37,7 +37,7 @@
       :max="1"
       :step="0.1"
       label-color="#000000"
-      label="landscape character size"
+      label="角色大小（横屏）"
       v-if="!portrait"
     />
     <va-slider
@@ -47,7 +47,7 @@
       :max="100"
       :step="1"
       label-color="#000000"
-      label="landscape character position"
+      label="角色位置（横屏）"
       v-if="!portrait"
     />
     <va-slider
