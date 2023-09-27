@@ -32,4 +32,19 @@ export default defineStore("main", {
       return `${state.fontSizeNumber}px`;
     },
   },
+  persist: {
+    paths: [
+      "currentEventId",
+      "language",
+      "bgmState",
+      "bgmVolume",
+      "characterVolume",
+      "characterSizeInPortrait",
+      "characterPositionInPortrait",
+      "characterSizeInLandscape",
+      "characterPositionInLandscape",
+      "fontSizeNumber",
+    ],
+    storage: localStorage,
+  },
 });
