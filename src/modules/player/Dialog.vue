@@ -3,6 +3,7 @@ import { DialogType } from "../common/types";
 import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
 const { language } = storeToRefs(useStore());
+
 const props = defineProps<{
   text: { LocalizeJP: string; LocalizeCN: string };
   mode: DialogType;

@@ -58,6 +58,14 @@
       label-color="#000000"
       label="character volume"
     />
+    <va-slider
+      v-model="fontSize"
+      track-label-visible
+      :min="12"
+      :max="30"
+      label-color="#000000"
+      label="font size"
+    />
     <va-select
       :options="['CN', 'JP']"
       v-model="language"
@@ -71,7 +79,7 @@
 <script lang="ts" setup>
 import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import eventVoicePlayer from "../player/eventVoicePlayer";
 
 const {
@@ -84,10 +92,11 @@ const {
   characterVolume,
   currentBgm,
   language,
+  fontSizeNumber: fontSize,
 } = storeToRefs(useStore());
 const localBgmVolume = ref(bgmVolume.value * 100);
 const localCharacterVolume = ref(characterVolume.value * 100);
-const props = defineProps<{ portrait: boolean }>();
+defineProps<{ portrait: boolean }>();
 
 watch(localBgmVolume, (newBgmVolume) => {
   bgmVolume.value = newBgmVolume / 100;

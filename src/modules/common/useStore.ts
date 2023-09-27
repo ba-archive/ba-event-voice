@@ -19,9 +19,15 @@ export default defineStore("main", {
       characterSizeInLandscape: 1,
       characterPositionInLandscape: 50,
       reEnterAnimation: true,
+      fontSizeNumber: 16,
       playerDone: false,
       categoryDone: false,
       eventIconsDone: false,
     };
+  },
+  getters: {
+    fontsize: (state) => {
+      return `${state.fontSizeNumber}px`;
+    },
   },
 });

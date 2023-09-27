@@ -27,6 +27,7 @@ const {
   categoryDone,
   eventIconsDone,
   currentTime,
+  fontsize,
 } = storeToRefs(useStore());
 const eventSettings = rawEventSettings as Record<string, EventSettingItem>;
 
@@ -320,5 +321,12 @@ const headerExpand = ref(false);
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
   stroke-width: 6;
+}
+div {
+  font-size: v-bind(fontsize);
+}
+div {
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "????", STXihei,
+    "????", sans-serif;
 }
 </style>
