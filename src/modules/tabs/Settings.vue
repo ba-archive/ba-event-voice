@@ -34,7 +34,7 @@
       v-model="characterSizeInLandscape"
       track-label-visible
       :min="0.1"
-      :max="1"
+      :max="2"
       :step="0.1"
       label-color="#000000"
       label="角色大小（横屏）"
