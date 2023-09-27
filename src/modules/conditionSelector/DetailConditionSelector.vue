@@ -27,7 +27,7 @@
         v-model="currentTime"
         value-by="value"
         class="selector__select"
-        :inner-label="props.portrait"
+        inner-label
         :preset="props.portrait ? 'solid' : ''"
       />
       <va-select
@@ -36,12 +36,9 @@
         value-by="value"
         v-model="currentCharacter"
         class="selector__select"
-        :inner-label="props.portrait"
+        inner-label
         :preset="props.portrait ? 'solid' : ''"
       />
-      <div class="emitButton">
-        <va-button round icon="thumb_up" @click="reEnter" />
-      </div>
     </div>
     <div v-else-if="currentSelector === 'condition'" class="selector">
       <va-select
@@ -50,12 +47,12 @@
         v-model="currentCondition"
         value-by="value"
         class="condition_select"
-        :inner-label="props.portrait"
+        inner-label
         :preset="props.portrait ? 'solid' : ''"
       />
-      <div class="emitButton">
-        <va-button round icon="thumb_up" @click="onCondition" />
-      </div>
+    </div>
+    <div class="emitButton">
+      <va-button round icon="thumb_up" @click="currentAction" />
     </div>
   </div>
 </template>
@@ -126,6 +123,13 @@ const conditions = computed(() => {
 function onCondition() {
   emits("condition", currentCondition.value);
 }
+function currentAction() {
+  if (currentSelector.value === "time") {
+    reEnter();
+  } else {
+    onCondition();
+  }
+}
 
 const portraitButtonIcon = computed(() => {
   if (currentSelector.value === "time") {
@@ -152,6 +156,7 @@ function changeTab() {
   width: 100%;
   margin-top: 3%;
   display: flex;
+  position: relative;
   align-items: center;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -162,11 +167,6 @@ function changeTab() {
       font-size: 10px;
     }
   }
-  @media screen and (max-height: 1000px) {
-    & :deep(div) {
-      font-size: 12px;
-    }
-  }
 
   & :deep(div) {
     --va-input-wrapper-min-height: 16px;
@@ -174,13 +174,10 @@ function changeTab() {
 
   .selector {
     display: inline-block;
-    position: relative;
   }
   .emitButton {
     position: absolute;
-    bottom: 0;
-    right: 10%;
-    height: 100%;
+    right: 5%;
   }
 }
 
@@ -235,6 +232,10 @@ function changeTab() {
 </style>
 
 <style>
+.va-input-wrapper__text {
+  text-wrap: nowrap;
+}
+
 .selector__select {
   width: 30%;
   margin: 0 5%;
