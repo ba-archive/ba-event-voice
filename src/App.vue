@@ -135,15 +135,14 @@ async function changeBgm() {
   }
   const currentBgmSetting = eventSettings[currentEventId.value].bgm;
   currentBgm.value = await getBgmSound(currentBgmSetting.Path);
+  currentBgm.value.volume = bgmVolume.value;
   currentBgm.value.play({
-    volume: bgmVolume.value,
     end: currentBgmSetting.LoopEndTime,
     complete() {
       currentBgm.value?.play({
         start: currentBgmSetting.LoopStartTime,
         end: currentBgmSetting.LoopEndTime,
         loop: true,
-        volume: bgmVolume.value,
       });
     },
   });
