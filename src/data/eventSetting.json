@@ -7,7 +7,7 @@
       "LoopEndTime": 110.7
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "801": {
     "removeCategories": [],
@@ -17,7 +17,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "802": {
     "removeCategories": [],
@@ -27,7 +27,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "803": {
     "removeCategories": [],
@@ -37,7 +37,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "804": {
     "removeCategories": ["UIEventMission"],
@@ -47,7 +47,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "805": {
     "removeCategories": [],
@@ -57,7 +57,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "806": {
     "removeCategories": [],
@@ -67,7 +67,7 @@
       "LoopEndTime": 113.043
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "808": {
     "removeCategories": [],
@@ -77,7 +77,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "809": {
     "removeCategories": [],
@@ -87,7 +87,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "810": {
     "removeCategories": [],
@@ -97,7 +97,7 @@
       "LoopEndTime": 91.406
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "811": {
     "removeCategories": [],
@@ -107,7 +107,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "812": {
     "removeCategories": [],
@@ -117,7 +117,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "813": {
     "removeCategories": [],
@@ -127,7 +127,7 @@
       "LoopEndTime": 120
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "814": {
     "removeCategories": [],
@@ -137,7 +137,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "815": {
     "removeCategories": [],
@@ -147,7 +147,7 @@
       "LoopEndTime": 107.538
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "816": {
     "removeCategories": [],
@@ -157,7 +157,7 @@
       "LoopEndTime": 120.843
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "817": {
     "removeCategories": [],
@@ -167,7 +167,7 @@
       "LoopEndTime": 117.818
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "818": {
     "removeCategories": [],
@@ -177,7 +177,7 @@
       "LoopEndTime": 114.593
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "819": {
     "removeCategories": [],
@@ -187,7 +187,7 @@
       "LoopEndTime": 129.391
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "820": {
     "removeCategories": [],
@@ -197,7 +197,7 @@
       "LoopEndTime": 70.363
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "821": {
     "removeCategories": [],
@@ -207,7 +207,7 @@
       "LoopEndTime": 98.083
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "822": {
     "removeCategories": [],
@@ -217,7 +217,7 @@
       "LoopEndTime": 115.238
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "823": {
     "removeCategories": [],
@@ -227,7 +227,7 @@
       "LoopEndTime": 62.399
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "824": {
     "removeCategories": [],
@@ -237,7 +237,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "825": {
     "removeCategories": ["UIEventMiniGameMission"],
@@ -247,7 +247,7 @@
       "LoopEndTime": 115.714
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "826": {
     "removeCategories": [],
@@ -257,7 +257,7 @@
       "LoopEndTime": 125.625
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "827": {
     "removeCategories": [],
@@ -267,7 +267,7 @@
       "LoopEndTime": 119.47
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "828": {
     "removeCategories": [],
@@ -277,7 +277,7 @@
       "LoopEndTime": 146.879
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "829": {
     "removeCategories": [],
@@ -287,7 +287,7 @@
       "LoopEndTime": 118.571
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   },
   "830": {
     "removeCategories": [],
@@ -297,7 +297,7 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-27",
-    "close": false
+    "days": 15
   },
   "60000": {
     "removeCategories": [],
@@ -307,6 +307,6 @@
       "LoopEndTime": 0
     },
     "releaseDate": "2023-09-01",
-    "close": true
+    "days": 15
   }
 }

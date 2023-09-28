@@ -82,10 +82,12 @@ const dialogsFilteByCategory = computed(() => {
 });
 const dialogFilterByCategoryAndTime = computed(() => {
   const currentEventSetting = eventSettings[currentEventId.value];
-  if (currentEventSetting.close) {
+  const eventReleaseDate = new Date(currentEventSetting.releaseDate);
+  const endDate = new Date(eventReleaseDate);
+  endDate.setDate(endDate.getDate() + currentEventSetting.days);
+  if (endDate.getTime() < Date.now()) {
     return dialogsFilteByCategory.value;
   } else {
-    const eventReleaseDate = new Date(currentEventSetting.releaseDate);
     return dialogsFilteByCategory.value.filter((dialog) => {
       if (dialog.DialogConditionDetail === "None") {
         return true;

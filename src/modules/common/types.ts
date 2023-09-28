@@ -62,5 +62,5 @@ export interface EventSettingItem {
     LoopEndTime: number;
   };
   releaseDate: string;
-  close: boolean;
+  days: number;
 }
