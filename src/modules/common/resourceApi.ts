@@ -113,7 +113,6 @@ export async function initPlayer(dialogs: RawEventDialogItem[]) {
 
 function getDialogUrls(dialog: RawEventDialogItem) {
   const spineArg = CharacterExcelTable.get(dialog.CostumeUniqueId);
-  console.log("character info: ", spineArg);
   if (!spineArg) {
     throw new Error(`没有找到角色id ${dialog.CostumeUniqueId}的对应资料`);
   }
@@ -139,7 +138,6 @@ function getDialogUrls(dialog: RawEventDialogItem) {
   }
   //首字母可能大写可能小写, 准备一个备用的当资源加载失败时使用
   let spineFallbackFileName = "";
-  console.log(spineFileName);
   if (spineFileName[0].toUpperCase() === spineFileName[0]) {
     spineFallbackFileName =
       spineFileName[0].toLocaleLowerCase() + spineFileName.slice(1);
