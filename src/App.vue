@@ -5,7 +5,7 @@ import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";
 import { RawEventDialogItem, EventSettingItem } from "./modules/common/types";
 import { VaModal } from "vuestic-ui";
-import { useWindowSize } from "@vueuse/core";
+import { useWindowSize, useLocalStorage } from "@vueuse/core";
 import useStore from "./modules/common/useStore";
 import Tabs from "./modules/tabs/index.vue";
 import { getBgUrl, getBgmSound } from "./modules/common/resourceApi";
@@ -151,7 +151,7 @@ async function changeBgm() {
 changeBgm();
 changeBg();
 watch(bgmState, changeBgm);
-const showTips = ref(true);
+const showTips = useLocalStorage("tips", true);
 const loaded = computed(() => {
   return (
     playerDone.value &&
@@ -216,13 +216,40 @@ const headerExpand = ref(false);
         v-model="currentCategory"
       />
     </div>
-    <!-- <va-modal v-model="showTips" ok-text="Apply">
-      <h3 class="va-h3">Title</h3>
-      <p>
-        Classic modal overlay which represents a dialog box or other interactive
-        component, such as a dismissible alert, sub-window, etc.
-      </p>
-    </va-modal> -->
+    <va-modal v-model="showTips" blur close-button>
+      <div class="tipTexts">
+        <p>
+          本项目属于碧蓝档案剧情站，目的是为了提供一个回顾活动语音的便利场所。
+        </p>
+        <p>
+          本项目仅包含日服<span class="va-text-bold">公开的</span
+          >活动语音内容，故当期活动的活动语音会晚于官方一天，复刻活动新增活动语音会在活动结束时添加。
+        </p>
+        <p>
+          感谢<a href="https://ba.gamekee.com/" class="va-link" target="_blank"
+            >碧蓝档案gamekee wiki</a
+          >和b站up<a
+            href="https://space.bilibili.com/16814870"
+            class="va-link"
+            target="_blank"
+            >@黎焰Aurora</a
+          >提供的翻译支持
+        </p>
+        <p>
+          如果有任何问题或建议，请私信碧蓝档案剧情站<a
+            href="https://space.bilibili.com/1413213021"
+            class="va-link"
+            target="_blank"
+            >b站账号</a
+          >或在<a
+            href="https://github.com/ba-archive/ba-event-voice/issues"
+            class="va-link"
+            target="_blank"
+            >项目issues</a
+          >中提出
+        </p>
+      </div>
+    </va-modal>
     <div
       v-if="!isportrait"
       :class="{
@@ -295,6 +322,12 @@ const headerExpand = ref(false);
     from {
       opacity: 0;
     }
+  }
+}
+
+.tipTexts {
+  p {
+    line-height: 150%;
   }
 }
 </style>
