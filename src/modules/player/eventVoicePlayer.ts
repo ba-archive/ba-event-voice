@@ -319,7 +319,9 @@ function winkPromise(character: Spine) {
         character.state.clearListeners();
       },
     });
-    character.state.setAnimation(Wink_Track, "Eye_Close_01", false);
+    if (character.state.hasAnimation("Eye_Close_01")) {
+      character.state.setAnimation(Wink_Track, "Eye_Close_01", false);
+    }
   });
 }
 
