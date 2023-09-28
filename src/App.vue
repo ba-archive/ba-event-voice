@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, watchEffect } from "vue";
+import { computed, ref, watch } from "vue";
 import eventDialogsTable from "./data/CharacterDialogEventExcelTable.json";
 import Player from "./modules/player/Player.vue";
 import eventVoicePlayer from "./modules/player/eventVoicePlayer";

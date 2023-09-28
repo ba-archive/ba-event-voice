@@ -79,7 +79,8 @@
 <script lang="ts" setup>
 import useStore from "../common/useStore";
 import { storeToRefs } from "pinia";
-import { computed, ref, watch } from "vue";
+import { ref, watch } from "vue";
+import { VaSelect, VaSwitch, VaSlider } from "vuestic-ui";
 import eventVoicePlayer from "../player/eventVoicePlayer";
 
 const {

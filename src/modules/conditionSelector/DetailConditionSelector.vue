@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { VaSelect } from "vuestic-ui";
+import { VaSelect, VaTabs, VaButton, VaTab, VaIcon } from "vuestic-ui";
 import { computed, ref, watch } from "vue";
 import { RawEventDialogItem } from "../common/types";
 import { uniq } from "lodash-es";

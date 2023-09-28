@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ portrait: boolean }>();
+import { VaSkeletonGroup, VaSkeleton } from "vuestic-ui";
+defineProps<{ portrait: boolean }>();
 </script>
 
 <style lang="scss">
