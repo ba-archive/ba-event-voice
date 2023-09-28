@@ -80,6 +80,27 @@ const dialogsFilteByCategory = computed(() => {
     (dialog) => dialog.DialogCategory === currentCategory.value
   );
 });
+const dialogFilterByCategoryAndTime = computed(() => {
+  const currentEventSetting = eventSettings[currentEventId.value];
+  if (currentEventSetting.close) {
+    return dialogsFilteByCategory.value;
+  } else {
+    const eventReleaseDate = new Date(currentEventSetting.releaseDate);
+    return dialogsFilteByCategory.value.filter((dialog) => {
+      if (dialog.DialogConditionDetail === "None") {
+        return true;
+      } else if (dialog.DialogConditionDetail === "Day") {
+        const tempDate = new Date(eventReleaseDate);
+        tempDate.setDate(
+          tempDate.getDate() + dialog.DialogConditionDetailValue + 1
+        );
+        return tempDate.getTime() < Date.now();
+      } else {
+        return false;
+      }
+    });
+  }
+});
 watch(dialogsFilteByCategory, changeBg);
 const currentCategories = computed(() => {
   let result = uniq(
@@ -180,7 +201,7 @@ const headerExpand = ref(false);
       </header>
       <Player
         ref="player"
-        :dialogs="dialogsFilteByCategory"
+        :dialogs="dialogFilterByCategoryAndTime"
         :portrait="isportrait"
         v-show="loaded"
         :class="{
@@ -209,7 +230,7 @@ const headerExpand = ref(false);
     >
       <Tabs :event-ids="finalEventIDs" :portrait="false"></Tabs>
       <DetailConditionSelector
-        :dialogs="dialogsFilteByCategory"
+        :dialogs="dialogFilterByCategoryAndTime"
         @re-enter="reEnter"
         @condition="triggerCondition"
         :portrait="false"

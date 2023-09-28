@@ -5,7 +5,9 @@
       "Path": "Audio/BGM/Theme_96",
       "LoopStartTime": 0.3,
       "LoopEndTime": 110.7
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "801": {
     "removeCategories": [],
@@ -13,7 +15,9 @@
       "Path": "Audio/BGM/Theme_57",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "802": {
     "removeCategories": [],
@@ -21,7 +25,9 @@
       "Path": "Audio/BGM/Theme_83",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "803": {
     "removeCategories": [],
@@ -29,7 +35,9 @@
       "Path": "Audio/BGM/Theme_80",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "804": {
     "removeCategories": ["UIEventMission"],
@@ -37,7 +45,9 @@
       "Path": "Audio/BGM/Theme_79",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "805": {
     "removeCategories": [],
@@ -45,7 +55,9 @@
       "Path": "Audio/BGM/Theme_88",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "806": {
     "removeCategories": [],
@@ -53,7 +65,9 @@
       "Path": "Audio/BGM/Theme_95",
       "LoopStartTime": 1.739,
       "LoopEndTime": 113.043
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "808": {
     "removeCategories": [],
@@ -61,7 +75,9 @@
       "Path": "Audio/BGM/Theme_99",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "809": {
     "removeCategories": [],
@@ -69,7 +85,9 @@
       "Path": "Audio/BGM/Theme_97",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "810": {
     "removeCategories": [],
@@ -77,7 +95,9 @@
       "Path": "Audio/BGM/Theme_102",
       "LoopStartTime": 16.406,
       "LoopEndTime": 91.406
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "811": {
     "removeCategories": [],
@@ -85,7 +105,9 @@
       "Path": "Audio/BGM/Theme_77",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "812": {
     "removeCategories": [],
@@ -93,7 +115,9 @@
       "Path": "Audio/BGM/Theme_109",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "813": {
     "removeCategories": [],
@@ -101,7 +125,9 @@
       "Path": "Audio/BGM/Theme_117",
       "LoopStartTime": 14.068,
       "LoopEndTime": 120
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "814": {
     "removeCategories": [],
@@ -109,7 +135,9 @@
       "Path": "Audio/BGM/Theme_120",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "815": {
     "removeCategories": [],
@@ -117,7 +145,9 @@
       "Path": "Audio/BGM/Theme_124",
       "LoopStartTime": 0.461,
       "LoopEndTime": 107.538
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "816": {
     "removeCategories": [],
@@ -125,7 +155,9 @@
       "Path": "Audio/BGM/Theme_128",
       "LoopStartTime": 24.843,
       "LoopEndTime": 120.843
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "817": {
     "removeCategories": [],
@@ -133,7 +165,9 @@
       "Path": "Audio/BGM/Theme_131",
       "LoopStartTime": 48,
       "LoopEndTime": 117.818
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "818": {
     "removeCategories": [],
@@ -141,7 +175,9 @@
       "Path": "Audio/BGM/Theme_133",
       "LoopStartTime": 33.662,
       "LoopEndTime": 114.593
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "819": {
     "removeCategories": [],
@@ -149,7 +185,9 @@
       "Path": "Audio/BGM/Theme_139",
       "LoopStartTime": 0.521,
       "LoopEndTime": 129.391
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "820": {
     "removeCategories": [],
@@ -157,7 +195,9 @@
       "Path": "Audio/BGM/Theme_141",
       "LoopStartTime": 18,
       "LoopEndTime": 70.363
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "821": {
     "removeCategories": [],
@@ -165,7 +205,9 @@
       "Path": "Audio/BGM/Theme_148",
       "LoopStartTime": 29.101,
       "LoopEndTime": 98.083
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "822": {
     "removeCategories": [],
@@ -173,7 +215,9 @@
       "Path": "Audio/BGM/Theme_150",
       "LoopStartTime": 31.428,
       "LoopEndTime": 115.238
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "823": {
     "removeCategories": [],
@@ -181,7 +225,9 @@
       "Path": "Audio/BGM/Theme_157",
       "LoopStartTime": 16.319,
       "LoopEndTime": 62.399
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "824": {
     "removeCategories": [],
@@ -189,7 +235,9 @@
       "Path": "Audio/BGM/Theme_31",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "825": {
     "removeCategories": ["UIEventMiniGameMission"],
@@ -197,7 +245,9 @@
       "Path": "Audio/BGM/Theme_159",
       "LoopStartTime": 0.857,
       "LoopEndTime": 115.714
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "826": {
     "removeCategories": [],
@@ -205,7 +255,9 @@
       "Path": "Audio/BGM/Theme_161",
       "LoopStartTime": 15,
       "LoopEndTime": 125.625
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "827": {
     "removeCategories": [],
@@ -213,7 +265,9 @@
       "Path": "Audio/BGM/Theme_165",
       "LoopStartTime": 2.294,
       "LoopEndTime": 119.47
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "828": {
     "removeCategories": [],
@@ -221,7 +275,9 @@
       "Path": "Audio/BGM/Theme_173",
       "LoopStartTime": 0,
       "LoopEndTime": 146.879
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "829": {
     "removeCategories": [],
@@ -229,7 +285,9 @@
       "Path": "Audio/BGM/Theme_169",
       "LoopStartTime": 12.857,
       "LoopEndTime": 118.571
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   },
   "830": {
     "removeCategories": [],
@@ -237,7 +295,9 @@
       "Path": "Audio/BGM/Theme_167",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-27",
+    "close": false
   },
   "60000": {
     "removeCategories": [],
@@ -245,6 +305,8 @@
       "Path": "Audio/BGM/Theme_16",
       "LoopStartTime": 0,
       "LoopEndTime": 0
-    }
+    },
+    "releaseDate": "2023-09-01",
+    "close": true
   }
 }
