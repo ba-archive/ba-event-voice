@@ -1,5 +1,5 @@
 import { RawEventDialogItem } from "../common/types";
-import { eq, sample } from "lodash-es";
+import { isEqual, sample } from "lodash-es";
 const manager = {
   flag: {
     condition: "",
@@ -22,7 +22,7 @@ const manager = {
   ) {
     return (
       this.cache.length > 0 &&
-      eq(dialogs, this.dialogs) &&
+      isEqual(dialogs, this.dialogs) &&
       condition === this.flag.condition &&
       conditionDetail === this.flag.conditionDetail
     );
