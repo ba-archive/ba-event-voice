@@ -4658,11 +4658,11 @@
       "ActionName": "",
       "Duration": 0,
       "AnimationName": "05",
-      "LocalizeJP": "どいつもこいつも\n粛清だ、粛清！",
+      "LocalizeJP": "みんな粛清だ、\n粛清！",
       "VoiceClipsJp": [
         "CH0164_EventLobby_1_2"
       ],
-      "LocalizeCN": "真是无礼！\n全部肃清，肃清！"
+      "LocalizeCN": "みんな粛清だ、\n粛清！"
     },
     {
       "CostumeUniqueId": 1900902001,
@@ -28087,6 +28087,956 @@
         "CH0071_EventMission_Day_End"
       ],
       "LocalizeCN": "今日はこれで終わりっと！\nははっ！先生、この後は\n何するんすか？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "11",
+      "LocalizeJP": "そろそろ\n始めようかしら。",
+      "VoiceClipsJp": [
+        "CH9998_EventLogin_1"
+      ],
+      "LocalizeCN": "そろそろ\n始めようかしら。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "私は準備オッケー。\n先生は？",
+      "VoiceClipsJp": [
+        "CH9998_EventLogin_2"
+      ],
+      "LocalizeCN": "私は準備オッケー。\n先生は？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 6,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "かなり進んだわね。",
+      "VoiceClipsJp": [
+        "CH9998_EventLogin_Season_1"
+      ],
+      "LocalizeCN": "かなり進んだわね。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 13,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "もうほとんど\n終わった感じよね？",
+      "VoiceClipsJp": [
+        "CH9998_EventLogin_Season_2"
+      ],
+      "LocalizeCN": "もうほとんど\n終わった感じよね？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 5,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "一応、もっかい\n確認してみて。",
+      "VoiceClipsJp": [
+        "CH9998_EventLogin_Season_End"
+      ],
+      "LocalizeCN": "一応、もっかい\n確認してみて。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "01",
+      "LocalizeJP": "……ん、\nなんか呼んだ？",
+      "VoiceClipsJp": [
+        "CH9998_EventLobby_1"
+      ],
+      "LocalizeCN": "……ん、\nなんか呼んだ？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "06",
+      "LocalizeJP": "なんだ、\n冷やかしか。",
+      "VoiceClipsJp": [
+        "CH9998_EventLobby_2"
+      ],
+      "LocalizeCN": "なんだ、\n冷やかしか。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "13",
+      "LocalizeJP": "他にやんなきゃ\nいけない事、\nあるんじゃないの？",
+      "VoiceClipsJp": [
+        "CH9998_EventLobby_3"
+      ],
+      "LocalizeCN": "他にやんなきゃ\nいけない事、\nあるんじゃないの？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "12",
+      "LocalizeJP": "はあ……\nわかった、わかった。\n何か手伝おうか？",
+      "VoiceClipsJp": [
+        "CH9998_EventLobby_4"
+      ],
+      "LocalizeCN": "はあ……\nわかった、わかった。\n何か手伝おうか？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "01",
+      "LocalizeJP": "待ってたわよぉ、先生。\nそれじゃ始めましょうか？",
+      "VoiceClipsJp": [
+        "CH9997_EventLogin_1"
+      ],
+      "LocalizeCN": "待ってたわよぉ、先生。\nそれじゃ始めましょうか？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 2500,
+      "AnimationName": "10",
+      "LocalizeJP": "なにか\n手伝いましょうかぁ？",
+      "VoiceClipsJp": [
+        "CH9997_EventLogin_2"
+      ],
+      "LocalizeCN": "なにか\n手伝いましょうかぁ？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 5000,
+      "AnimationName": "11",
+      "LocalizeJP": "これはコッチの話だから、\n協力するゾ☆",
+      "VoiceClipsJp": [],
+      "LocalizeCN": "これはコッチの話だから、\n協力するゾ☆"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 6,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "01",
+      "LocalizeJP": "うまくいってる～？",
+      "VoiceClipsJp": [
+        "CH9997_EventLogin_Season_1"
+      ],
+      "LocalizeCN": "うまくいってる～？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 13,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "そろそろ終わりが\n見えてきたかしら？",
+      "VoiceClipsJp": [
+        "CH9997_EventLogin_Season_2"
+      ],
+      "LocalizeCN": "そろそろ終わりが\n見えてきたかしら？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 5,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "99",
+      "LocalizeJP": "やり残したことはないか、\nもう一回確認して\nみるといいゾ☆",
+      "VoiceClipsJp": [
+        "CH9997_EventLogin_Season_End"
+      ],
+      "LocalizeCN": "やり残したことはないか、\nもう一回確認して\nみるといいゾ☆"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "10",
+      "LocalizeJP": "へぇ？\nそういう事\nしちゃうんだぁ。",
+      "VoiceClipsJp": [
+        "CH9997_EventLobby_1"
+      ],
+      "LocalizeCN": "へぇ？\nそういう事\nしちゃうんだぁ。"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "09",
+      "LocalizeJP": "他にやることが\nあるんじゃなぁい？",
+      "VoiceClipsJp": [
+        "CH9997_EventLobby_2"
+      ],
+      "LocalizeCN": "他にやることが\nあるんじゃなぁい？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "10",
+      "LocalizeJP": "……私の我慢にも\n限界があるんだゾ☆",
+      "VoiceClipsJp": [
+        "CH9997_EventLobby_3"
+      ],
+      "LocalizeCN": "……私の我慢にも\n限界があるんだゾ☆"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "……あらあら。\nこれ、大丈夫かしらぁ？",
+      "VoiceClipsJp": [
+        "CH9997_EventLobby_4"
+      ],
+      "LocalizeCN": "……あらあら。\nこれ、大丈夫かしらぁ？"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "来てくれたんですね、\n先生！\nでは早速行きましょう！",
+      "VoiceClipsJp": [
+        "CH9996_EventLogin_1"
+      ],
+      "LocalizeCN": "来てくれたんですね、\n先生！\nでは早速行きましょう！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "待ってましたよ、先生！",
+      "VoiceClipsJp": [
+        "CH9996_EventLogin_2"
+      ],
+      "LocalizeCN": "待ってましたよ、先生！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 6,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "04",
+      "LocalizeJP": "もう残り半分！？\n最後まで頑張りましょう！",
+      "VoiceClipsJp": [
+        "CH9996_EventLogin_Season_1"
+      ],
+      "LocalizeCN": "もう残り半分！？\n最後まで頑張りましょう！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Day",
+      "DialogConditionDetailValue": 13,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "そろそろ、\n終わりが見えて\nきましたね……！",
+      "VoiceClipsJp": [
+        "CH9996_EventLogin_Season_2"
+      ],
+      "LocalizeCN": "そろそろ、\n終わりが見えて\nきましたね……！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 5,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "最後に！\nもう一度見て\nいきませんか？",
+      "VoiceClipsJp": [
+        "CH9996_EventLogin_Season_End"
+      ],
+      "LocalizeCN": "最後に！\nもう一度見て\nいきませんか？"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "あれ？先生、\nどうかしました？",
+      "VoiceClipsJp": [
+        "CH9996_EventLobby_1"
+      ],
+      "LocalizeCN": "あれ？先生、\nどうかしました？"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "何か、\nお手伝いしましょうか？",
+      "VoiceClipsJp": [
+        "CH9996_EventLobby_2"
+      ],
+      "LocalizeCN": "何か、\nお手伝いしましょうか？"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "12",
+      "LocalizeJP": "……むむ、先生、\n今は遊んでる場合じゃ\nないですよ。",
+      "VoiceClipsJp": [
+        "CH9996_EventLobby_3"
+      ],
+      "LocalizeCN": "……むむ、先生、\n今は遊んでる場合じゃ\nないですよ。"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventLobby",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 4,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "05",
+      "LocalizeJP": "もう！先生！\n集中！集中ですよ！",
+      "VoiceClipsJp": [
+        "CH9996_EventLobby_4"
+      ],
+      "LocalizeCN": "もう！先生！\n集中！集中ですよ！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "08",
+      "LocalizeJP": "じゃーん！\n色々用意してみました！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Login_1"
+      ],
+      "LocalizeCN": "じゃーん！\n色々用意してみました！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "こちらです、先生！\n好きなものを\n選んじゃってください！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Login_2"
+      ],
+      "LocalizeCN": "こちらです、先生！\n好きなものを\n選んじゃってください！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "やり残しはないか、\nチェック、チェックですよ～！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_End"
+      ],
+      "LocalizeCN": "やり残しはないか、\nチェック、チェックですよ～！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "あれ？何かお探しですか？",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_1"
+      ],
+      "LocalizeCN": "あれ？何かお探しですか？"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "04",
+      "LocalizeJP": "えっと、見てもらいたいのは、\n私じゃなくて\nあっちなんですけど……。",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_2"
+      ],
+      "LocalizeCN": "えっと、見てもらいたいのは、\n私じゃなくて\nあっちなんですけど……。"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "あっ、それ！いいですね！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Buy_1"
+      ],
+      "LocalizeCN": "あっ、それ！いいですね！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "08",
+      "LocalizeJP": "ふむ！お目が高いですねぇ～\n……なんちゃって！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Buy_2"
+      ],
+      "LocalizeCN": "ふむ！お目が高いですねぇ～\n……なんちゃって！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "お探しのものは\nそれだったんですね！納得です！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Buy_3"
+      ],
+      "LocalizeCN": "お探しのものは\nそれだったんですね！納得です！"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "EventID": 831,
+      "DialogCategory": "UIEventShop",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 4,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "11",
+      "LocalizeJP": "おおー！やっぱり！\n私もそれがいいと思ってました！",
+      "VoiceClipsJp": [
+        "CH9996_EventShop_Buy_4"
+      ],
+      "LocalizeCN": "おおー！やっぱり！\n私もそれがいいと思ってました！"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "また会ったわね、先生。\nちょっと回していく？",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_Login_1"
+      ],
+      "LocalizeCN": "また会ったわね、先生。\nちょっと回していく？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "03",
+      "LocalizeJP": "いい感じじゃない？\n今ならいいの出るかもね。",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_Login_2"
+      ],
+      "LocalizeCN": "いい感じじゃない？\n今ならいいの出るかもね。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 5300,
+      "AnimationName": "11",
+      "LocalizeJP": "ほら、まだ残ってるなら\n手遅れになる前に\n全部回したら？",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_End"
+      ],
+      "LocalizeCN": "ほら、まだ残ってるなら\n手遅れになる前に\n全部回したら？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "Close",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 4200,
+      "AnimationName": "00",
+      "LocalizeJP": "もったいないわよ。",
+      "VoiceClipsJp": [],
+      "LocalizeCN": "もったいないわよ。"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "13",
+      "LocalizeJP": "私じゃなくて\nあっち押しなさいよ！",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_1"
+      ],
+      "LocalizeCN": "私じゃなくて\nあっち押しなさいよ！"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "Talk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "14",
+      "LocalizeJP": "あははは！\nな、なに！？\nくすぐったい！！",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_2"
+      ],
+      "LocalizeCN": "あははは！\nな、なに！？\nくすぐったい！！"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "BoxGachaPrize",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "11",
+      "LocalizeJP": "あら、当たりじゃない！\nおめでと！",
+      "VoiceClipsJp": [
+        "CH9998_Boxshop_SPBuy_1"
+      ],
+      "LocalizeCN": "あら、当たりじゃない！\nおめでと！"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "BoxGachaPrize",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "14",
+      "LocalizeJP": "これ、\n結構レアなんじゃない？",
+      "VoiceClipsJp": [
+        "CH9998_Boxshop_SPBuy_2"
+      ],
+      "LocalizeCN": "これ、\n結構レアなんじゃない？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "BoxGachaPrize",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 3,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "00",
+      "LocalizeJP": "そこそこ\nいいものなんじゃない？",
+      "VoiceClipsJp": [
+        "CH9998_Boxshop_SPBuy_3"
+      ],
+      "LocalizeCN": "そこそこ\nいいものなんじゃない？"
+    },
+    {
+      "CostumeUniqueId": 1900919001,
+      "EventID": 831,
+      "DialogCategory": "UIEventBoxGachaShop",
+      "DialogCondition": "BoxGachaFinish",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "11",
+      "LocalizeJP": "これで大体終了かな。\nお疲れ様、先生！",
+      "VoiceClipsJp": [
+        "CH9998_BoxShop_300"
+      ],
+      "LocalizeCN": "これで大体終了かな。\nお疲れ様、先生！"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "01",
+      "LocalizeJP": "進捗を確認してみましょうかぁ。",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_Login_1"
+      ],
+      "LocalizeCN": "進捗を確認してみましょうかぁ。"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Enter",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "01",
+      "LocalizeJP": "確認にきたのねぇ。\n何か手伝いましょうかぁ？",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_Login_2"
+      ],
+      "LocalizeCN": "確認にきたのねぇ。\n何か手伝いましょうかぁ？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "09",
+      "LocalizeJP": "諦め、って言葉を知らない\n感じかしらぁ？",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_1"
+      ],
+      "LocalizeCN": "諦め、って言葉を知らない\n感じかしらぁ？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Idle",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "02",
+      "LocalizeJP": "へぇ……？",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_2"
+      ],
+      "LocalizeCN": "へぇ……？"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 1,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "11",
+      "LocalizeJP": "なかなか頑張ったんじゃなぁい？\n褒めてつかわすゾ☆",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_Get_1"
+      ],
+      "LocalizeCN": "なかなか頑張ったんじゃなぁい？\n褒めてつかわすゾ☆"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "EventID": 831,
+      "DialogCategory": "UIEventMission",
+      "DialogCondition": "Buy",
+      "DialogConditionDetail": "None",
+      "DialogConditionDetailValue": 0,
+      "GroupId": 2,
+      "DialogType": "UITalk",
+      "ActionName": "",
+      "Duration": 0,
+      "AnimationName": "99",
+      "LocalizeJP": "少しは役に立んじゃなぁい？",
+      "VoiceClipsJp": [
+        "CH9997_EventMission_Get_2"
+      ],
+      "LocalizeCN": "少しは役に立んじゃなぁい？"
     }
   ]
 }

@@ -299,6 +299,16 @@
     "releaseDate": "2023-09-27",
     "days": 15
   },
+  "831": {
+    "removeCategories": [],
+    "bgm": {
+      "Path": "Audio/BGM/Theme_175",
+      "LoopStartTime": 65.6,
+      "LoopEndTime": 129.6
+    },
+    "releaseDate": "2023-10-24",
+    "days": 15
+  },
   "60000": {
     "removeCategories": [],
     "bgm": {

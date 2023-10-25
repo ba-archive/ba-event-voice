@@ -181,6 +181,12 @@
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Shop_Bg_830",
     "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Mission_Bg_830"
   },
+  "831": {
+    "Lobby": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_831",
+    "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Shop_Bg_831",
+    "Mission": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Mission_Bg_831",
+    "BoxGacha": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_BoxGacha_Bg_831"
+  },
   "60000": {
     "MiniEvent": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_Stage_Bg_60000",
     "Shop": "UIs/01_Common/27_EventContent/Main_BgImage/Event_Main_BoxGacha_Bg_60000",

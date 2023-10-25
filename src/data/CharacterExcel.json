@@ -375,7 +375,7 @@
     {
       "CostumeUniqueId": 1900911301,
       "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_arona",
-      "NameCN": "阿罗娜",
+      "NameCN": "アロナ",
       "NameJP": "アロナ"
     },
     {
@@ -519,8 +519,14 @@
     {
       "CostumeUniqueId": 1900917301,
       "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0193ND",
-      "NameCN": "晴奈",
-      "NameJP": "ハルナ"
+      "NameJP": "ハルナ",
+      "NameCN": "晴奈"
+    },
+    {
+      "CostumeUniqueId": 1900918101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0089",
+      "NameJP": "カスミ",
+      "NameCN": "霞"
     },
     {
       "CostumeUniqueId": 1900918001,
@@ -529,10 +535,22 @@
       "NameCN": "一花"
     },
     {
-      "CostumeUniqueId": 1900918101,
-      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH0089",
-      "NameJP": "カスミ",
-      "NameCN": "カスミ"
+      "CostumeUniqueId": 1900919001,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH9998",
+      "NameJP": "御坂美琴",
+      "NameCN": "御坂美琴"
+    },
+    {
+      "CostumeUniqueId": 1900919101,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH9997",
+      "NameJP": "食蜂操祈",
+      "NameCN": "食蜂操祈"
+    },
+    {
+      "CostumeUniqueId": 1900919201,
+      "SpineResourceName": "UIs/03_Scenario/02_Character/CharacterSpine_CH9996",
+      "NameJP": "佐天涙子",
+      "NameCN": "佐天泪子"
     }
   ]
 }
